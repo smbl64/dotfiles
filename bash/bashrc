@@ -1,0 +1,54 @@
+# Load the bash prompt
+source ~/.bash_prompt
+
+# --------------------------------------------------------
+# Path and other exports
+# --------------------------------------------------------
+export PATH="~/.local/bin:${PATH}"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+if which java > /dev/null; then export JAVA_HOME=$(/usr/libexec/java_home); fi
+
+# GNU core utils
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+export CLICOLOR=1
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# --------------------------------------------------------
+# Aliases 
+# --------------------------------------------------------
+alias ls="ls --color=always"
+alias ll="ls -l"
+alias t4="ping 4.2.2.4 -i 0.3"
+alias e="emacs -nw"
+
+# --------------------------------------------------------
+# Other stuff
+# --------------------------------------------------------
+
+# Run bash completion scripts
+# LOAD ALL AUTOCOMPLETIONS IF ANY ARE INSTALLED
+if [ -d /usr/local/etc/bash_completion.d ]; then
+    for F in "/usr/local/etc/bash_completion.d/"*; do
+        if [ -f "${F}" ]; then
+            source "${F}";
+        fi
+    done
+fi
+
+# For pyenv
+eval "$(pyenv init -)"
+
+# For pyenv-virtualenv
+eval "$(pyenv virtualenv-init -)"
+
+
+# Fix pyenv macOS bug
+# https://github.com/pyenv/pyenv/issues/1219#issuecomment-482821959
+CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+
+
+# added by Pew
+source "$(pew shell_config)"
