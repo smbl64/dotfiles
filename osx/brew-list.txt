@@ -13,6 +13,7 @@ graphviz
 heroku/brew/heroku
 htop
 libdvdcss
+libpq
 libsigsegv
 lua
 makedepend
