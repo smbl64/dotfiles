@@ -22,6 +22,7 @@ gnu-indent
 gnu-sed
 gnu-tar
 gnupg
+go
 graphviz
 grep
 heroku/brew/heroku
