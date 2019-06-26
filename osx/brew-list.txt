@@ -27,6 +27,7 @@ graphviz
 grep
 heroku/brew/heroku
 htop
+imagemagick
 jq
 libdvdcss
 libmagic
@@ -52,6 +53,7 @@ sbcl
 scala
 sl
 smartmontools
+speedtest-cli
 sphinx-doc
 sshfs
 telnet
