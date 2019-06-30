@@ -12,6 +12,7 @@ clojure
 cmus
 coreutils
 direnv
+emacs
 ffmpeg
 findutils
 gawk
@@ -29,6 +30,7 @@ heroku/brew/heroku
 htop
 imagemagick
 jq
+kubernetes-cli
 libdvdcss
 libmagic
 libpq
