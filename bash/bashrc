@@ -28,18 +28,14 @@ alias t4="ping 4.2.2.4 -i 0.3"
 alias e="emacs -nw"
 
 # --------------------------------------------------------
+# Bash completion (for Bash 4+ and bash-completion@2
+# --------------------------------------------------------
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# --------------------------------------------------------
 # Other stuff
 # --------------------------------------------------------
-
-# Run bash completion scripts
-# LOAD ALL AUTOCOMPLETIONS IF ANY ARE INSTALLED
-if [ -d /usr/local/etc/bash_completion.d ]; then
-    for F in "/usr/local/etc/bash_completion.d/"*; do
-        if [ -f "${F}" ]; then
-            source "${F}";
-        fi
-    done
-fi
 
 # For pyenv
 eval "$(pyenv init -)"
