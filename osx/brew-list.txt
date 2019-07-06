@@ -2,7 +2,7 @@ apache-spark
 aria2
 automake
 bash
-bash-completion
+bash-completion@2
 bat
 bmon
 cask
