@@ -27,6 +27,7 @@ alias ls="ls --color=always"
 alias ll="ls -l"
 alias t4="ping 4.2.2.4 -i 0.3"
 alias e="emacs -nw"
+alias bat="bat -p"
 
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
