@@ -8,8 +8,6 @@
 \pset linestyle unicode
 \pset null '✗'
 \x auto
-\set PROMPT1 '\ndb %[%033[0;33;32m%]postgresql://%n@%M/%~%[%033[0m%]\n%[%033[0;33;32m%]%x%R%# %[%033[0m%]'
-\set PROMPT2 '    '
 
 -- alias for commands
 \set c 'SELECT COUNT(*) FROM '
