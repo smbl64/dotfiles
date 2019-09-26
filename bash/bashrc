@@ -12,13 +12,18 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # GNU core utils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # psql etc.
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
+# Rust cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
 export CLICOLOR=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export EDITOR="vim"
 
 # --------------------------------------------------------
 # Aliases 
@@ -28,10 +33,13 @@ alias ll="ls -l"
 alias t4="ping 4.2.2.4 -i 0.3"
 alias e="emacs -nw"
 alias bat="bat -p"
+alias nano='vim'
+alias grep='grep --color -i'
 
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
 # --------------------------------------------------------
+# TODO: work laptop is using Bash 3!
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
@@ -48,8 +56,16 @@ eval "$(pyenv virtualenv-init -)"
 
 # Fix pyenv macOS bug
 # https://github.com/pyenv/pyenv/issues/1219#issuecomment-482821959
-CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 
 
 # added by Pew
 source "$(pew shell_config)"
+
+# direnv hook
+eval "$(direnv hook bash)"
+
+# --------------------------------------------------------
+# Local script
+# --------------------------------------------------------
+test -f ~/.bashrc_local && source ~/.bashrc_local
