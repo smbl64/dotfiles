@@ -22,6 +22,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'yasukotelin/shirotelin'
 Plugin 'scrooloose/nerdtree'
+Plugin 'terryma/vim-expand-region'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
