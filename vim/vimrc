@@ -24,6 +24,16 @@ Plugin 'yasukotelin/shirotelin'
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-expand-region'
 
+"Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-fugitive'
+
+
+" Python specific
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'davidhalter/jedi-vim'
+
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -78,8 +88,20 @@ set smartcase
 " ================================================
 " My own configs
 " ================================================
+" Use space for code folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
+" No docstring window for Jedi
+autocmd FileType python setlocal completeopt-=preview
+
+" Use macos clipboard
+set clipboard=unnamed
+
+
 " Disable the welcome message
-set shortmess=I 
+set shortmess+=I 
 
 " Shortcut to toggle nerdtree
 map <f8> :NERDTreeToggle<CR>
@@ -95,7 +117,6 @@ syntax on
 filetype indent on
 set autoindent
 set number
-"colorscheme murphy
 set nobackup
 set laststatus=2
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
@@ -103,13 +124,17 @@ set wildmenu
 "highlight LineNr ctermfg=darkgrey
 
 
-set t_Co=256   " This is may or may not needed.
-
 "set background=dark
 "let g:solarized_termcolors=256
 "colorscheme solarized
-colorscheme shirotelin
-set background=light
 
-set guifont=Menlo\ Regular:h15
+if has('gui_running')
+    colorscheme shirotelin
+    set background=light
+    set cursorline  " highlight current line
+else
+  "  colorscheme zenburn
+end
+
+set guifont=Menlo\ Regular:h14
 
