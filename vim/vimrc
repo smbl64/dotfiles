@@ -26,6 +26,7 @@ Plugin 'terryma/vim-expand-region'
 
 "Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'
+Plugin 'takac/vim-hardtime'
 
 
 " Python specific
@@ -123,6 +124,10 @@ set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 set wildmenu
 "highlight LineNr ctermfg=darkgrey
 
+" HardTime configs
+let g:hardtime_default_on = 1
+let g:hardtime_timeout = 2000
+let g:hardtime_showmsg = 1
 
 "set background=dark
 "let g:solarized_termcolors=256
@@ -138,3 +143,6 @@ end
 
 set guifont=Menlo\ Regular:h14
 
+" Configs for showing invisible chars (tab etc)
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬  " Same as TextMate
