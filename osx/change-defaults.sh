@@ -19,3 +19,6 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Make ~/Library visible
 chflags nohidden ~/Library
+
+# Show attachments as icons in Mail.app
+defaults write com.apple.mail DisableInlineAttachmentViewing -bool yes
