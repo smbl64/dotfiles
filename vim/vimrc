@@ -59,8 +59,8 @@ let mapleader = ","
 "" inoremap <C-Z> <C-O>:update<CR>
 			
 " Quick quit command
-noremap <Leader>e :quit<CR>  " Quit current window
-noremap <Leader>E :qa!<CR>   " Quit all windows
+noremap <Leader>q :quit<CR>  " Quit current window
+noremap <Leader>Q :qa!<CR>   " Quit all windows
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -118,6 +118,7 @@ syntax on
 filetype indent on
 set autoindent
 set number
+set relativenumber
 set nobackup
 set laststatus=2
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
@@ -126,8 +127,8 @@ set wildmenu
 
 " HardTime configs
 let g:hardtime_default_on = 1
-let g:hardtime_timeout = 2000
-let g:hardtime_showmsg = 1
+let g:hardtime_timeout = 1000
+let g:hardtime_showmsg = 0
 
 "set background=dark
 "let g:solarized_termcolors=256
