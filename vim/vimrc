@@ -48,19 +48,11 @@ autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
 set bs=2     " make backspace behave like normal again
 
-" Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
 let mapleader = ","
 
-" Quicksave command
-"" noremap <C-Z> :update<CR>
-"" vnoremap <C-Z> <C-C>:update<CR>
-"" inoremap <C-Z> <C-O>:update<CR>
-			
 " Quick quit command
-noremap <Leader>q :quit<CR>  " Quit current window
-noremap <Leader>Q :qa!<CR>   " Quit all windows
+noremap <Leader>q :quit<CR>
+noremap <Leader>Q :qa!<CR>
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -100,7 +92,6 @@ autocmd FileType python setlocal completeopt-=preview
 " Use macos clipboard
 set clipboard=unnamed
 
-
 " Disable the welcome message
 set shortmess+=I 
 
@@ -123,10 +114,9 @@ set nobackup
 set laststatus=2
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 set wildmenu
-"highlight LineNr ctermfg=darkgrey
 
 " HardTime configs
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 let g:hardtime_timeout = 1000
 let g:hardtime_showmsg = 0
 
