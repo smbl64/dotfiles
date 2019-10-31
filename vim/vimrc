@@ -16,20 +16,26 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Themes
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'yasukotelin/shirotelin'
+
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-expand-region'
 
 "Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'takac/vim-hardtime'
 
-
 " Python specific
+"Plugin 'jeetsukumaran/vim-pythonsense'
+Plugin 'kana/vim-textobj-user'
+Plugin 'bps/vim-textobj-python'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'davidhalter/jedi-vim'
@@ -40,13 +46,12 @@ filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 
-" ================================================
-" Taken from https://github.com/mbrochh/vim-as-a-python-ide/blob/master/.vimrc
-" ================================================
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
-set bs=2     " make backspace behave like normal again
+
+" make backspace behave like normal again
+set bs=2     
 
 let mapleader = ","
 
@@ -54,8 +59,7 @@ let mapleader = ","
 noremap <Leader>q :quit<CR>
 noremap <Leader>Q :qa!<CR>
 
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
+" Easier movement within windows
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
@@ -65,7 +69,6 @@ map <c-h> <c-w>h
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
-" Real programmers don't use TABs but spaces
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -81,6 +84,9 @@ set smartcase
 " ================================================
 " My own configs
 " ================================================
+" clean the search result by hitting escape
+nnoremap <silent> <esc> :noh<cr><esc>
+
 " open vimrc fast!
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 :nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -89,6 +95,9 @@ set smartcase
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
+
+" Shorter update time (for git gutter)
+set updatetime=100
 
 " No docstring window for Jedi
 autocmd FileType python setlocal completeopt-=preview
@@ -102,15 +111,9 @@ set shortmess+=I
 " Shortcut to toggle nerdtree
 map <f8> :NERDTreeToggle<CR>
 
-" ESC will clear search highlighting (on startup, puts vim in RELACE for some reason)
-" nnoremap <esc> :noh<return><esc>
-
 " Turn off the annoying bells
 set belloff=all
 
-set nocompatible
-syntax on
-filetype indent on
 set autoindent
 set number
 set relativenumber
@@ -124,19 +127,18 @@ let g:hardtime_default_on = 0
 let g:hardtime_timeout = 1000
 let g:hardtime_showmsg = 0
 
-"set background=dark
-"let g:solarized_termcolors=256
-"colorscheme solarized
 
 if has('gui_running')
-    colorscheme shirotelin
     set background=light
+    colorscheme papercolor
+    let g:airline_theme='papercolor'
+    set guifont=Menlo\ Regular:h12
+    set linespace=2
     set cursorline  " highlight current line
 else
   "  colorscheme zenburn
 end
 
-set guifont=Menlo\ Regular:h14
 
 " Configs for showing invisible chars (tab etc)
 nmap <leader>l :set list!<CR>
