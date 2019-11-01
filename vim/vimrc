@@ -24,8 +24,11 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'yasukotelin/shirotelin'
 
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-expand-region'
+Plugin 'inkarkat/vim-ingo-library'
+Plugin 'inkarkat/vim-mark'
 
 "Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'
@@ -66,8 +69,8 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 			
 " easier moving between tabs
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
+" map <Leader>n <esc>:tabprevious<CR>
+" map <Leader>m <esc>:tabnext<CR>
 
 set tabstop=4
 set softtabstop=4
@@ -84,6 +87,12 @@ set smartcase
 " ================================================
 " My own configs
 " ================================================
+
+" Use `ag` for ack plugin
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " clean the search result by hitting escape
 nnoremap <silent> <esc> :noh<cr><esc>
 
