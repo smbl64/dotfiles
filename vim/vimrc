@@ -133,6 +133,8 @@ set nobackup
 set laststatus=2
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 set wildmenu
+set wildmode=longest:full,full
+
 
 " HardTime configs
 let g:hardtime_default_on = 0
