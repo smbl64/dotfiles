@@ -97,7 +97,7 @@ if executable('ag')
 endif
 
 " clean the search result by hitting escape
-nnoremap <silent> <esc> :noh<cr><esc>
+nnoremap <silent> <leader><space> :noh<cr>
 
 " open vimrc fast!
 :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
