@@ -87,6 +87,9 @@ set smartcase
 " ================================================
 " My own configs
 " ================================================
+" Open new splits on right or below
+set splitbelow
+set splitright
 
 " Use `ag` for ack plugin
 if executable('ag')
