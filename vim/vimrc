@@ -27,6 +27,7 @@ Plugin 'yasukotelin/shirotelin'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-expand-region'
 Plugin 'inkarkat/vim-ingo-library'
 Plugin 'inkarkat/vim-mark'
@@ -86,16 +87,29 @@ set shiftround
 set expandtab
 
 
-" Make search case insensitive
+" ================================================
+" My own configs
+" ================================================
+set scrolloff=3
+set hidden
+
+" Use standard regex for searching (via '\v' option)
+nnoremap / /\v
+vnoremap / /\v
+
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-" ================================================
-" My own configs
-" ================================================
-" Use standard regex for searching (via '\v' option)
-nnoremap / /\v
+set gdefault
+
+set autoindent
+set number
+set relativenumber
+set nobackup
+set laststatus=2
+set wildmenu
+set wildmode=longest:full,full
 
 " Have a better :find experience
 set path+=**
@@ -156,14 +170,6 @@ map <f8> :NERDTreeToggle<CR>
 " Turn off the annoying bells
 set belloff=all
 
-set autoindent
-set number
-set relativenumber
-set nobackup
-set laststatus=2
-set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
-set wildmenu
-set wildmode=longest:full,full
 
 
 " HardTime configs
@@ -187,3 +193,7 @@ end
 " Configs for showing invisible chars (tab etc)
 nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬  " Same as TextMate
+
+augroup MyGroup
+    au FocusLost * silent! wa
+augroup END
