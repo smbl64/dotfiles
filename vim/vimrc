@@ -17,6 +17,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Themes
+Plugin 'chriskempson/base16-vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
@@ -32,6 +33,8 @@ Plugin 'inkarkat/vim-mark'
 Plugin 'dense-analysis/ale'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'majutsushi/tagbar'
+
 
 "Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-fugitive'
@@ -45,6 +48,7 @@ Plugin 'bps/vim-textobj-python'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'jmcantrell/vim-virtualenv'
 
 
 call vundle#end()            " required
@@ -90,6 +94,9 @@ set smartcase
 " ================================================
 " My own configs
 " ================================================
+" Use standard regex for searching (via '\v' option)
+nnoremap / /\v
+
 " Have a better :find experience
 set path+=**
 set wildignore+=*.pyc
@@ -104,12 +111,14 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {'python': ['flake8']}
 
-let g:airline#extensions#ale#enabled = 1
-let airline#extensions#ale#error_symbol = 'E:'
-let airline#extensions#ale#warning_symbol = 'W:'
+" Airline configurations
+" let g:airline#extensions#ale#enabled = 1
+" let airline#extensions#ale#error_symbol = 'E:'
+" let airline#extensions#ale#warning_symbol = 'W:'
+let airline_section_b = ""
 
 " Call black-macchiato
-xnoremap <leader>\ <esc>:'<,'> !black-macchiato<cr>
+xnoremap <Leader>/ <esc>:'<,'> !black-macchiato<cr>
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
 " Use `ag` for ack plugin
@@ -165,8 +174,8 @@ let g:hardtime_showmsg = 0
 
 if has('gui_running')
     set background=light
-    colorscheme papercolor
-    let g:airline_theme='papercolor'
+    colorscheme base16-one-light
+    let g:airline_theme='base16'
     set guifont=Menlo\ Regular:h12
     set linespace=2
     set cursorline  " highlight current line
