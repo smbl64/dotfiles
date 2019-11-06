@@ -1,4 +1,5 @@
-" Vundle bootstrap - download vundle if it's not there
+" Vundle bootstrap 
+" Download vundle if it's not there
 if !filereadable($HOME . '/.vim/bundle/Vundle.vim/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
     exec '!git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim/'
 endif
@@ -36,15 +37,14 @@ Plugin 'Chiel92/vim-autoformat'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'majutsushi/tagbar'
 
-
-"Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'takac/vim-hardtime'
+Plugin 'kana/vim-textobj-user'
 
 " Python specific
 "Plugin 'jeetsukumaran/vim-pythonsense'
-Plugin 'kana/vim-textobj-user'
 Plugin 'bps/vim-textobj-python'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
@@ -196,4 +196,8 @@ set listchars=tab:▸\ ,eol:¬  " Same as TextMate
 
 augroup MyGroup
     au FocusLost * silent! wa
+
+    " Python specific
+    au FileType python map <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
+    au FileType python map <silent> <leader>B Oimport pdb; pdb.set_trace()<esc>
 augroup END
