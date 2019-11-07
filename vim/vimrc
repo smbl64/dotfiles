@@ -35,7 +35,7 @@ Plugin 'inkarkat/vim-mark'
 Plugin 'dense-analysis/ale'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'majutsushi/tagbar'
+Plugin 'ludovicchabant/vim-gutentags'
 
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
@@ -44,6 +44,7 @@ Plugin 'takac/vim-hardtime'
 Plugin 'kana/vim-textobj-user'
 
 " Python specific
+Plugin 'mgedmin/python-imports.vim'
 "Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'bps/vim-textobj-python'
 Plugin 'tmhedberg/SimpylFold'
@@ -132,7 +133,8 @@ let g:ale_linters = {'python': ['flake8']}
 let airline_section_b = ""
 
 " Call black-macchiato
-xnoremap <Leader>/ <esc>:'<,'> !black-macchiato<cr>
+nnoremap <Leader>f V<esc>:'<,'> !black-macchiato<cr>
+xnoremap <Leader>f <esc>:'<,'> !black-macchiato<cr>
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
 " Use `ag` for ack plugin
@@ -184,6 +186,8 @@ if has('gui_running')
     let g:airline_theme='base16'
     set guifont=Menlo\ Regular:h12
     set linespace=2
+    " Remove the scrollbars
+    set guioptions=
     set cursorline  " highlight current line
 else
   "  colorscheme zenburn
