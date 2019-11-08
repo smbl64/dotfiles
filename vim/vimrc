@@ -94,9 +94,9 @@ set expandtab
 set scrolloff=3
 set hidden
 
-" Use standard regex for searching (via '\v' option)
-nnoremap / /\v
-vnoremap / /\v
+" Use standard regex for searching (via '\V' option)
+nnoremap / /\V
+vnoremap / /\V
 
 set hlsearch
 set incsearch
