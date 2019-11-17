@@ -36,6 +36,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'tpope/vim-surround'
 
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
@@ -114,11 +115,15 @@ set wildmode=longest:full,full
 
 " Have a better :find experience
 set path+=**
-set wildignore+=*.pyc
+set wildignore+=*.pyc,*/__pycache__/*
 
 " Open new splits on right or below
 set splitbelow
 set splitright
+
+" netrw configs
+let g:netrw_banner=0  " No help banner
+let g:netrw_liststyle=3  " tree
 
 " Ale configs
 let g:ale_echo_msg_error_str = 'E'
@@ -166,12 +171,13 @@ set clipboard=unnamed
 " Disable the welcome message
 set shortmess+=I 
 
-" Shortcut to toggle nerdtree
-map <f8> :NERDTreeToggle<CR>
-
 " Turn off the annoying bells
 set belloff=all
 
+" NERDTree configs
+let NERDTreeIgnore = ['__pycache__']
+let NERDTreeRespectWildIgnore=1
+map <f8> :NERDTreeToggle<CR>
 
 
 " HardTime configs
@@ -186,8 +192,8 @@ if has('gui_running')
     let g:airline_theme='base16'
     set guifont=Menlo\ Regular:h12
     set linespace=2
-    " Remove the scrollbars
-    set guioptions=
+    " Remove the scrollbars. Also use console dialogs.
+    set guioptions=c
     set cursorline  " highlight current line
 else
   "  colorscheme zenburn
@@ -199,9 +205,14 @@ nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬  " Same as TextMate
 
 augroup MyGroup
+    au!
     au FocusLost * silent! wa
 
     " Python specific
-    au FileType python map <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
-    au FileType python map <silent> <leader>B Oimport pdb; pdb.set_trace()<esc>
+    au FileType python map <silent> <buffer> 
+                \ <leader>pb oimport pdb; pdb.set_trace()<esc>
+
 augroup END
+
+" Do an :ls and go for a buffer switch!
+nnoremap <leader>b :ls<cr>:b
