@@ -66,7 +66,7 @@ autocmd! bufwritepost vimrc source %
 " make backspace behave like normal again
 set bs=2     
 
-let mapleader = ","
+let mapleader = " "
 
 " Quick quit command
 noremap <Leader>q :quit<CR>
@@ -77,28 +77,25 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-			
-" easier moving between tabs
-" map <Leader>n <esc>:tabprevious<CR>
-" map <Leader>m <esc>:tabnext<CR>
-
+            
+" Tab configs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
 
-
-" ================================================
-" My own configs
-" ================================================
+" Leave a little room on top and bottom of the screen when scrolling
 set scrolloff=3
+
+" Allow unsaved buffers to go to background
 set hidden
 
 " Use standard regex for searching (via '\V' option)
 nnoremap / /\V
 vnoremap / /\V
 
+" Search configs
 set hlsearch
 set incsearch
 set ignorecase
@@ -108,6 +105,7 @@ set gdefault
 set autoindent
 set number
 set relativenumber
+
 set nobackup
 set laststatus=2
 set wildmenu
@@ -137,9 +135,34 @@ let g:ale_linters = {'python': ['flake8']}
 " let airline#extensions#ale#warning_symbol = 'W:'
 let airline_section_b = ""
 
+function! RunBlackMacchiato(visual)
+    if !executable("black-macchiato")
+        echo "black-macchiato not found!"
+        return
+    endif
+
+    if a:visual
+        normal! gv
+    endif
+
+    let currentMode = mode()
+
+    if currentMode ==# "n"
+        silent execute ".!black-macchiato"
+    elseif currentMode ==# "v" || currentMode ==# "V"
+        silent execute "'<,'>!black-macchiato"
+    endif
+
+    echo "Done formatting."
+
+endfunction
+
 " Call black-macchiato
-nnoremap <Leader>f V<esc>:'<,'> !black-macchiato<cr>
-xnoremap <Leader>f <esc>:'<,'> !black-macchiato<cr>
+augroup Python
+    autocmd!
+    autocmd FileType python xnoremap <Leader>f :call RunBlackMacchiato(1)<cr>
+    autocmd FileType python nnoremap <Leader>f :call RunBlackMacchiato(0)<cr>
+augroup END
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
 " Use `ag` for ack plugin
@@ -147,7 +170,7 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
-" clean the search result by hitting escape
+" clean the search result by hitting space
 nnoremap <silent> <leader><space> :noh<cr>
 
 " open vimrc fast!
@@ -157,7 +180,6 @@ nnoremap <silent> <leader><space> :noh<cr>
 " Use space for code folding
 set foldmethod=indent
 set foldlevel=99
-nnoremap <space> za
 
 " Shorter update time (for git gutter)
 set updatetime=100
@@ -185,31 +207,32 @@ let g:hardtime_default_on = 0
 let g:hardtime_timeout = 1000
 let g:hardtime_showmsg = 0
 
-
 if has('gui_running')
     set background=light
     colorscheme base16-one-light
     let g:airline_theme='base16'
     set guifont=Menlo\ Regular:h12
     set linespace=2
+
     " Remove the scrollbars. Also use console dialogs.
     set guioptions=c
-    set cursorline  " highlight current line
+
+    " Highlight current line
+    set cursorline
 else
   "  colorscheme zenburn
 end
-
 
 " Configs for showing invisible chars (tab etc)
 nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬  " Same as TextMate
 
 augroup MyGroup
-    au!
-    au FocusLost * silent! wa
+    autocmd!
+    autocmd FocusLost * silent! wa
 
     " Python specific
-    au FileType python map <silent> <buffer> 
+    autocmd FileType python map <silent> <buffer>
                 \ <leader>pb oimport pdb; pdb.set_trace()<esc>
 
 augroup END
