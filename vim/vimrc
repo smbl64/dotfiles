@@ -135,7 +135,7 @@ let g:ale_linters = {'python': ['flake8']}
 " let airline#extensions#ale#warning_symbol = 'W:'
 let airline_section_b = ""
 
-function! RunBlackMacchiato(visual)
+function! s:RunBlackMacchiato(visual) range
     if !executable("black-macchiato")
         echo "black-macchiato not found!"
         return
@@ -160,8 +160,8 @@ endfunction
 " Call black-macchiato
 augroup Python
     autocmd!
-    autocmd FileType python xnoremap <Leader>f :call RunBlackMacchiato(1)<cr>
-    autocmd FileType python nnoremap <Leader>f :call RunBlackMacchiato(0)<cr>
+    autocmd FileType python xnoremap <Leader>f :call <sid>RunBlackMacchiato(1)<cr>
+    autocmd FileType python nnoremap <Leader>f :call <sid>RunBlackMacchiato(0)<cr>
 augroup END
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
