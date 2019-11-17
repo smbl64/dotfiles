@@ -4,11 +4,10 @@ source ~/.bash_prompt
 # --------------------------------------------------------
 # Path and other exports
 # --------------------------------------------------------
-export PATH="~/.local/bin:${PATH}"
-export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
 if which java > /dev/null; then export JAVA_HOME=$(/usr/libexec/java_home); fi
-export PATH="$HOME/.cargo/bin:$PATH"
 
 # GNU core utils
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
