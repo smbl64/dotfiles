@@ -63,6 +63,9 @@ filetype plugin indent on    " required
 autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
 
+" Disable swap files
+set noswapfile
+
 " make backspace behave like normal again
 set bs=2     
 
@@ -136,7 +139,8 @@ let g:ale_linters = {'python': ['flake8']}
 let airline_section_b = ""
 
 function! s:RunBlackMacchiato(visual) range
-    if !executable("black-macchiato")
+    let cmd = "black-macchiato"
+    if !executable(cmd)
         echo "black-macchiato not found!"
         return
     endif
@@ -148,9 +152,9 @@ function! s:RunBlackMacchiato(visual) range
     let currentMode = mode()
 
     if currentMode ==# "n"
-        silent execute ".!black-macchiato"
+        silent execute ".!" . cmd
     elseif currentMode ==# "v" || currentMode ==# "V"
-        silent execute "'<,'>!black-macchiato"
+        silent execute "'<,'>!" . cmd
     endif
 
     echo "Done formatting."
