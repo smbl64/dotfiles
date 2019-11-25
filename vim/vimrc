@@ -243,3 +243,9 @@ augroup END
 
 " Do an :ls and go for a buffer switch!
 nnoremap <leader>b :ls<cr>:b
+
+" Expand %% to current directory (in Ex command mode)
+cabbr <expr> %% expand('%:p:h')
+
+" Abbreviation for vertical split find
+cabbrev vsf vert sfind
