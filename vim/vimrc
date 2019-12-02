@@ -249,3 +249,18 @@ cabbr <expr> %% expand('%:p:h')
 
 " Abbreviation for vertical split find
 cabbrev vsf vert sfind
+
+
+" Color scheme switching
+function! SwitchColorScheme()
+    if (g:colors_name ==# "base16-one-light")
+        colorscheme base16-onedark
+    else
+        colorscheme base16-one-light
+    endif
+endfunction
+
+
+if has('gui_running')
+    nnoremap <F9> :call SwitchColorScheme()<CR>
+endif
