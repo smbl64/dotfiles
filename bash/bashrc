@@ -65,7 +65,7 @@ source "$(pew shell_config)"
 # direnv hook
 eval "$(direnv hook bash)"
 
-# --------------------------------------------------------
-# Local script
-# --------------------------------------------------------
+# fzf completion
 test -f ~/.bashrc_local && source ~/.bashrc_local
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
