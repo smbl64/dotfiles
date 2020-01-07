@@ -263,3 +263,8 @@ endfunction
 if has('gui_running')
     nnoremap <F9> :call SwitchColorScheme()<CR>
 endif
+
+augroup CustomFileTypes
+    autocmd!
+    autocmd BufNewFile,BufRead *.xml.j2 set filetype=xml
+augroup END
