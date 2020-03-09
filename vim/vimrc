@@ -173,6 +173,9 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" Ack the current word
+noremap <Leader>a :Ack! <cword><cr>
+
 " clean the search result by hitting space
 nnoremap <silent> <leader><space> :noh<cr>
 
