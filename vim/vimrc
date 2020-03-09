@@ -41,7 +41,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'takac/vim-hardtime'
 Plugin 'kana/vim-textobj-user'
 
 " Python specific
@@ -206,12 +205,6 @@ set belloff=all
 let NERDTreeIgnore = ['__pycache__']
 let NERDTreeRespectWildIgnore=1
 map <f8> :NERDTreeToggle<CR>
-
-
-" HardTime configs
-let g:hardtime_default_on = 0
-let g:hardtime_timeout = 1000
-let g:hardtime_showmsg = 0
 
 if has('gui_running')
     set background=light
