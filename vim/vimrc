@@ -21,8 +21,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'yasukotelin/shirotelin'
 
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -41,7 +39,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'takac/vim-hardtime'
 Plugin 'kana/vim-textobj-user'
 
 " Python specific
@@ -132,12 +129,6 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {'python': ['flake8']}
 
-" Airline configurations
-" let g:airline#extensions#ale#enabled = 1
-" let airline#extensions#ale#error_symbol = 'E:'
-" let airline#extensions#ale#warning_symbol = 'W:'
-let airline_section_b = ""
-
 function! s:RunBlackMacchiato(visual) range
     let cmd = "black-macchiato"
     if !executable(cmd)
@@ -208,24 +199,14 @@ let NERDTreeIgnore = ['__pycache__']
 let NERDTreeRespectWildIgnore=1
 map <f8> :NERDTreeToggle<CR>
 
-
-" HardTime configs
-let g:hardtime_default_on = 0
-let g:hardtime_timeout = 1000
-let g:hardtime_showmsg = 0
-
 if has('gui_running')
     set background=light
     colorscheme base16-one-light
-    let g:airline_theme='base16'
     set guifont=Menlo\ Regular:h12
     set linespace=2
 
     " Remove the scrollbars. Also use console dialogs.
     set guioptions=c
-
-    " Highlight current line
-    set cursorline
 else
   "  colorscheme zenburn
 end
@@ -272,3 +253,33 @@ augroup CustomFileTypes
     autocmd!
     autocmd BufNewFile,BufRead *.xml.j2 set filetype=xml
 augroup END
+
+" Make active window more visible
+if has('gui_running')
+    augroup BgHighlight
+        autocmd!
+        autocmd WinEnter * set cursorline relativenumber
+        autocmd WinLeave * set nocursorline norelativenumber
+    augroup END
+endif
+
+set statusline=
+set statusline+=%#CursorIM#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#Search#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=%#Visual#       " colour
+set statusline+=%{&paste?'\ PASTE\ ':''}
+set statusline+=%{&spell?'\ SPELL\ ':''}
+set statusline+=%#CursorIM#     " colour
+set statusline+=%R                        " readonly flag
+set statusline+=%M                        " modified [+] flag
+set statusline+=%#CursorLine#     " colour
+set statusline+=\ %f\                   " short file name
+set statusline+=%=                          " right align
+set statusline+=%#CursorLine#   " colour
+set statusline+=\ %y\                   " file type
+set statusline+=%#CursorIM#     " colour
+set statusline+=\ %3l:%-2c\         " line + column
+set statusline+=%#CursorIM#       " colour
+set statusline+=\ %3p%%\                " percentage

@@ -31,15 +31,12 @@ export EDITOR="vim"
 alias ls="ls --color=always"
 alias ll="ls -l"
 alias t4="ping 4.2.2.4 -i 0.3"
-alias e="emacs -nw"
 alias bat="bat -p"
-alias nano='vim'
 alias grep='grep --color -i'
 
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
 # --------------------------------------------------------
-# TODO: work laptop is using Bash 3!
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
