@@ -43,7 +43,8 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 # --------------------------------------------------------
 # Other stuff
 # --------------------------------------------------------
-
+# Make sure pyenv creates the dynlib files when installs python
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
 # For pyenv
 eval "$(pyenv init -)"
 
