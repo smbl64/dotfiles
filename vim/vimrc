@@ -4,6 +4,12 @@ if !filereadable($HOME . '/.vim/bundle/Vundle.vim/.git/config') && confirm("Clon
     exec '!git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim/'
 endif
 
+" Python configuration
+set pythonhome=$HOME/.pyenv/versions/2.7.16
+set pythondll=$HOME/.pyenv/versions/2.7.16/lib/libpython2.7.dylib
+set pythonthreehome=$HOME/.pyenv/versions/3.7.3
+set pythonthreedll=$HOME/.pyenv/versions/3.7.3/lib/libpython3.7m.dylib
+
 " ================================================
 " Configs for Vundle
 " ================================================
@@ -41,13 +47,15 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kana/vim-textobj-user'
 
+Plugin 'ycm-core/YouCompleteMe'
+
 " Python specific
 Plugin 'mgedmin/python-imports.vim'
 "Plugin 'jeetsukumaran/vim-pythonsense'
 Plugin 'bps/vim-textobj-python'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'jmcantrell/vim-virtualenv'
 
 Plugin 'rust-lang/rust.vim'
@@ -157,6 +165,7 @@ augroup Python
     autocmd!
     autocmd FileType python xnoremap <Leader>f :call <sid>RunBlackMacchiato(1)<cr>
     autocmd FileType python nnoremap <Leader>f :call <sid>RunBlackMacchiato(0)<cr>
+    autocmd FileType python nnoremap <Leader>d :YcmCompleter GoTo<cr>
 augroup END
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
