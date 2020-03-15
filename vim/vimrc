@@ -59,6 +59,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'jmcantrell/vim-virtualenv'
 
 Plugin 'rust-lang/rust.vim'
+Plugin 'mrk21/yaml-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -261,6 +262,10 @@ endif
 augroup CustomFileTypes
     autocmd!
     autocmd BufNewFile,BufRead *.xml.j2 set filetype=xml
+
+    " add yaml stuffs
+    au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
 " Make active window more visible
