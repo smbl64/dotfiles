@@ -12,7 +12,14 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'altercation/vim-colors-solarized'
 Plug 'yasukotelin/shirotelin'
 
-Plug 'ctrlpvim/ctrlp.vim'
+" GUI enhancements
+Plug 'machakann/vim-highlightedyank'
+
+" Fuzzy finder
+Plug 'airblade/vim-rooter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -181,6 +188,10 @@ set shortmess+=I
 
 " Turn off the annoying bells
 set belloff=all
+
+" Permanent undo
+set undodir=~/.vimdid
+set undofile
 
 " NERDTree configs
 let NERDTreeIgnore = ['__pycache__']
