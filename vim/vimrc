@@ -1,70 +1,48 @@
-" Vundle bootstrap 
-" Download vundle if it's not there
-if !filereadable($HOME . '/.vim/bundle/Vundle.vim/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
-    exec '!git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/Vundle.vim/'
-endif
-
 " Python configuration
 set pythonhome=$HOME/.pyenv/versions/2.7.16
 set pythondll=$HOME/.pyenv/versions/2.7.16/lib/libpython2.7.dylib
 set pythonthreehome=$HOME/.pyenv/versions/3.7.3
 set pythonthreedll=$HOME/.pyenv/versions/3.7.3/lib/libpython3.7m.dylib
 
-" ================================================
-" Configs for Vundle
-" ================================================
-set nocompatible
-filetype off
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Themes
-Plugin 'chriskempson/base16-vim'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'yasukotelin/shirotelin'
+Plug 'chriskempson/base16-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'altercation/vim-colors-solarized'
+Plug 'yasukotelin/shirotelin'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'terryma/vim-expand-region'
-Plugin 'inkarkat/vim-ingo-library'
-Plugin 'inkarkat/vim-mark'
-Plugin 'dense-analysis/ale'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'ludovicchabant/vim-gutentags'
-Plugin 'tpope/vim-surround'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'terryma/vim-expand-region'
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-mark'
+Plug 'dense-analysis/ale'
+Plug 'Chiel92/vim-autoformat'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'tpope/vim-surround'
 
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'kana/vim-textobj-user'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'kana/vim-textobj-user'
 
-Plugin 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 " Python specific
-Plugin 'mgedmin/python-imports.vim'
-"Plugin 'jeetsukumaran/vim-pythonsense'
-Plugin 'bps/vim-textobj-python'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'davidhalter/jedi-vim'
-Plugin 'jmcantrell/vim-virtualenv'
+Plug 'mgedmin/python-imports.vim'
+"Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'bps/vim-textobj-python'
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+" Plug 'davidhalter/jedi-vim'
+Plug 'jmcantrell/vim-virtualenv'
 
-Plugin 'rust-lang/rust.vim'
-Plugin 'mrk21/yaml-vim'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+Plug 'rust-lang/rust.vim'
+Plug 'mrk21/yaml-vim'
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
