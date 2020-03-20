@@ -236,8 +236,9 @@ augroup MyGroup
 
 augroup END
 
-" Do an :ls and go for a buffer switch!
-nnoremap <leader>b :ls<cr>:b
+" Show list of all files or buffers using fzf
+nnoremap <leader>b :Buffers<CR>
+nnoremap <C-p> :Files<CR>
 
 " Expand %% to current directory (in Ex command mode)
 cabbr <expr> %% expand('%:p:h')
