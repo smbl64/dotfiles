@@ -51,6 +51,8 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'rust-lang/rust.vim'
 Plug 'mrk21/yaml-vim'
 
+call plug#end()
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
