@@ -202,7 +202,7 @@ set shortmess+=I
 set belloff=all
 
 " Permanent undo
-set undodir=~/.vimdid
+set undodir=~/.vim/undo-dir
 set undofile
 
 " NERDTree configs
