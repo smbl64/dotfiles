@@ -172,6 +172,9 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
+" Easily quit buffers
+nnoremap <Leader>q :q<cr>
+
 " Ack the current word
 noremap <Leader>a :Ack! <cword><cr>
 
