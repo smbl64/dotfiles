@@ -63,6 +63,10 @@ source "$(pew shell_config)"
 # direnv hook
 eval "$(direnv hook bash)"
 
+# Make fzf use gitignore
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+# alternative: export FZF_DEFAULT_COMMAND='ag -g ""'
+
 # fzf completion
 test -f ~/.bashrc_local && source ~/.bashrc_local
 
