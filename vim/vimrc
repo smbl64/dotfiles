@@ -167,9 +167,13 @@ augroup Python
 augroup END
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
-" Use `ag` for ack plugin
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+"
+" Use 'ripgrep' or 'ag' for ack plugin
+" Both are configured to check for literal strings (so, no regex)
+if executable('rg')
+  let g:ackprg = 'rg --fixed-strings --vimgrep'
+elseif executable('ag')
+  let g:ackprg = 'ag --literal --vimgrep'
 endif
 
 " Easily quit buffers
