@@ -164,6 +164,7 @@ augroup Python
     autocmd FileType python xnoremap <Leader>f :call <sid>RunBlackMacchiato(1)<cr>
     autocmd FileType python nnoremap <Leader>f :call <sid>RunBlackMacchiato(0)<cr>
     autocmd FileType python nnoremap <Leader>d :YcmCompleter GoTo<cr>
+    autocmd FileType python nnoremap <Leader>n :YcmCompleter GoToReferences<cr>
 augroup END
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
