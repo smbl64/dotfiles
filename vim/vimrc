@@ -41,7 +41,7 @@ Plug 'ycm-core/YouCompleteMe'
 
 " Python specific
 Plug 'mgedmin/python-imports.vim'
-"Plug 'jeetsukumaran/vim-pythonsense'
+" Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'bps/vim-textobj-python'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
@@ -158,13 +158,15 @@ function! s:RunBlackMacchiato(visual) range
 
 endfunction
 
-" Call black-macchiato
-augroup Python
+augroup CustomKeyboardShortcuts
     autocmd!
     autocmd FileType python xnoremap <Leader>f :call <sid>RunBlackMacchiato(1)<cr>
     autocmd FileType python nnoremap <Leader>f :call <sid>RunBlackMacchiato(0)<cr>
     autocmd FileType python nnoremap <Leader>d :YcmCompleter GoTo<cr>
     autocmd FileType python nnoremap <Leader>n :YcmCompleter GoToReferences<cr>
+
+    autocmd FileType xml nnoremap <Leader>f :%!xmllint --format %<cr>
+    autocmd FileType sql nnoremap <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
 augroup END
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
