@@ -16,7 +16,7 @@ Plug 'yasukotelin/shirotelin'
 Plug 'machakann/vim-highlightedyank'
 
 " Fuzzy finder
-Plug 'airblade/vim-rooter'
+"Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
