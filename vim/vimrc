@@ -135,35 +135,29 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {'python': ['flake8']}
 
-function! s:RunBlackMacchiato(visual) range
+function! s:RunBlackMacchiato() range
     let cmd = "black-macchiato"
     if !executable(cmd)
-        echo "black-macchiato not found!"
+        echohl ErrorMsg
+        echom "black-macchiato not found!"
+        echohl None
         return
     endif
 
-    if a:visual
-        normal! gv
-    endif
-
-    let currentMode = mode()
-
-    if currentMode ==# "n"
-        silent execute ".!" . cmd
-    elseif currentMode ==# "v" || currentMode ==# "V"
-        silent execute "'<,'>!" . cmd
-    endif
+    silent execute a:firstline . "," . a:lastline . "!" . cmd
 
     echo "Done formatting."
 
 endfunction
 
+" Create a command to call the black-macchiato function
+command -range BlackMacchiato <line1>,<line2>call <sid>RunBlackMacchiato()
 augroup CustomKeyboardShortcuts
     autocmd!
-    autocmd FileType python xnoremap <Leader>f :call <sid>RunBlackMacchiato(1)<cr>
-    autocmd FileType python nnoremap <Leader>f :call <sid>RunBlackMacchiato(0)<cr>
-    autocmd FileType python nnoremap <Leader>d :YcmCompleter GoTo<cr>
-    autocmd FileType python nnoremap <Leader>n :YcmCompleter GoToReferences<cr>
+    autocmd FileType python xnoremap <buffer> <Leader>f :'<,'>BlackMacchiato<cr>
+    autocmd FileType python nnoremap <buffer> <Leader>f :BlackMacchiato<cr>
+    autocmd FileType python,rust nnoremap <Leader>d :YcmCompleter GoTo<cr>
+    autocmd FileType python,rust nnoremap <Leader>n :YcmCompleter GoToReferences<cr>
 
     autocmd FileType xml nnoremap <Leader>f :%!xmllint --format %<cr>
     autocmd FileType sql nnoremap <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
