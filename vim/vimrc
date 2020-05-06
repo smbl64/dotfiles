@@ -179,6 +179,12 @@ nnoremap <Leader>q :q<cr>
 " Ack the current word
 noremap <Leader>a :Ack! <cword><cr>
 
+" Read help for the word under the cursor (vim files)
+augroup VimFiles
+    autocmd!
+    autocmd FileType vim nnoremap <buffer> <Leader>h :execute "help " . expand("<cword>")<cr>
+augroup END
+
 " clean the search result by hitting space
 nnoremap <silent> <leader><space> :noh<cr>
 
