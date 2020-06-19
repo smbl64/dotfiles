@@ -1,2 +1,2 @@
-# scripts
-My init scripts for different apps
+# dotfiles
+My dotfiles for different apps
