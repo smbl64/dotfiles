@@ -51,7 +51,16 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'rust-lang/rust.vim'
 Plug 'mrk21/yaml-vim'
 
+" Snippet engine
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'hail2u/vim-css3-syntax'
+
 call plug#end()
+
+" More matching with %
+runtime macros/matchit.vim
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -128,6 +137,11 @@ set splitright
 " netrw configs
 let g:netrw_banner=0  " No help banner
 let g:netrw_liststyle=3  " tree
+
+" UltiSnip configs
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Ale configs
 let g:ale_echo_msg_error_str = 'E'
