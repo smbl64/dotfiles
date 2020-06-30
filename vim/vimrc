@@ -70,7 +70,7 @@ autocmd! bufwritepost vimrc source %
 set noswapfile
 
 " make backspace behave like normal again
-set bs=2     
+set bs=2
 
 let mapleader = " "
 
@@ -93,7 +93,7 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-            
+
 " Tab configs
 set tabstop=4
 set softtabstop=4
@@ -187,6 +187,16 @@ elseif executable('ag')
   let g:ackprg = 'ag --literal --vimgrep'
 endif
 
+" Trim the whitespace
+" https://vi.stackexchange.com/a/456/25216
+fun! TrimTrailingSpaces()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+command! TrimTrailingSpaces call TrimTrailingSpaces()
+
 " Easily quit buffers
 nnoremap <Leader>q :q<cr>
 
@@ -220,7 +230,7 @@ autocmd FileType python setlocal completeopt-=preview
 set clipboard=unnamed
 
 " Disable the welcome message
-set shortmess+=I 
+set shortmess+=I
 
 " Turn off the annoying bells
 set belloff=all
