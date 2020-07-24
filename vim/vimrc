@@ -52,9 +52,12 @@ Plug 'rust-lang/rust.vim'
 Plug 'mrk21/yaml-vim'
 
 " Snippet engine
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 
+" Web development
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'hail2u/vim-css3-syntax'
 
 call plug#end()
