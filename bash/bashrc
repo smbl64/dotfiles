@@ -64,9 +64,11 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden'
 # alternative: export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # fzf completion
-test -f ~/.bashrc_local && source ~/.bashrc_local
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Disable Homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+# Load the local bashrc. 
+# NOTE: keep line at the end of this file!
+test -f ~/.bashrc_local && source ~/.bashrc_local
