@@ -231,8 +231,8 @@ set foldlevel=99
 " Shorter update time (for git gutter)
 set updatetime=800
 
-" No docstring window for Jedi
-autocmd FileType python setlocal completeopt-=preview
+" No docstring window for python and go
+autocmd FileType python,go setlocal completeopt-=preview
 
 " Use macos clipboard
 set clipboard=unnamed
