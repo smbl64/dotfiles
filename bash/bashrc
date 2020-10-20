@@ -37,6 +37,7 @@ alias ll="ls -l"
 alias t4="ping 4.2.2.4 -i 0.3"
 alias bat="bat -p"
 alias grep='grep --color -i'
+alias k=kubectl
 
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
@@ -70,6 +71,13 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
 # fzf completion
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# kubectl completion
+if [ -x $(command -v kubectl) ]; then
+    source <(kubectl completion bash)
+    # Assuming 'k' is aliased to kubectl as well
+    source <(kubectl completion bash | sed s/kubectl/k/g)
+fi
 
 # Disable Homebrew auto update
 export HOMEBREW_NO_AUTO_UPDATE=1
