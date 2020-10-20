@@ -178,8 +178,8 @@ augroup CustomKeyboardShortcuts
     autocmd!
     autocmd FileType python xnoremap <buffer> <Leader>f :'<,'>BlackMacchiato<cr>
     autocmd FileType python nnoremap <buffer> <Leader>f :BlackMacchiato<cr>
-    autocmd FileType python,rust nnoremap <Leader>d :YcmCompleter GoTo<cr>
-    autocmd FileType python,rust nnoremap <Leader>n :YcmCompleter GoToReferences<cr>
+    autocmd FileType python,go,rust nnoremap <Leader>d :YcmCompleter GoTo<cr>
+    autocmd FileType python,go,rust nnoremap <Leader>n :YcmCompleter GoToReferences<cr>
 
     autocmd FileType xml nnoremap <Leader>f :%!xmllint --format %<cr>
     autocmd FileType sql nnoremap <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
