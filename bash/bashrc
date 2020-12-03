@@ -34,6 +34,7 @@ export EDITOR="vim"
 # --------------------------------------------------------
 alias ls="ls --color=always"
 alias ll="ls -l"
+alias llh="ls -lh"
 alias t4="ping 4.2.2.4 -i 0.3"
 alias bat="bat -p"
 alias grep='grep --color -i'
