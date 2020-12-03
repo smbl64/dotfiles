@@ -151,6 +151,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " vim-go configs
 let g:go_template_autocreate = 0
+let g:go_fmt_command = "goimports"
 
 " Ale configs
 let g:ale_echo_msg_error_str = 'E'
