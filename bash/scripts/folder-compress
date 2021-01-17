@@ -1,0 +1,32 @@
+function print_usage() {
+    echo ""
+    echo "Usage:"
+    echo "   `basename $0` <folder-to-compress>"
+}
+
+if [ "$#" -lt 1 ]
+then
+    echo "No folder is specified for compression."
+    print_usage
+    exit 1
+elif [ "$#" -ge 2 ]
+then
+    echo "You can specify one folder only."
+    print_usage
+    exit 1
+elif [ "$1" = "-h" ] || [ "$1" = "--help" ]
+then
+    echo "Compress the specified folder using a password specified in 'COMPRESSION_PASSWORD' environment variable."
+    echo "It will store all files in a 7z file without any compression. (compression level = 0)"
+    print_usage
+    exit 0
+fi
+
+archive_filename=`basename "$1" | tr ' ' _`.7z
+
+echo "Going to compress '$1' to '$archive_filename'"
+
+# mx0 means: no compression
+# mhe means: encrypt the header, so filenames cannot be seen without entering the password
+7z a -mx0 -mhe -p${COMPRESSION_PASSWORD} $archive_filename "$1"
+#7z a  $archive_filename "$1"

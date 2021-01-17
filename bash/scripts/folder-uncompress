@@ -1,0 +1,24 @@
+function print_usage() {
+    echo ""
+    echo "Usage:"
+    echo "   `basename $0` <archive-file>"
+}
+
+if [ "$#" -lt 1 ]
+then
+    echo "No archive file is specified"
+    print_usage
+    exit 1
+elif [ "$#" -ge 2 ]
+then
+    echo "You can specify one archive file only"
+    print_usage
+    exit 1
+elif [ "$1" = "-h" ] || [ "$1" = "--help" ]
+then
+    echo "Uncompress the specified archive using a password specified in 'COMPRESSION_PASSWORD' environment variable."
+    print_usage
+    exit 0
+fi
+
+7z x -p${COMPRESSION_PASSWORD} "$1"
