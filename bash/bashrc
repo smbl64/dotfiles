@@ -7,7 +7,12 @@ source ~/.bash_prompt
 export GOPATH=$HOME/go
 
 export PATH="$HOME/.local/bin:$PATH"
+
+# source controlled scripts
+export PATH="$HOME/scripts/bash/scripts:$PATH"
+
 export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+
 if which java > /dev/null; then export JAVA_HOME=$(/usr/libexec/java_home); fi
 
 # GNU core utils

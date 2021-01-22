@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo $PATH | python -c 'import sys; p = sys.stdin.read().split(":"); print("\n".join(p))'
