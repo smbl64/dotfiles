@@ -47,6 +47,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 " Plug 'davidhalter/jedi-vim'
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'smbl64/vim-black-macchiato'
 
 Plug 'rust-lang/rust.vim'
 Plug 'mrk21/yaml-vim'
@@ -161,27 +162,11 @@ let g:ale_linters = {'python': ['flake8']}
 
 let g:ycm_auto_hover=''
 
-function! s:RunBlackMacchiato() range
-    let cmd = "black-macchiato"
-    if !executable(cmd)
-        echohl ErrorMsg
-        echom "black-macchiato not found!"
-        echohl None
-        return
-    endif
 
-    silent execute a:firstline . "," . a:lastline . "!" . cmd
-
-    echo "Done formatting."
-
-endfunction
-
-" Create a command to call the black-macchiato function
-command -range BlackMacchiato <line1>,<line2>call <sid>RunBlackMacchiato()
 augroup CustomKeyboardShortcuts
     autocmd!
-    autocmd FileType python xnoremap <buffer> <Leader>f :'<,'>BlackMacchiato<cr>
-    autocmd FileType python nnoremap <buffer> <Leader>f :BlackMacchiato<cr>
+    autocmd FileType python xmap <buffer> <Leader>f <plug>(BlackMacchiatoSelection)
+    autocmd FileType python nmap <buffer> <Leader>f <plug>(BlackMacchiatoCurrentLine)
     autocmd FileType python,go,rust nnoremap <Leader>d :YcmCompleter GoTo<cr>
     autocmd FileType python,go,rust nnoremap <Leader>n :YcmCompleter GoToReferences<cr>
 
