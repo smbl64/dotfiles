@@ -302,6 +302,10 @@ augroup CustomFileTypes
     " add yaml stuffs
     au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+    " A hack to navigate yaml files with [[ and ]]
+    autocmd FileType yaml nnoremap <buffer> ]] /^\S<cr>:nohl<cr>
+    autocmd FileType yaml nnoremap <buffer> [[ ?^\S<cr>:nohl<cr>
 augroup END
 
 " Make active window more visible
