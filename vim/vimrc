@@ -274,6 +274,9 @@ nnoremap <C-p> :Files<CR>
 " Disable the preview window in Files command
 let g:fzf_preview_window = ''
 
+" Show hidden files, but ignore .git files
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git/"'
+
 " Expand %% to current directory (in Ex command mode)
 cabbr <expr> %% expand('%:p:h')
 
