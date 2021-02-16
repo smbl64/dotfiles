@@ -179,7 +179,7 @@ let g:formatters_python = ['black', 'yapf', 'autopep8']
 " Use 'ripgrep' or 'ag' for ack plugin
 " Both are configured to check for literal strings (so, no regex)
 if executable('rg')
-  let g:ackprg = 'rg --fixed-strings --vimgrep'
+  let g:ackprg = 'rg --fixed-strings --vimgrep --hidden --glob "!.git/"'
 elseif executable('ag')
   let g:ackprg = 'ag --literal --vimgrep'
 endif
