@@ -1,3 +1,5 @@
 --exclude=node_modules
 --exclude=.mypy_cache
 --exclude=.direnv
+--exclude=elpa
+--exclude='vim/plugged'
