@@ -101,6 +101,10 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
+" Disable Ctrl-P in Insert mode, because I often hit it
+" while I wanna reach for Ctrl-[
+imap <c-p> <Nop>
+
 " Tab configs
 set tabstop=4
 set softtabstop=4
