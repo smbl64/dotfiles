@@ -259,7 +259,7 @@ end
 
 " Configs for showing invisible chars (tab etc)
 nmap <leader>l :set list!<CR>
-set listchars=tab:▸\ ,eol:¬  " Same as TextMate
+set listchars=tab:▸\ ,eol:¬,space:␣
 
 augroup MyGroup
     autocmd!
@@ -291,7 +291,7 @@ cabbrev vsf vert sfind
 " Color scheme switching
 function! SwitchColorScheme()
     if (g:colors_name ==# "base16-one-light")
-        colorscheme base16-onedark
+        colorscheme base16-gruvbox-dark-hard
     else
         colorscheme base16-one-light
     endif
