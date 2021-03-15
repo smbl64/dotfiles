@@ -45,6 +45,11 @@ alias bat="bat -p"
 alias grep='grep --color -i'
 alias k=kubectl
 
+mkcd ()
+{
+    mkdir -p -- "$1" && cd -P -- "$1"
+}
+
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
 # --------------------------------------------------------
