@@ -247,7 +247,7 @@ set undofile
 
 if has('gui_running')
     set background=light
-    colorscheme base16-one-light
+    colorscheme base16-gruvbox-light-hard
     set guifont=Menlo\ Regular:h12
     set linespace=2
 
@@ -290,10 +290,10 @@ cabbrev vsf vert sfind
 
 " Color scheme switching
 function! SwitchColorScheme()
-    if (g:colors_name ==# "base16-one-light")
+    if (g:colors_name ==# "base16-gruvbox-light-hard")
         colorscheme base16-gruvbox-dark-hard
     else
-        colorscheme base16-one-light
+        colorscheme base16-gruvbox-light-hard
     endif
 endfunction
 
