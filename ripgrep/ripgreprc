@@ -1,3 +1,4 @@
 --hidden
---glob=!.git/
---glob=!.direnv/
+--glob=!.git/*
+--glob=!.direnv/*
+--glob=!**/__pycache__/*
