@@ -202,7 +202,7 @@ command! TrimTrailingSpaces call TrimTrailingSpaces()
 nnoremap <Leader>q :q<cr>
 
 " Ack the current word
-noremap <Leader>a :Ack! <cword><cr>
+noremap <Leader>a :execute('Ack! ' . expand('<cword>'))<cr>
 
 " Read help for the word under the cursor (vim files)
 augroup VimFiles
