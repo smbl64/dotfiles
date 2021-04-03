@@ -145,6 +145,9 @@ set wildignore+=*.pyc,*/__pycache__/*
 set splitbelow
 set splitright
 
+" Automatically re-read the file if it's changed
+set autoread
+
 " netrw configs
 let g:netrw_banner=0  " No help banner
 let g:netrw_liststyle=3  " tree
