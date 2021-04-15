@@ -1,0 +1,14 @@
+set -eu
+
+if [ -z ${1-} ]; then
+    echo "Usage: $0 <Python version>"
+    exit 1
+fi
+
+if [ -e .envrc ]; then
+    echo ".envrc file already exists"
+    exit 1
+fi
+
+echo "layout pyenv $1" > .envrc
+direnv allow
