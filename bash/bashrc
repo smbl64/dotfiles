@@ -23,6 +23,9 @@ export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 # psql etc.
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 
+# mysql etc.
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
 # Rust cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
