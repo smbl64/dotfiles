@@ -1,6 +1,8 @@
 # Load the bash prompt
 source ~/.bash_prompt
 
+is_mac=0; [ "$(uname -s)" = "Darwin" ] && is_mac=1
+
 # --------------------------------------------------------
 # Path and other exports
 # --------------------------------------------------------
@@ -11,14 +13,17 @@ export PATH="$HOME/.local/bin:$PATH"
 # source controlled scripts
 export PATH="$HOME/scripts/bash/scripts:$PATH"
 
-export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+if [ $is_mac ]; then
+    # Homebrew
+    export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
+
+    # GNU core utils
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+fi
 
 if which java > /dev/null; then export JAVA_HOME=$(/usr/libexec/java_home); fi
-
-# GNU core utils
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # psql etc.
 export PATH="/usr/local/opt/libpq/bin:$PATH"
@@ -64,8 +69,11 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 # --------------------------------------------------------
 # Other stuff
 # --------------------------------------------------------
-# Make sure pyenv creates the dynlib files when installs python
-export PYTHON_CONFIGURE_OPTS="--enable-framework"
+if [ $is_mac ]; then
+    # Make sure pyenv creates the dynlib files when installs python
+    export PYTHON_CONFIGURE_OPTS="--enable-framework"
+fi
+
 # For pyenv
 eval "$(pyenv init --path)"
 
@@ -73,9 +81,14 @@ eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 
-# Fix pyenv macOS bug
-# https://github.com/pyenv/pyenv/issues/1219#issuecomment-482821959
-export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+if [ $is_mac ]; then
+    # Fix pyenv macOS bug
+    # https://github.com/pyenv/pyenv/issues/1219#issuecomment-482821959
+    export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+
+    # Disable Homebrew auto update
+    export HOMEBREW_NO_AUTO_UPDATE=1
+fi
 
 
 # direnv hook
@@ -94,9 +107,6 @@ if [ -x $(command -v kubectl) ]; then
     # Assuming 'k' is aliased to kubectl as well
     source <(kubectl completion bash | sed s/kubectl/k/g)
 fi
-
-# Disable Homebrew auto update
-export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
