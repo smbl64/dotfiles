@@ -25,11 +25,13 @@ fi
 
 if which java > /dev/null; then export JAVA_HOME=$(/usr/libexec/java_home); fi
 
-# psql etc.
-export PATH="/usr/local/opt/libpq/bin:$PATH"
+if [ $is_mac ]; then
+    # psql
+    export PATH="/usr/local/opt/libpq/bin:$PATH"
 
-# mysql etc.
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+    # mysql client
+    export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+fi
 
 # Rust cargo
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -63,8 +65,10 @@ mkcd ()
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
 # --------------------------------------------------------
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+if [ $is_mac ]; then
+    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+fi
 
 # --------------------------------------------------------
 # Other stuff
