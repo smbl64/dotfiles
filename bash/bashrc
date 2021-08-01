@@ -23,7 +23,12 @@ if [ $is_mac = 1 ]; then
     export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 fi
 
-if which java > /dev/null; then export JAVA_HOME=$(/usr/libexec/java_home); fi
+if [ $is_mac = 1 ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+else
+    # Using sed, replace 'bin/java' with an empty string
+    export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+fi
 
 if [ $is_mac = 1 ]; then
     # psql
