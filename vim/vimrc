@@ -1,9 +1,3 @@
-" Python configuration
-set pythonhome=$HOME/.pyenv/versions/2.7.16
-set pythondll=$HOME/.pyenv/versions/2.7.16/lib/libpython2.7.dylib
-set pythonthreehome=$HOME/.pyenv/versions/3.7.3
-set pythonthreedll=$HOME/.pyenv/versions/3.7.3/lib/libpython3.7m.dylib
-
 call plug#begin('~/.vim/plugged')
 
 " Themes
