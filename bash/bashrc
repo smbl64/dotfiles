@@ -13,7 +13,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # source controlled scripts
 export PATH="$HOME/scripts/bash/scripts:$PATH"
 
-if [ $is_mac ]; then
+if [ $is_mac = 1 ]; then
     # Homebrew
     export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
 
@@ -25,7 +25,7 @@ fi
 
 if which java > /dev/null; then export JAVA_HOME=$(/usr/libexec/java_home); fi
 
-if [ $is_mac ]; then
+if [ $is_mac = 1 ]; then
     # psql
     export PATH="/usr/local/opt/libpq/bin:$PATH"
 
@@ -65,7 +65,7 @@ mkcd ()
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
 # --------------------------------------------------------
-if [ $is_mac ]; then
+if [ $is_mac = 1 ]; then
     export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
     [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
@@ -73,7 +73,7 @@ fi
 # --------------------------------------------------------
 # Other stuff
 # --------------------------------------------------------
-if [ $is_mac ]; then
+if [ $is_mac = 1 ]; then
     # Make sure pyenv creates the dynlib files when installs python
     export PYTHON_CONFIGURE_OPTS="--enable-framework"
 fi
@@ -85,7 +85,7 @@ eval "$(pyenv init --path)"
 eval "$(pyenv virtualenv-init -)"
 
 
-if [ $is_mac ]; then
+if [ $is_mac = 1 ]; then
     # Fix pyenv macOS bug
     # https://github.com/pyenv/pyenv/issues/1219#issuecomment-482821959
     export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
