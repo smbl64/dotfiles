@@ -36,6 +36,9 @@ if [ $is_mac = 1 ]; then
 
     # mysql client
     export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+    # poetry
+    export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
 # Rust cargo
@@ -120,6 +123,10 @@ if [ -x $(command -v kubectl) ]; then
     # Assuming 'k' is aliased to kubectl as well
     source <(kubectl completion bash | sed s/kubectl/k/g)
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
