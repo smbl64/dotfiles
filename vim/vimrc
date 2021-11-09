@@ -31,15 +31,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'kana/vim-textobj-user'
 
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'easymotion/vim-easymotion'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Python specific
 Plug 'mgedmin/python-imports.vim'
-" Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'bps/vim-textobj-python'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
-" Plug 'davidhalter/jedi-vim'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'smbl64/vim-black-macchiato'
 
@@ -161,15 +161,46 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {'python': ['flake8']}
 
-let g:ycm_auto_hover=''
 
+" COC extensions
+let g:coc_global_extensions = [
+    \ 'coc-pyright',
+    \ 'coc-go',
+    \ 'coc-rust-analyzer',
+    \ 'coc-tsserver',
+    \ ]
+
+" COC keybindings for completion (copied from the README)
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" End of COC configs -----
 
 augroup CustomKeyboardShortcuts
     autocmd!
     autocmd FileType python xmap <buffer> <Leader>f <plug>(BlackMacchiatoSelection)
     autocmd FileType python nmap <buffer> <Leader>f <plug>(BlackMacchiatoCurrentLine)
-    autocmd FileType python,go,rust nnoremap <Leader>d :YcmCompleter GoTo<cr>
-    autocmd FileType python,go,rust nnoremap <Leader>n :YcmCompleter GoToReferences<cr>
+    autocmd FileType python,go,rust nmap <Leader>d <Plug>(coc-definition)
 
     autocmd FileType xml nnoremap <Leader>f :%!xmllint --format %<cr>
     autocmd FileType sql nnoremap <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
