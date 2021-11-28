@@ -25,6 +25,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
+Plug 'hashivim/vim-terraform'
 
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
