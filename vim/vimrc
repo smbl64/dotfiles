@@ -98,7 +98,7 @@ map <c-h> <c-w>h
 
 " Disable Ctrl-P in Insert mode, because I often hit it
 " while I wanna reach for Ctrl-[
-imap <c-p> <Nop>
+"imap <c-p> <Nop>
 
 " Tab configs
 set tabstop=4
@@ -256,8 +256,12 @@ set updatetime=800
 " No docstring window for python and go
 autocmd FileType python,go setlocal completeopt-=preview
 
-" Use macos clipboard
-set clipboard=unnamed
+" Use OS clipboard
+if has('macunix')
+    set clipboard=unnamed
+else
+    set clipboard=unnamedplus
+endif
 
 " Disable the welcome message
 set shortmess+=I
