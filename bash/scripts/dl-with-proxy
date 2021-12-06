@@ -1,1 +1,1 @@
-proxychains4 aria2c -j 1 -x 10 --file-allocation=none "$@"
+proxychains4 aria2c -j 1 -x 10 --split 10 --file-allocation=none "$@"

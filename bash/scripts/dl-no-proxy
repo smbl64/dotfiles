@@ -1,1 +1,1 @@
-aria2c -j 1 -x 10 --file-allocation=none "$@"
+aria2c -j 1 -x 10 --split 10 --file-allocation=none "$@"
