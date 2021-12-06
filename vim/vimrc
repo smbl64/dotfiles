@@ -276,14 +276,16 @@ set undofile
 
 if has('gui_running')
     set background=light
-    colorscheme base16-gruvbox-light-hard
+    colorscheme PaperColor
     set guifont=Menlo\ Regular:h12
     set linespace=2
 
     " Remove the scrollbars. Also use console dialogs.
     set guioptions=c
 else
-  "  colorscheme zenburn
+    set termguicolors
+    set background=dark
+    colorscheme PaperColor
 end
 
 " Configs for showing invisible chars (tab etc)
@@ -323,9 +325,16 @@ function! SwitchColorScheme()
     endif
 endfunction
 
+function! SwitchBackground()
+    if (&background ==# "light")
+        set background=dark
+    else
+        set background=light
+    endif
+endfunction
 
 if has('gui_running')
-    nnoremap <F9> :call SwitchColorScheme()<CR>
+    nnoremap <F9> :call SwitchBackground()<CR>
 endif
 
 augroup CustomFileTypes
