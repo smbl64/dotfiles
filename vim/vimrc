@@ -154,7 +154,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " vim-go configs
 let g:go_template_autocreate = 0
-let g:go_fmt_command = "goimports"
+let g:go_def_mapping_enabled = 0
+let g:go_fmt_command = "gopls"
+let g:go_imports_mode = 'gopls'
+let g:go_gopls_gofumpt = 1
 
 " Ale configs
 let g:ale_echo_msg_error_str = 'E'
@@ -169,6 +172,7 @@ let g:coc_global_extensions = [
     \ 'coc-go',
     \ 'coc-rust-analyzer',
     \ 'coc-tsserver',
+    \ 'coc-json',
     \ ]
 
 " COC keybindings for completion (copied from the README)
