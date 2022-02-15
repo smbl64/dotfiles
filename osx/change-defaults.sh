@@ -22,3 +22,6 @@ chflags nohidden ~/Library
 
 # Show attachments as icons in Mail.app
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool yes
+
+# Disable press and hold feature
+defaults write -g ApplePressAndHoldEnabled -bool false
