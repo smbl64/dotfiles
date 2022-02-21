@@ -3,3 +3,5 @@
 --exclude=.direnv
 --exclude=elpa
 --exclude='vim/plugged'
+--exclude=*.json
+--exclude=*.css
