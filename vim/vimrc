@@ -230,7 +230,7 @@ augroup CustomKeyboardShortcuts
     autocmd!
     autocmd FileType python xmap <buffer> <Leader>f <plug>(BlackMacchiatoSelection)
     autocmd FileType python nmap <buffer> <Leader>f <plug>(BlackMacchiatoCurrentLine)
-    autocmd FileType python,go,rust,c nmap <Leader>d <Plug>(coc-definition)
+    autocmd FileType python,go,rust,c,perl,java nmap <Leader>d <Plug>(coc-definition)
 
     autocmd FileType xml nnoremap <Leader>f :%!xmllint --format %<cr>
     autocmd FileType sql nnoremap <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
