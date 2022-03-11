@@ -1,17 +1,32 @@
 {
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": true,
-  "python.linting.enabled": true,
-  "languageserver": {
-      "golang": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        "trace.server": "verbose",
-        "filetypes": ["go"],
-        "initializationOptions": {
-            "usePlaceholders": true,
-            "gofumpt": true
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "trace.server": "verbose",
+            "filetypes": ["go"],
+            "initializationOptions": {
+                "usePlaceholders": true,
+                "gofumpt": true
+            }
+        },
+        "perl": {
+            "enable": true,
+            "command": "pls",
+            "filetypes": ["perl"],
+            "settings": {
+                "perl": {
+                    "perlcritic": {
+                        "enabled" : true 
+                    },
+                    "syntax": { 
+                        "enabled" : true 
+                    }
+                }
+            }
         }
-      }
-  }
+    }
 }
