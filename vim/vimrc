@@ -237,8 +237,8 @@ augroup CustomKeyboardShortcuts
     autocmd FileType python nmap <buffer> <Leader>f <plug>(BlackMacchiatoCurrentLine)
     autocmd FileType python,go,rust,c,perl,java nmap <Leader>d <Plug>(coc-definition)
 
-    autocmd FileType xml nnoremap <Leader>f :%!xmllint --format %<cr>
-    autocmd FileType sql nnoremap <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
+    autocmd FileType xml nnoremap <buffer> <Leader>f :%!xmllint --format %<cr>
+    autocmd FileType sql nnoremap <buffer> <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
 augroup END
 
 let g:formatters_python = ['black', 'yapf', 'autopep8']
@@ -389,13 +389,11 @@ augroup CustomFileTypes
 augroup END
 
 " Make active window more visible
-if has('gui_running')
-    augroup BgHighlight
-        autocmd!
-        autocmd WinEnter * set cursorline relativenumber
-        autocmd WinLeave * set nocursorline norelativenumber
-    augroup END
-endif
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cursorline relativenumber
+    autocmd WinLeave * set nocursorline norelativenumber
+augroup END
 
 " Automatically create folders on write if needed
 augroup Mkdir
