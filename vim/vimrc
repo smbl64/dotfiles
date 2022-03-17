@@ -385,13 +385,11 @@ augroup CustomFileTypes
 augroup END
 
 " Make active window more visible
-if has('gui_running')
-    augroup BgHighlight
-        autocmd!
-        autocmd WinEnter * set cursorline relativenumber
-        autocmd WinLeave * set nocursorline norelativenumber
-    augroup END
-endif
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cursorline relativenumber
+    autocmd WinLeave * set nocursorline norelativenumber
+augroup END
 
 " Automatically create folders on write if needed
 augroup Mkdir
