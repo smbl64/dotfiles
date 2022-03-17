@@ -2,6 +2,7 @@
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
+    "rust-analyzer.updates.checkOnStartup": false,
     "languageserver": {
         "golang": {
             "command": "gopls",
