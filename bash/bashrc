@@ -6,6 +6,17 @@ is_mac=0; [ "$(uname -s)" = "Darwin" ] && is_mac=1
 # --------------------------------------------------------
 # Path and other exports
 # --------------------------------------------------------
+
+# Homebrew (Intel and M1)
+# This will also add Homebrew's bin and sbin directories to the PATH
+if [ -x "$(command -v /opt/homebrew/bin/brew)" ]
+then
+    eval $(/opt/homebrew/bin/brew shellenv)
+elif [ -x "$(command -v /usr/local/bin/brew)" ]
+then
+    eval $(/usr/local/bin/brew shellenv)
+fi
+
 export GOPATH=$HOME/go
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -14,17 +25,14 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/scripts/bash/scripts:$PATH"
 
 if [ $is_mac = 1 ]; then
-    # Homebrew
-    export PATH=$(brew --prefix)/bin:$(brew --prefix)/sbin:$PATH
-
     # GNU core utils
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-    export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+    export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+    export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
+    export PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
 fi
 
 if [ $is_mac = 1 ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
 else
     # Using sed, replace 'bin/java' with an empty string
     export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
@@ -32,10 +40,10 @@ fi
 
 if [ $is_mac = 1 ]; then
     # psql
-    export PATH="/usr/local/opt/libpq/bin:$PATH"
+    export PATH="$(brew --prefix)/opt/libpq/bin:$PATH"
 
     # mysql client
-    export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+    export PATH="$(brew --prefix)/opt/mysql-client/bin:$PATH"
 
     # poetry
     export PATH="$HOME/.poetry/bin:$PATH"
@@ -78,8 +86,8 @@ mkcd ()
 # Bash completion (for Bash 4+ and bash-completion@2
 # --------------------------------------------------------
 if [ $is_mac = 1 ]; then
-    export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+    export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
+    [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 fi
 
 # --------------------------------------------------------
