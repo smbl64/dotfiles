@@ -37,11 +37,9 @@ Plug 'kana/vim-textobj-user'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Python specific
-Plug 'mgedmin/python-imports.vim'
 Plug 'bps/vim-textobj-python'
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
-Plug 'jmcantrell/vim-virtualenv'
 Plug 'smbl64/vim-black-macchiato'
 
 Plug 'rust-lang/rust.vim'
