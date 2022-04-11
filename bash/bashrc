@@ -119,7 +119,7 @@ fi
 eval "$(direnv hook bash)"
 
 # Make fzf use gitignore
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 # alternative: export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # fzf completion
