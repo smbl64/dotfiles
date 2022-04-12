@@ -124,6 +124,7 @@ set smartcase
 set autoindent
 set number
 set relativenumber
+set cursorline
 
 set nobackup
 set laststatus=2
@@ -156,6 +157,8 @@ let g:go_def_mapping_enabled = 0
 let g:go_fmt_command = "gopls"
 let g:go_imports_mode = 'gopls'
 let g:go_gopls_gofumpt = 1
+let g:go_doc_keywordprg_enabled = 0  " Disable K keybinding (GoDoc)
+
 
 " Rust configs
 let g:rustfmt_autosave = 1
