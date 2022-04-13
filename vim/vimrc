@@ -412,6 +412,9 @@ augroup Mkdir
   autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
 
+" Open a scratch new tab
+command! Scratch tabnew | setlocal buftype=nofile | file Scratch
+
 set statusline=
 set statusline+=%#CursorIM#%{(mode()=='n')?'\ \ NORMAL\ ':''}
 set statusline+=%#Search#%{(mode()=='i')?'\ \ INSERT\ ':''}
