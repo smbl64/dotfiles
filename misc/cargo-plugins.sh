@@ -1,13 +1,14 @@
 #!/bin/sh
 
 cargo install \
-    cargo-tarpaulin \
+    cargo-audit \
+    cargo-cache \
     cargo-edit \
     cargo-expand \
-    cargo-watch \
-    cargo-audit \
+    cargo-script \
+    cargo-tarpaulin \
     cargo-udeps \
-    cargo-cache
+    cargo-watch
 
 rustup component add \
     rustfmt \
