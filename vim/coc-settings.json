@@ -6,7 +6,7 @@
     "diagnostic.checkCurrentLine": true,
     "diagnostic.enable": true,
     "diagnostic.level": "hint",
-    "diagnostic.messageTarget": "echo",
+    "diagnostic.messageTarget": "float",
     "diagnostic.virtualText": false,
     "rust-analyzer.cargo.allFeatures": true,
     "rust-analyzer.checkOnSave.enable": true,
