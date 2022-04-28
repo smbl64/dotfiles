@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cargo install \
+    bunyan \        # log formatter
     cargo-audit \
     cargo-cache \
     cargo-edit \
