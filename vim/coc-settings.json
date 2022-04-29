@@ -1,17 +1,17 @@
 {
-    "python.linting.pylintEnabled": false,
-    "python.linting.flake8Enabled": true,
-    "python.linting.enabled": true,
-    "rust-analyzer.updates.checkOnStartup": false,
     "diagnostic.checkCurrentLine": true,
     "diagnostic.enable": true,
     "diagnostic.level": "hint",
     "diagnostic.messageTarget": "float",
     "diagnostic.virtualText": false,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
     "rust-analyzer.cargo.allFeatures": true,
     "rust-analyzer.checkOnSave.enable": true,
     "rust-analyzer.diagnostics.enable": true,
     "rust-analyzer.lens.enable": false,
+    "rust-analyzer.updates.checkOnStartup": false,
     "languageserver": {
         "golang": {
             "command": "gopls",
