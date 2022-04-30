@@ -1,5 +1,5 @@
 {
-    "codeLens.enable": true,
+    "codeLens.enable": false,
     "diagnostic.checkCurrentLine": true,
     "diagnostic.enable": true,
     "diagnostic.level": "hint",
