@@ -21,8 +21,7 @@ export GOPATH=$HOME/go
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# source controlled scripts
-export PATH="$HOME/scripts/bash/scripts:$PATH"
+export PATH="$HOME/dotfiles/bash/scripts:$PATH"
 
 if [ $is_mac = 1 ]; then
     # GNU core utils
