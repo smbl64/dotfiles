@@ -15,7 +15,11 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
 
     # Always try to automatically upgrade these
     brew upgrade \
+        git \
         go \
+        helm \
+        kubernetes-cli \
         neovim \
+        pyenv \
         rust-analyzer
 } > $LOG_FILE 2>&1
