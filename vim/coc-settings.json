@@ -15,9 +15,9 @@
     "rust-analyzer.inlayHints.chainingHints.enable": true,
     "rust-analyzer.inlayHints.parameterHints.enable": true,
     "rust-analyzer.inlayHints.typeHints.enable": true,
-    "rust-analyzer.lens.enable": true,
-    "rust-analyzer.lens.references.adt.enable": true,
-    "rust-analyzer.lens.references.method.enable": true,
+    "rust-analyzer.lens.enable": false,
+    "rust-analyzer.lens.references.adt.enable": false,
+    "rust-analyzer.lens.references.method.enable": false,
     "rust-analyzer.server.path": "rust-analyzer",
     "rust-analyzer.updates.checkOnStartup": false,
     "languageserver": {
