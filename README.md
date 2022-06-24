@@ -4,6 +4,7 @@ My dotfiles for different apps
 ## Usage
 - `vim` folder must be linked to `~/.vim` folder.
 - `nvim` folder must be linked to `~/.config/nvim` folder.
+- `bat` folder must be linked to `~/.config/bat` folder.
 - `ctags` folder contains the configurations for [universal ctags][ctags] and must be linked to `~/.ctags.d` folder.
 - `postgres/psqlrc` contains the configurations for `psql` command and must be linked to `~/.psqlrc` file.
 - `inputrc` must be linked to `~/.inputrc` file.
