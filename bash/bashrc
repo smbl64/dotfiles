@@ -72,7 +72,6 @@ alias ls="ls --color=always"
 alias ll="ls -l --group-directories-first"
 alias llh="ls -lh --group-directories-first"
 alias t4="ping 4.2.2.4 -i 0.3"
-alias bat="bat -p"
 alias grep='grep --color -i'
 alias k=kubectl
 
