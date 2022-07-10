@@ -6,6 +6,7 @@ cargo install \
     cargo-cache \
     cargo-edit \
     cargo-expand \
+    cargo-outdated \
     cargo-script \
     cargo-tarpaulin \
     cargo-udeps \
