@@ -333,7 +333,7 @@ if has('gui_running')
 else
     set termguicolors
     set background=dark
-    colorscheme PaperColor
+    colorscheme base16-monokai
 end
 
 " Configs for showing invisible chars (tab etc)
