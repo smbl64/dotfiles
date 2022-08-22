@@ -57,6 +57,8 @@ Plug 'hail2u/vim-css3-syntax'
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+Plug 'rodjek/vim-puppet'
+
 call plug#end()
 
 " More matching with %
