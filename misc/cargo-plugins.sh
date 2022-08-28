@@ -10,8 +10,10 @@ cargo install \
     cargo-script \
     cargo-tarpaulin \
     cargo-udeps \
-    cargo-watch
+    cargo-watch \
+    grcov
 
 rustup component add \
     rustfmt \
-    clippy
+    clippy \
+    llvm-tools-preview
