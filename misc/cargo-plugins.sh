@@ -1,6 +1,7 @@
 #!/bin/sh
 
 cargo install \
+    bacon \         # background rust compiler
     bunyan \        # log formatter
     cargo-audit \
     cargo-cache \
