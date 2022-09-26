@@ -14,6 +14,7 @@ cargo install \
     cargo-tarpaulin \
     cargo-udeps \
     cargo-watch \
+    cross \
     grcov
 
 rustup component add \
