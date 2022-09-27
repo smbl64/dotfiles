@@ -6,6 +6,10 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'altercation/vim-colors-solarized'
 Plug 'yasukotelin/shirotelin'
 
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'
 
