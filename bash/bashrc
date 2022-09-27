@@ -98,10 +98,10 @@ if [ $is_mac = 1 ]; then
 fi
 
 # For pyenv
-eval "$(pyenv init --path)"
+#eval "$(pyenv init --path)"
 
 # For pyenv-virtualenv
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 
 if [ $is_mac = 1 ]; then
