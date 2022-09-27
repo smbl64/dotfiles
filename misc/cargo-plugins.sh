@@ -9,6 +9,7 @@ cargo install \
     cargo-cache \
     cargo-edit \
     cargo-expand \
+    cargo-nextest \
     cargo-outdated \
     cargo-script \
     cargo-tarpaulin \
