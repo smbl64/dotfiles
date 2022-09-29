@@ -124,7 +124,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # kubectl completion
-if [ -x $(command -v kubectl) ]; then
+if [ -x "$(command -v kubectl)" ]; then
     source <(kubectl completion bash)
     # Assuming 'k' is aliased to kubectl as well
     source <(kubectl completion bash | sed s/kubectl/k/g)
