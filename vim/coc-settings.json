@@ -7,6 +7,7 @@
     "diagnostic.infoSign": "I",
     "diagnostic.warningSign": "W",
     "diagnostic.level": "hint",
+    "hover.floatConfig": {},
     "diagnostic.messageTarget": "float",
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextPrefix": " ▸ ",
@@ -26,6 +27,7 @@
     "rust-analyzer.lens.references.method.enable": false,
     "rust-analyzer.server.path": "rust-analyzer",
     "rust-analyzer.updates.checkOnStartup": false,
+    "typescript.referencesCodeLens.enable": false,
     "languageserver": {
         "golang": {
             "command": "gopls",

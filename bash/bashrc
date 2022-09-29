@@ -26,6 +26,7 @@ export PATH="$HOME/dotfiles/bash/scripts:$PATH"
 if [ $is_mac = 1 ]; then
     # GNU core utils
     export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+    export PATH="$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
     export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
     export PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
 fi
@@ -97,10 +98,10 @@ if [ $is_mac = 1 ]; then
 fi
 
 # For pyenv
-eval "$(pyenv init --path)"
+#eval "$(pyenv init --path)"
 
 # For pyenv-virtualenv
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 
 if [ $is_mac = 1 ]; then
