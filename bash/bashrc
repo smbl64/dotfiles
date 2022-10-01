@@ -86,6 +86,8 @@ mkcd ()
 if [ $is_mac = 1 ]; then
     export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
     [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+elif [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
 fi
 
 # --------------------------------------------------------
