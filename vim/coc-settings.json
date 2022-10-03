@@ -12,6 +12,7 @@
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextPrefix": " ▸ ",
     "diagnostic.virtualTextCurrentLineOnly": false,
+    "notification.statusLineProgress": false,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
