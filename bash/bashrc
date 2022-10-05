@@ -87,6 +87,8 @@ mkcd ()
 if [ $is_mac = 1 ]; then
     export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
     [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+elif [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
 fi
 
 # --------------------------------------------------------
@@ -125,7 +127,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # kubectl completion
-if [ -x $(command -v kubectl) ]; then
+if [ -x "$(command -v kubectl)" ]; then
     source <(kubectl completion bash)
     # Assuming 'k' is aliased to kubectl as well
     source <(kubectl completion bash | sed s/kubectl/k/g)
