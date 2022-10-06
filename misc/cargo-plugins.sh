@@ -14,6 +14,7 @@ cargo install \
     cargo-script \
     cargo-tarpaulin \
     cargo-udeps \
+    cargo-update \
     cargo-watch \
     cross \
     grcov
