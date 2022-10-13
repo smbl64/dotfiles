@@ -151,6 +151,11 @@ set splitright
 " Automatically re-read the file if it's changed
 set autoread
 
+" Better timeouts
+set ttimeout
+set ttimeoutlen=100
+set timeoutlen=1000
+
 " netrw configs
 let g:netrw_banner=0  " No help banner
 let g:netrw_liststyle=3  " tree
