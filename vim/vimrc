@@ -369,7 +369,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <C-p> :Files<CR>
 
 " Disable the preview window in Files command
-let g:fzf_preview_window = ''
+"let g:fzf_preview_window = ''
 
 " Expand %% to current directory (in Ex command mode)
 cabbr <expr> %% expand('%:p:h')
