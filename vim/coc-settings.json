@@ -37,7 +37,13 @@
             "filetypes": ["go"],
             "initializationOptions": {
                 "usePlaceholders": true,
-                "gofumpt": true
+                "gofumpt": true,
+                "hints": {
+                    "assignVariableTypes": true,
+                    "compositeLiteralFields": true,
+                    "functionTypeParameters": true,
+                    "parameterNames": true
+                }
             }
         },
         "perl": {
