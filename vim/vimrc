@@ -63,6 +63,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'rodjek/vim-puppet'
 
+" Lox
+Plug 'timmyjose-projects/lox.vim'
+
 call plug#end()
 
 " More matching with %
