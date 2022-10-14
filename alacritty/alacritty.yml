@@ -759,6 +759,17 @@ colors:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
+  # Map Command+Number to CTRL-B + number (to switch between tmux windows)
+  - { key: Key1,      mods: Command,   chars: "\x021"                       }
+  - { key: Key2,      mods: Command,   chars: "\x022"                       }
+  - { key: Key3,      mods: Command,   chars: "\x023"                       }
+  - { key: Key4,      mods: Command,   chars: "\x024"                       }
+  - { key: Key5,      mods: Command,   chars: "\x025"                       }
+  - { key: Key6,      mods: Command,   chars: "\x026"                       }
+  - { key: Key7,      mods: Command,   chars: "\x027"                       }
+  - { key: Key8,      mods: Command,   chars: "\x028"                       }
+  - { key: Key9,      mods: Command,   chars: "\x028"                       }
+
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
   - { key: B,         mods: Alt,       chars: "\x1bb"                       }
   - { key: C,         mods: Alt,       chars: "\x1bc"                       }
