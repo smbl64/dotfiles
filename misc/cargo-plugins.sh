@@ -7,6 +7,7 @@ cargo install \
     bunyan \
     cargo-audit \
     cargo-cache \
+    cargo-criterion \
     cargo-edit \
     cargo-expand \
     cargo-nextest \
