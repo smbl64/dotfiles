@@ -19,7 +19,6 @@
     "rust-analyzer.cargo.features": "all",
     "rust-analyzer.checkOnSave.enable": true,
     "rust-analyzer.diagnostics.enable": true,
-    "rust-analyzer.inlayHints.enable": true,
     "rust-analyzer.inlayHints.chainingHints.enable": true,
     "rust-analyzer.inlayHints.parameterHints.enable": true,
     "rust-analyzer.inlayHints.typeHints.enable": true,
@@ -36,13 +35,17 @@
             "trace.server": "verbose",
             "filetypes": ["go"],
             "initializationOptions": {
-                "usePlaceholders": true,
+                "usePlaceholders": false,
                 "gofumpt": true,
                 "hints": {
                     "assignVariableTypes": true,
                     "compositeLiteralFields": true,
                     "functionTypeParameters": true,
                     "parameterNames": true
+                },
+                "analyses": {
+                    "unusedparams": true,
+                    "unusedvariables": true
                 }
             }
         },
