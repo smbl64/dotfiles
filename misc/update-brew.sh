@@ -21,5 +21,6 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         kubernetes-cli \
         neovim \
         pyenv \
-        rust-analyzer
+        rust-analyzer \
+        vim
 } > $LOG_FILE 2>&1
