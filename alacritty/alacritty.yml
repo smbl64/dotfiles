@@ -730,6 +730,17 @@ key_bindings:
   - { key: Key8,      mods: Command,   chars: "\x028"                       }
   - { key: Key9,      mods: Command,   chars: "\x028"                       }
 
+  # Map Alt+Number to CTRL-B + number (to switch between tmux windows)
+  - { key: Key1,      mods: Alt,   chars: "\x021"                       }
+  - { key: Key2,      mods: Alt,   chars: "\x022"                       }
+  - { key: Key3,      mods: Alt,   chars: "\x023"                       }
+  - { key: Key4,      mods: Alt,   chars: "\x024"                       }
+  - { key: Key5,      mods: Alt,   chars: "\x025"                       }
+  - { key: Key6,      mods: Alt,   chars: "\x026"                       }
+  - { key: Key7,      mods: Alt,   chars: "\x027"                       }
+  - { key: Key8,      mods: Alt,   chars: "\x028"                       }
+  - { key: Key9,      mods: Alt,   chars: "\x028"                       }
+
   - { key: A,         mods: Alt,       chars: "\x1ba"                       }
   - { key: B,         mods: Alt,       chars: "\x1bb"                       }
   - { key: C,         mods: Alt,       chars: "\x1bc"                       }
@@ -756,6 +767,9 @@ key_bindings:
   - { key: X,         mods: Alt,       chars: "\x1bx"                       }
   - { key: Y,         mods: Alt,       chars: "\x1by"                       }
   - { key: Z,         mods: Alt,       chars: "\x1bz"                       }
+
+  - { key: F11,       action: ToggleFullscreen                              }
+
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
