@@ -103,19 +103,19 @@ env:
 # Font configuration
 font:
   normal:
-    family: "FiraCode NFM"
+    family: "FiraCode Nerd Font Mono"
     style: Regular
 
   bold:
-    family: "FiraCode NFM"
+    family: "FiraCode Nerd Font Mono"
     style: SemiBold
 
   italic:
-    family: "FiraCode NFM"
+    family: "FiraCode Nerd Font Mono"
     style: Italic
 
   bold_italic:
-    family: "FiraCode NFM"
+    family: "FiraCode Nerd Font Mono"
     style: SemiBold Italic
 
   size: 12.0
