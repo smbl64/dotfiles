@@ -132,7 +132,6 @@ set smartcase
 
 set autoindent
 set number
-set relativenumber
 set cursorline
 
 set nobackup
@@ -415,8 +414,8 @@ augroup END
 " Make active window more visible
 augroup BgHighlight
     autocmd!
-    autocmd WinEnter * set cursorline relativenumber
-    autocmd WinLeave * set nocursorline norelativenumber
+    autocmd WinEnter * set cursorline
+    autocmd WinLeave * set nocursorline
 augroup END
 
 " Automatically create folders on write if needed
