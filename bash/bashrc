@@ -75,7 +75,6 @@ alias ll="ls -l --group-directories-first"
 alias llh="ls -lh --group-directories-first"
 alias t4="ping 4.2.2.4 -i 0.3"
 alias grep='grep --color -i'
-alias k=kubectl
 
 mkcd () {
     mkdir -p -- "$1" && cd -P -- "$1"
@@ -154,12 +153,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 # fzf completion
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# kubectl completion
-if [ -x "$(command -v kubectl)" ]; then
-    source <(kubectl completion bash)
-    # Assuming 'k' is aliased to kubectl as well
-    source <(kubectl completion bash | sed s/kubectl/k/g)
-fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
