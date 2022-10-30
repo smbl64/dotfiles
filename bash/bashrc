@@ -77,16 +77,43 @@ alias t4="ping 4.2.2.4 -i 0.3"
 alias grep='grep --color -i'
 alias k=kubectl
 
-mkcd ()
-{
+mkcd () {
     mkdir -p -- "$1" && cd -P -- "$1"
+}
+
+__check_bash_completion_symlink() {
+    # By default, bash-completion@2 package loads completions in this folder
+    # eagerly: $(brew --prefix)/etc/bash_completion.d
+    #
+    # This will slow down startup time of Bash. To hack our way around it, we
+    # will create a symlink to that folder and ask bash-completion@2 to loads
+    # scripts in this symlink lazily.
+    #
+    # We will create a symlink "$(brew --prefix)/etc/bash-completion/completions" that
+    # points to "$(brew --prefix)/etc/bash_completion.d".
+    #
+    # Note:
+    # Remember to install the HEAD version of bash-completion@2, otherwise it
+    # will not process multiple directories in "BASH_COMPLETION_USER_DIR".
+    # (Use brew install --HEAD ...)
+
+    # Create the symlink
+    mkdir -p  "$(brew --prefix)/etc/bash-completion"
+    ln -sf "$(brew --prefix)/etc/bash_completion.d" "$(brew --prefix)/etc/bash-completion/completions"
+
+    # Directories for lazy-loading
+    export BASH_COMPLETION_USER_DIR="$(brew --prefix)/etc/bash-completion:$HOME/.local/share/bash-completion"
+
+    # Disable the eagerly-loaded completion scripts
+    export BASH_COMPLETION_COMPAT_DIR="/blackhole!"
 }
 
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
 # --------------------------------------------------------
 if [ $is_mac = 1 ]; then
-    export BASH_COMPLETION_COMPAT_DIR="$(brew --prefix)/etc/bash_completion.d"
+    __check_bash_completion_symlink
+
     [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 elif [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
