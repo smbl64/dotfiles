@@ -1,1 +1,6 @@
 set enable-bracketed-paste on
+
+# Have a better completion when using <Tab>
+set show-all-if-ambiguous on
+set page-completions off
+set completion-query-items 0
