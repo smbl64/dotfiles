@@ -1,8 +1,7 @@
-
 # Load the bash prompt
 source ~/.bash_prompt
 
-is_mac=0; [ "$(uname -s)" = "Darwin" ] && is_mac=1
+is_mac=0; [[ "$OSTYPE" == "darwin"* ]] && is_mac=1
 
 # Homebrew (Intel and M1)
 #
