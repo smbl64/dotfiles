@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# The various escape codes that we can use to color our prompt.
         RED="\[\033[0;31m\]"
      YELLOW="\[\033[1;33m\]"
       GREEN="\[\033[0;32m\]"
@@ -11,21 +10,15 @@ LIGHT_GREEN="\[\033[1;32m\]"
  LIGHT_GRAY="\[\033[0;37m\]"
  COLOR_NONE="\[\e[0m\]"
 
-# Detect whether the current directory is a git repository.
 function is_git_repository {
   git branch > /dev/null 2>&1
 }
 
-# Determine the branch/state information for this git repository.
 function set_git_branch {
-  # Get the name of the branch.
   branch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
-
-  # Set the final branch string.
   BRANCH="${GREEN}(${branch})${COLOR_NONE} "
 }
 
-# Determine active Python virtualenv details.
 function set_virtualenv () {
   if test -z "$VIRTUAL_ENV" ; then
       PYTHON_VIRTUALENV=""
@@ -34,25 +27,18 @@ function set_virtualenv () {
   fi
 }
 
-# Set the full bash prompt.
 function set_bash_prompt () {
   PROMPT_SYMBOL="\$"
 
-  # Set the PYTHON_VIRTUALENV variable.
   set_virtualenv
 
-  # Set the BRANCH variable.
   if is_git_repository ; then
     set_git_branch
   else
     BRANCH=''
   fi
 
-  # Set the bash prompt variable.
-  PS1="
-${GREEN}\u ${YELLOW}\w${COLOR_NONE} ${BRANCH}${PYTHON_VIRTUALENV}
-${PROMPT_SYMBOL} "
+  PS1="\n${GREEN}\u ${YELLOW}\w${COLOR_NONE} ${BRANCH}${PYTHON_VIRTUALENV} \n${PROMPT_SYMBOL} "
 }
 
-# Tell bash to execute this function just before displaying its prompt.
 PROMPT_COMMAND=set_bash_prompt
