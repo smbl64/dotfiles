@@ -1,3 +1,4 @@
+
 # Load the bash prompt
 source ~/.bash_prompt
 
@@ -31,6 +32,8 @@ if [ $is_mac = 1 ]; then
     export PATH="$(brew --prefix)/opt/grep/libexec/gnubin:$PATH"
     export PATH="$(brew --prefix)/opt/openssl@3/bin:$PATH"
 fi
+
+start_t=$(echo $(date +%s.%N))
 
 if [ $is_mac = 1 ]; then
     export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
@@ -161,3 +164,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
 test -f ~/.bashrc_local && source ~/.bashrc_local
+
+
+end_t=$(echo $(date +%s.%N))
+diff_t=$(echo "($end_t - $start_t) * 1000 / 1" | bc)
+echo "Bash loaded in $diff_t ms"
