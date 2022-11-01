@@ -30,6 +30,10 @@
     "rust-analyzer.server.path": "rust-analyzer",
     "rust-analyzer.updates.checkOnStartup": false,
     "typescript.referencesCodeLens.enable": false,
+    "zig.debugLog": false,
+    "zig.enabled": true,
+    "zig.path": "zls",
+    "zig.startUpMessage": true,
     "languageserver": {
         "golang": {
             "command": "gopls",

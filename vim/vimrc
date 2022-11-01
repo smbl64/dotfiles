@@ -66,6 +66,8 @@ Plug 'rodjek/vim-puppet'
 " Lox
 Plug 'timmyjose-projects/lox.vim'
 
+" Zig
+Plug 'ziglang/zig.vim'
 call plug#end()
 
 " More matching with %
