@@ -349,7 +349,7 @@ if has('gui_running')
 else
     set termguicolors
     set background=dark
-    colorscheme base16-monokai
+    colorscheme base16-gruvbox-dark-hard
 end
 
 " Configs for showing invisible chars (tab etc)
