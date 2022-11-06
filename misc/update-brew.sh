@@ -15,12 +15,16 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
 
     # Always try to automatically upgrade these
     brew upgrade \
+        bat \
+        fd \
         git \
         go \
         helm \
         kubernetes-cli \
         neovim \
         pyenv \
+        ripgrep \
         rust-analyzer \
+        tmux \
         vim
 } > $LOG_FILE 2>&1
