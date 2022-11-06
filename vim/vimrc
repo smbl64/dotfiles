@@ -254,6 +254,13 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+" Keyboard shortcuts
+" Example: <leader>aap for current paragraph, <leader>aw for the current word
+xmap <Leader>a <Plug>(coc-codeaction-selected)
+nmap <Leader>a <Plug>(coc-codeaction-selected)
+nmap <Leader>d <Plug>(coc-definition)
+nmap <Leader>r <Plug>(coc-rename)
+
 " ------------------------
 "  End of COC Configs
 " ------------------------
@@ -266,7 +273,6 @@ augroup CustomKeyboardShortcuts
     autocmd FileType perl xmap <buffer> <Leader>f <plug>(PerlTidySelection)
     autocmd FileType perl nmap <buffer> <Leader>f <plug>(PerlTidyCurrentLine)
 
-    autocmd FileType python,go,rust,c,perl,java,typescript nmap <Leader>d <Plug>(coc-definition)
 
     autocmd FileType xml nnoremap <buffer> <Leader>f :%!xmllint --format %<cr>
     autocmd FileType sql nnoremap <buffer> <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
@@ -296,7 +302,7 @@ command! TrimTrailingSpaces call TrimTrailingSpaces()
 nnoremap <Leader>q :q<cr>
 
 " Ack the current word
-noremap <Leader>a :execute('Ack! ' . expand('<cword>'))<cr>
+noremap <Leader>s :execute('Ack! ' . expand('<cword>'))<cr>
 
 " Read help for the word under the cursor (vim files)
 augroup VimFiles
