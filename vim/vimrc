@@ -66,8 +66,12 @@ Plug 'rodjek/vim-puppet'
 " Lox
 Plug 'timmyjose-projects/lox.vim'
 
+" Dart
+Plug 'dart-lang/dart-vim-plugin'
+
 " Zig
 Plug 'ziglang/zig.vim'
+
 call plug#end()
 
 " More matching with %
@@ -196,12 +200,13 @@ let g:ale_linters_ignore = {'rust': ['rls', 'rustc']}
 
 " COC extensions
 let g:coc_global_extensions = [
+    \ 'coc-flutter',
+    \ 'coc-json',
     \ 'coc-pyright',
     \ 'coc-rust-analyzer',
     \ 'coc-tsserver',
-    \ 'coc-json',
-    \ 'coc-yaml',
     \ 'coc-vimlsp',
+    \ 'coc-yaml',
     \ 'coc-zig'
     \ ]
 
