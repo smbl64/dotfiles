@@ -12,7 +12,7 @@
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextPrefix": " ▸ ",
     "diagnostic.virtualTextCurrentLineOnly": false,
-    "notification.statusLineProgress": false,
+    "notification.statusLineProgress": true,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
@@ -75,5 +75,6 @@
             "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git/"],
             "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
         }
-    }
+    },
+    "snippets.ultisnips.pythonPrompt": false
 }
