@@ -30,6 +30,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
 Plug 'hashivim/vim-terraform'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
