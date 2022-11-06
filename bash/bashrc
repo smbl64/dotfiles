@@ -177,6 +177,21 @@ export SDKMAN_DIR="$HOME/.sdkman"
 test -f ~/.bashrc_local && source ~/.bashrc_local
 
 
-end_t=$(echo $(date +%s.%N))
-diff_t=$(echo "($end_t - $start_t) * 1000 / 1" | bc)
-echo "Bash loaded in $diff_t ms"
+function __show_elapsed_time {
+    local end_t=$(echo $(date +%s.%N))
+    local diff_t=$(echo "($end_t - $start_t) * 1000 / 1" | bc)
+
+    local RED=`tput setaf 1`
+    local GREEN=`tput setaf 2`
+    local RESET=`tput sgr0`
+
+    local color;
+
+    if [[ $diff_t -ge 200 ]]; then 
+        color=$RED
+    else
+        color=$GREEN
+    fi
+
+    echo "Bash loaded in ${color}$diff_t ms${RESET}"
+} && __show_elapsed_time && unset -f __show_elapsed_time
