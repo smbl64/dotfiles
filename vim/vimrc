@@ -29,7 +29,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-surround'
-Plug 'hashivim/vim-terraform'
+Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-unimpaired'
@@ -49,6 +49,7 @@ Plug 'smbl64/vim-black-macchiato'
 
 Plug 'rust-lang/rust.vim'
 Plug 'mrk21/yaml-vim'
+Plug 'hashivim/vim-terraform'
 
 " Snippet engine
 "Plug 'SirVer/ultisnips'
