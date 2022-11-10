@@ -1,7 +1,11 @@
-# Load the bash prompt
-source ~/.bash_prompt
+source "$HOME/.bash_prompt"
 
 is_mac=0; [[ "$OSTYPE" == "darwin"* ]] && is_mac=1
+
+export CLICOLOR=1
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export EDITOR=vim
 
 # Homebrew (Intel and M1)
 #
@@ -34,14 +38,19 @@ source $_brew_env_file
 export GOPATH=$HOME/go
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/dotfiles/bash/scripts:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 if [ $is_mac = 1 ]; then
-    # GNU core utils
     export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
     export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
     export PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
     export PATH="$HOMEBREW_PREFIX/opt/grep/libexec/gnubin:$PATH"
     export PATH="$HOMEBREW_PREFIX/opt/openssl@3/bin:$PATH"
+    export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
+    export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
+
+    export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
 start_t=$(echo $(date +%s.%N))
@@ -53,27 +62,6 @@ else
     export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
 fi
 
-if [ $is_mac = 1 ]; then
-    # psql
-    export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
-
-    # mysql client
-    export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
-
-    # poetry
-    export PATH="$HOME/.poetry/bin:$PATH"
-fi
-
-# Rust cargo
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Go
-export PATH=$PATH:$GOPATH/bin
-
-export CLICOLOR=1
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export EDITOR="vim"
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
@@ -90,10 +78,9 @@ alias llh="ls -lh --group-directories-first"
 alias t4="ping 4.2.2.4 -i 0.3"
 alias grep='grep --color -i'
 
-mkcd () {
-    mkdir -p -- "$1" && cd -P -- "$1"
-}
-
+# --------------------------------------------------------
+# Bash completion (for Bash 4+ and bash-completion@2
+# --------------------------------------------------------
 __check_bash_completion_symlink() {
     # By default, bash-completion@2 package loads completions in this folder
     # eagerly: $(brew --prefix)/etc/bash_completion.d
@@ -121,9 +108,6 @@ __check_bash_completion_symlink() {
     export BASH_COMPLETION_COMPAT_DIR="/blackhole!"
 }
 
-# --------------------------------------------------------
-# Bash completion (for Bash 4+ and bash-completion@2
-# --------------------------------------------------------
 if [ $is_mac = 1 ]; then
     __check_bash_completion_symlink
 
@@ -135,19 +119,14 @@ fi
 # --------------------------------------------------------
 # Other stuff
 # --------------------------------------------------------
+mkcd () {
+    mkdir -p -- "$1" && cd -P -- "$1"
+}
+
 if [ $is_mac = 1 ]; then
     # Make sure pyenv creates the dynlib files when installs python
     export PYTHON_CONFIGURE_OPTS="--enable-framework"
-fi
 
-# For pyenv
-#eval "$(pyenv init --path)"
-
-# For pyenv-virtualenv
-#eval "$(pyenv virtualenv-init -)"
-
-
-if [ $is_mac = 1 ]; then
     # Fix pyenv macOS bug
     # https://github.com/pyenv/pyenv/issues/1219#issuecomment-482821959
     export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
@@ -156,19 +135,16 @@ if [ $is_mac = 1 ]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
-
 # direnv hook
 eval "$(direnv hook bash)"
 
 # Make fzf use gitignore
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
-# alternative: export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # fzf completion
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
@@ -177,6 +153,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 test -f ~/.bashrc_local && source ~/.bashrc_local
 
 
+# For debugging purposes
 function __show_elapsed_time {
     local end_t=$(echo $(date +%s.%N))
     local diff_t=$(echo "($end_t - $start_t) * 1000 / 1" | bc)
