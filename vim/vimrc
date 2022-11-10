@@ -52,8 +52,10 @@ Plug 'mrk21/yaml-vim'
 Plug 'hashivim/vim-terraform'
 
 " Snippet engine
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " Web development
 Plug 'pangloss/vim-javascript'
@@ -202,6 +204,7 @@ let g:ale_linters = {
             \ }
 let g:ale_linters_ignore = {'rust': ['rls', 'rustc']}
 
+let g:snipMate = { 'snippet_version' : 1 }
 
 
 " COC extensions
@@ -210,6 +213,7 @@ let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-pyright',
     \ 'coc-rust-analyzer',
+    \ 'coc-snippets',
     \ 'coc-tsserver',
     \ 'coc-vimlsp',
     \ 'coc-yaml',
