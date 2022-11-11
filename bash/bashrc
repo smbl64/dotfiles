@@ -144,6 +144,9 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 # fzf completion
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Prevent Ctrl-D to exit the shell. This helps with accidentally exiting tmux.
+# Ref: https://superuser.com/a/479614/161459
+export IGNOREEOF=10
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
