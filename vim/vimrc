@@ -41,6 +41,9 @@ Plug 'kana/vim-textobj-user'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Run tests in any language
+Plug 'vim-test/vim-test'
+
 " Python specific
 Plug 'bps/vim-textobj-python'
 Plug 'tmhedberg/SimpylFold'
@@ -276,6 +279,10 @@ autocmd User CocStatusChange redrawstatus
 " ------------------------
 "  End of COC Configs
 " ------------------------
+
+" Run tests
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
 
 augroup CustomKeyboardShortcuts
     autocmd!
