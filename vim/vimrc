@@ -273,6 +273,7 @@ xmap <Leader>a <Plug>(coc-codeaction-selected)
 nmap <Leader>a <Plug>(coc-codeaction-selected)
 nmap <Leader>d <Plug>(coc-definition)
 nmap <Leader>r <Plug>(coc-rename)
+nmap <leader>. <Plug>(coc-fix-current)
 
 " To support changes in statusline
 autocmd User CocStatusChange redrawstatus
