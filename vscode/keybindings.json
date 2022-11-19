@@ -1,0 +1,20 @@
+// Empty
+[
+    {
+        "key": "shift+cmd+s",
+        "command": "-workbench.action.files.saveAs"
+    },
+    {
+        "key": "shift+cmd+s",
+        "command": "-workbench.action.files.saveLocalFile",
+        "when": "remoteFileDialogVisible"
+    },
+    {
+        "key": "shift+cmd+s",
+        "command": "saveAll"
+    },
+    {
+        "key": "alt+cmd+s",
+        "command": "-saveAll"
+    }
+]

@@ -1,0 +1,52 @@
+{
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.minimap.enabled": false,
+  "sync.gist": "0e1f339d27515bd561380c0f0be6e7c3",
+  "python.linting.pylintEnabled": true,
+  "editor.suggestSelection": "first",
+  "python.venvPath": "~/.virtualenvs",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.wordBasedSuggestions": false,
+
+  "vsicons.dontShowNewVersionMessage": true,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "files.insertFinalNewline": true,
+  "go.formatTool": "gofmt",
+  "workbench.tree.indent": 24,
+  "window.zoomLevel": 0,
+  "breadcrumbs.enabled": false,
+  "workbench.colorTheme": "Base16 Dark Monokai",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDelete": false,
+  "python.languageServer": "Pylance",
+  "editor.formatOnSave": true,
+  "terminal.external.osxExec": "iTerm.App",
+  "workbench.editor.showTabs": true,
+  "editor.guides.indentation": false,
+
+  "rust-analyzer.server.path": "rust-analyzer",
+  "rust-analyzer.inlayHints.parameterHints.enable": true,
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.selectionHighlight": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": false
+  },
+  "dart.flutterHotReloadOnSave": "all",
+  "dart.hotReloadOnSave": "all",
+  "debug.console.collapseIdenticalLines": false,
+  "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.cursorBlinking": "solid"
+}

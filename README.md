@@ -10,6 +10,12 @@ My dotfiles for different apps
 - `ctags` folder contains the configurations for [universal ctags][ctags] and must be linked to `~/.ctags.d` folder.
 - `postgres/psqlrc` contains the configurations for `psql` command and must be linked to `~/.psqlrc` file.
 - `inputrc` must be linked to `~/.inputrc` file.
+- `vscode` folder's contents must be symlinked to the proper location on each OS. on macOS:
+    ```
+    ln -s $HOME/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+    ln -s $HOME/dotfiles/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
+    ln -s $HOME/dotfiles/vscode/snippets $HOME/Library/Application\ Support/Code/User/snippets
+    ```
 - `ripgrep/ripgreprc` must be linked to `~/.ripgreprc` file.
 - `emacs.d` must be linked to `~/.emacs.d`.
 - `bash/bash_profile`, `bash/bashrc`, and `bash/bash_prompt` must be linked to `~/.bash_profile`, `~/.bashrc`, and `~/.bash_prompt` respectively.
