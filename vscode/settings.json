@@ -7,6 +7,7 @@
   "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.formatOnSave": true,
   "editor.guides.indentation": false,
+  "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
   "editor.wordBasedSuggestions": false,
@@ -16,7 +17,6 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "python.languageServer": "Pylance",
   "python.linting.pylintEnabled": true,
-  "rust-analyzer.inlayHints.parameterHints.enable": true,
   "rust-analyzer.server.path": "rust-analyzer",
   "terminal.external.osxExec": "iTerm.App",
   "vsicons.dontShowNewVersionMessage": true,
@@ -44,5 +44,10 @@
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#3d2b23",
+    "statusBar.foreground": "#aaaaaa",
+    "statusBarItem.remoteBackground": "#582006"
   }
 }
