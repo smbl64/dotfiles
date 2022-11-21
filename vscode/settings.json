@@ -47,6 +47,8 @@
   },
   "workbench.colorCustomizations": {
     "statusBar.background": "#3d2b23",
+    "statusBar.noFolderBackground": "#3d2b23",
+    "statusBar.debuggingBackground": "#6e4939",
     "statusBar.foreground": "#aaaaaa",
     "statusBarItem.remoteBackground": "#582006"
   }
