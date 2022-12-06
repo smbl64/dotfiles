@@ -6,6 +6,11 @@ export CLICOLOR=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR=vim
+alias ls="ls --color=always"
+alias ll="ls -l --group-directories-first"
+alias llh="ls -lh --group-directories-first"
+alias t4="ping 4.2.2.4 -i 0.3"
+alias grep='grep --color -i'
 
 # Homebrew (Intel and M1)
 #
@@ -32,9 +37,7 @@ __make_brew_envs_file() {
     fi
 }
 
-__make_brew_envs_file
-source $_brew_env_file
-
+__make_brew_envs_file && source $_brew_env_file
 
 export GOPATH=$HOME/go
 export PATH="$HOME/.local/bin:$PATH"
@@ -56,28 +59,11 @@ fi
 
 start_t=$(echo $(date +%s.%N))
 
-if [ $is_mac = 1 ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
-else
-    # Using sed, replace 'bin/java' with an empty string
-    export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
-fi
-
-
-export RIPGREP_CONFIG_PATH=~/.ripgreprc
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # pyenv (on Linux installs)
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-
-# --------------------------------------------------------
-# Aliases 
-# --------------------------------------------------------
-alias ls="ls --color=always"
-alias ll="ls -l --group-directories-first"
-alias llh="ls -lh --group-directories-first"
-alias t4="ping 4.2.2.4 -i 0.3"
-alias grep='grep --color -i'
 
 # --------------------------------------------------------
 # Bash completion (for Bash 4+ and bash-completion@2
@@ -117,9 +103,6 @@ elif [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
 fi
 
-# --------------------------------------------------------
-# Other stuff
-# --------------------------------------------------------
 mkcd () {
     mkdir -p -- "$1" && cd -P -- "$1"
 }
@@ -143,7 +126,7 @@ eval "$(direnv hook bash)"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 
 # fzf completion
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[[ -s "$HOME/.fzf.bash" ]] && source "$HOME/.fzf.bash"
 
 # Prevent Ctrl-D to exit the shell. This helps with accidentally exiting tmux.
 # Ref: https://superuser.com/a/479614/161459
@@ -154,7 +137,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
-test -f ~/.bashrc_local && source ~/.bashrc_local
+[[ -s "$HOME/.bashrc_local" ]] && source "$HOME/.bashrc_local"
 
 
 # For debugging purposes
