@@ -383,6 +383,9 @@ else
     set termguicolors
     set background=dark
     colorscheme base16-gruvbox-dark-hard
+    " Keep background transparent, to have a
+    " better integration with tmux.
+    highlight Normal guibg=NONE ctermbg=NONE
 end
 
 " Configs for showing invisible chars (tab etc)
