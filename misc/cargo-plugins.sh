@@ -19,6 +19,7 @@ cargo install \
     cargo-update \
     cargo-watch \
     cross \
+    flamegraph \
     grcov
 
 rustup component add \
