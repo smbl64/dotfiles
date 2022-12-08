@@ -13,6 +13,7 @@ cargo install \
     cargo-nextest \
     cargo-outdated \
     cargo-script \
+    cargo-show-asm \
     cargo-tarpaulin \
     cargo-udeps \
     cargo-update \
