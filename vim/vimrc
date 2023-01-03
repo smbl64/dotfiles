@@ -285,6 +285,9 @@ autocmd User CocStatusChange redrawstatus
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 
+" Auto-pairs config
+let g:AutoPairsMultilineClose = 0
+
 let g:dart_format_on_save = 1
 
 augroup CustomKeyboardShortcuts
