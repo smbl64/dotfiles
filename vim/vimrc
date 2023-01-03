@@ -204,6 +204,7 @@ let g:ale_echo_msg_format = 'ale: [%linter%] [%severity%] %s'
 let g:ale_linters = {
             \ 'python': ['flake8'],
             \ 'rust': [],
+            \ 'go': [],
             \ }
 let g:ale_linters_ignore = {'rust': ['rls', 'rustc']}
 
