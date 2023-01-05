@@ -9,6 +9,7 @@ My dotfiles for different apps
 - `bat` folder must be linked to `~/.config/bat` folder.
 - `ctags` folder contains the configurations for [universal ctags][ctags] and must be linked to `~/.ctags.d` folder.
 - `postgres/psqlrc` contains the configurations for `psql` command and must be linked to `~/.psqlrc` file.
+- `sqlite/sqliterc` contains the configurations for `sqlite` command and must be linked to `~/.sqliterc` file.
 - `inputrc` must be linked to `~/.inputrc` file.
 - `vscode` folder's contents must be symlinked to the proper location on each OS. on macOS:
     ```
