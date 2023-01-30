@@ -13,6 +13,9 @@ Plug 'preservim/vim-markdown'
 " GUI enhancements
 Plug 'machakann/vim-highlightedyank'
 
+" Justfile
+Plug 'NoahTheDuke/vim-just'
+
 " Fuzzy finder
 "Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -389,7 +392,7 @@ else
     colorscheme base16-gruvbox-dark-hard
     " Keep background transparent, to have a
     " better integration with tmux.
-    highlight Normal guibg=NONE ctermbg=NONE
+    "highlight Normal guibg=NONE ctermbg=NONE
 end
 
 " Configs for showing invisible chars (tab etc)
