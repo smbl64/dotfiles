@@ -16,5 +16,25 @@
     {
         "key": "alt+cmd+s",
         "command": "-saveAll"
+    },
+    {
+        "key": "cmd+r",
+        "command": "dart.hotReload",
+        "when": "dart-code:isInDartDebugSession || dart-code:service.reloadSources && inDebugMode && debugType == 'dart'"
+    },
+    {
+        "key": "ctrl+f5",
+        "command": "-dart.hotReload",
+        "when": "dart-code:isInDartDebugSession || dart-code:service.reloadSources && inDebugMode && debugType == 'dart'"
+    },
+    {
+        "key": "cmd+r",
+        "command": "workbench.action.debug.run",
+        "when": "debuggersAvailable && debugState != 'initializing'"
+    },
+    {
+        "key": "ctrl+f5",
+        "command": "-workbench.action.debug.run",
+        "when": "debuggersAvailable && debugState != 'initializing'"
     }
 ]

@@ -6,7 +6,6 @@
   "editor.cursorBlinking": "solid",
   "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.formatOnSave": true,
-  "editor.guides.indentation": false,
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
@@ -21,7 +20,6 @@
   "terminal.external.osxExec": "iTerm.App",
   "vsicons.dontShowNewVersionMessage": true,
   "window.zoomLevel": 0,
-  "workbench.colorTheme": "Base16 Dark Monokai",
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.showTabs": true,
@@ -51,5 +49,8 @@
     "statusBar.debuggingBackground": "#6e4939",
     "statusBar.foreground": "#aaaaaa",
     "statusBarItem.remoteBackground": "#582006"
-  }
+  },
+  "workbench.colorTheme": "Base16 Dark Monokai",
+  "window.commandCenter": false,
+  "editor.guides.indentation": false
 }
