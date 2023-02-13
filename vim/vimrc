@@ -82,6 +82,9 @@ Plug 'dart-lang/dart-vim-plugin'
 " Zig
 Plug 'ziglang/zig.vim'
 
+" Allow local vimrc files
+Plug 'jenterkin/vim-autosource'
+
 call plug#end()
 
 " More matching with %
@@ -472,6 +475,11 @@ augroup END
 
 " Open a scratch new tab
 command! Scratch tabnew | setlocal buftype=nofile | file Scratch
+
+augroup sourceparents
+    autocmd!
+    autocmd VimEnter * nested call AutoSource(expand('<afile>:p:h'))
+augroup END
 
 set statusline=
 set statusline+=%#CursorIM#%{(mode()=='n')?'\ \ NORMAL\ ':''}
