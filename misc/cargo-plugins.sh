@@ -8,10 +8,12 @@ cargo install \
     cargo-audit \
     cargo-cache \
     cargo-criterion \
+    cargo-dist \
     cargo-edit \
     cargo-expand \
     cargo-nextest \
     cargo-outdated \
+    cargo-release \
     cargo-script \
     cargo-show-asm \
     cargo-tarpaulin \
