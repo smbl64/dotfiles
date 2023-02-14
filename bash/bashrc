@@ -136,6 +136,13 @@ export IGNOREEOF=10
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+# Use `exa` if available
+if [[ -x "$(command -v exa)" ]]
+then
+    alias ls=exa
+    alias ll="exa -l --group-directories-first --bytes"
+fi
+
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
 [[ -s "$HOME/.bashrc_local" ]] && source "$HOME/.bashrc_local"
