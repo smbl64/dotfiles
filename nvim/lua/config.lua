@@ -462,9 +462,9 @@ require('lspconfig')['rust_analyzer'].setup{
 }
 
 
-require('lspconfig').perlpls.setup{
-    capabilities = capabilities,
-}
+--require('lspconfig').perlpls.setup{
+--    capabilities = capabilities,
+--}
 
 vim.cmd([[
     set statusline=
