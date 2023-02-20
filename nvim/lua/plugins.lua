@@ -108,6 +108,7 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
 
     use 'hrsh7th/cmp-nvim-lsp'
+	use "hrsh7th/cmp-nvim-lsp-signature-help"
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'

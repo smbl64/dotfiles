@@ -177,10 +177,8 @@ vim.o.foldlevel = 99
 -- Shorter update time (for git-gutter)
 vim.o.updatetime = 300 
 
-vim.cmd([[
-    " No docstring window for python and go
-    autocmd FileType python,go setlocal completeopt-=preview
-]])
+
+vim.opt.completeopt = "menu,menuone,noinsert"
 
 -- Use OS clipboard
 if vim.fn.has('macunix') then
@@ -321,9 +319,6 @@ cmp.setup({
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
         vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
         end,
     },
     window = {
@@ -345,7 +340,10 @@ cmp.setup({
         ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     }),
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lua" },
+		{ name = "path" },
         { name = 'vsnip' }, 
     }, {
         { name = 'buffer' },
