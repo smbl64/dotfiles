@@ -2,7 +2,7 @@
 vim.o.swapfile = false
 
 -- make backspace behave like normal again
-vim.o.backspace = 2
+vim.o.backspace = "indent,eol,start"
 
 vim.g.mapleader = " "
 
@@ -286,7 +286,7 @@ vim.api.nvim_create_autocmd('WinLeave', {
 
 require('nvim-treesitter.configs').setup {
     --ensure_isntalled = "all",
-    ensure_installed = { "rust", "vim", "lua", "help" },
+    ensure_installed = { "yaml", "json", "rust", "vim", "lua", "help" },
 
     -- Automatically install missing parsers when entering buffer
     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
@@ -335,16 +335,18 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({ 
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = true 
+        }),
+        ['<C-p>'] = cmp.mapping.select_prev_item(),
+        ['<C-n>'] = cmp.mapping.select_next_item(),
         ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
         ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'vsnip' }, -- For vsnip users.
-        -- { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
+        { name = 'vsnip' }, 
     }, {
         { name = 'buffer' },
     })
@@ -421,6 +423,10 @@ require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     capabilities = capabilities,
 }
+require('lspconfig')['gopls'].setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
 require('lspconfig')['lua_ls'].setup{
     on_attach = on_attach,
     capabilities = capabilities,
@@ -454,3 +460,38 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
+
+
+require('lspconfig').perlpls.setup{
+    capabilities = capabilities,
+}
+
+vim.cmd([[
+    set statusline=
+    set statusline+=%#CursorIM#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+    set statusline+=%#Search#%{(mode()=='i')?'\ \ INSERT\ ':''}
+    set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+    set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+    set statusline+=%#Visual#                " colour
+    set statusline+=%{&paste?'\ PASTE\ ':''}
+    set statusline+=%{&spell?'\ SPELL\ ':''}
+    set statusline+=%#CursorIM#              " colour
+    set statusline+=%R                       " readonly flag
+    set statusline+=%M                       " modified [+] flag
+    set statusline+=%#CursorLine#            " colour
+    set statusline+=\ %f\                    " short file name
+    set statusline+=%=                       " right align
+    set statusline+=%#CursorLine#            " colour
+    set statusline+=\ %y\                    " file type
+    set statusline+=%#CursorIM#              " colour
+    "set statusline+=%{coc#status()} 
+    set statusline+=%#CursorIM#              " colour
+    set statusline+=\ %3l:%-2c\              " line + column
+    set statusline+=%#CursorIM#              " colour
+    set statusline+=\ %3p%%\                 " percentage
+]])
+
+
+-- Fidget shows LSP status updates in bottom right corner
+require'fidget'.setup{}
+
