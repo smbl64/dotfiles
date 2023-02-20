@@ -5,7 +5,7 @@ is_mac=0; [[ "$OSTYPE" == "darwin"* ]] && is_mac=1
 export CLICOLOR=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export EDITOR=vim
+export EDITOR=nvim
 alias ls="ls --color=always"
 alias ll="ls -l --group-directories-first"
 alias llh="ls -lh --group-directories-first"
