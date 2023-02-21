@@ -2,6 +2,8 @@
 
 set -eu
 
+# Cargo plugins and other useful tools that
+# can be installed with cargo.
 cargo install \
     bacon \
     bunyan \
@@ -22,7 +24,8 @@ cargo install \
     cargo-watch \
     cross \
     flamegraph \
-    grcov
+    grcov \
+    tree-sitter-cli
 
 rustup component add \
     rustfmt \
