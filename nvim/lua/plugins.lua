@@ -27,8 +27,8 @@ return require('packer').startup(function(use)
     -- GUI enhancements
     use 'machakann/vim-highlightedyank'
 
-    -- Justfile
-    use 'NoahTheDuke/vim-just'
+    ---- Justfile
+    --use 'NoahTheDuke/vim-just'
 
     -- Fuzzy finder
     use {'junegunn/fzf', run = 'cd ~/.fzf && ./install --all' }
@@ -116,6 +116,16 @@ return require('packer').startup(function(use)
     use 'hrsh7th/nvim-cmp'
 
     use 'j-hui/fidget.nvim'
+
+    -- A library of Lua functions
+    use "nvim-lua/plenary.nvim"
+    use {
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        requires = {
+            {'nvim-lua/plenary.nvim'}
+        }
+    }
 
     -- This must be the last thing
     if packer_bootstrap then
