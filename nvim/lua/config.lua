@@ -247,7 +247,6 @@ vim.api.nvim_create_autocmd(
         group = customftGroup,
         pattern = '*.{yaml,yml}',
         command = 'set filetype=yaml foldmethod=indent',
-        group = customftGroup
     }
 )
 
@@ -330,9 +329,9 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ 
+        ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
-            select = true 
+            select = true
         }),
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -344,7 +343,7 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
-        { name = 'vsnip' }, 
+        { name = 'vsnip' },
     }, {
         { name = 'buffer' },
     })
@@ -451,7 +450,6 @@ require('lspconfig')['lua_ls'].setup{
 }
 require('lspconfig')['rust_analyzer'].setup{
     on_attach = on_attach,
-    flags = lsp_flags,
     capabilities = capabilities,
     -- Server-specific settings...
     settings = {
