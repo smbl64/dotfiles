@@ -7,6 +7,9 @@ add_newline = true
 # Show full path
 truncation_length = 0
 
+[cmd_duration]
+format = ""
+
 [golang]
 format = ""
 
