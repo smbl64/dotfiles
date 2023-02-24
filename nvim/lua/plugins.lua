@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
     --use 'NoahTheDuke/vim-just'
 
     -- Fuzzy finder
-    use {'junegunn/fzf', run = 'cd ~/.fzf && ./install --all' }
+    use {'junegunn/fzf' }
     use 'junegunn/fzf.vim'
 
     use 'mileszs/ack.vim'
