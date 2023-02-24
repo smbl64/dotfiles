@@ -68,12 +68,6 @@ return require('packer').startup(function(use)
     use 'mrk21/yaml-vim'
     use 'hashivim/vim-terraform'
 
-    -- Snippet engine
-    --use 'MarcWeber/vim-addon-mw-utils'
-    --use 'tomtom/tlib_vim'
-    --use 'garbas/vim-snipmate'
-    --use 'honza/vim-snippets'
-
     -- Web development
     use 'pangloss/vim-javascript'
     use 'maxmellon/vim-jsx-pretty'
@@ -106,6 +100,14 @@ return require('packer').startup(function(use)
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use 'neovim/nvim-lspconfig'
+
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v<CurrentMajor>.*",
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
 
     use 'hrsh7th/cmp-nvim-lsp'
 	use "hrsh7th/cmp-nvim-lsp-signature-help"

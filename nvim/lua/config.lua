@@ -55,11 +55,6 @@ vim.o.timeoutlen = 1000
 vim.g.netrw_banner = 0  -- No help banner
 vim.g.netrw_liststyle = 3  -- tree
 
--- UltiSnip configs
-vim.g.UltiSnipsExpandTrigger = "<s-tab>"
-vim.g.UltiSnipsJumpForwardTrigger = "<c-b>"
-vim.g.UltiSnipsJumpBackwardTrigger = "<c-z>"
-
 -- vim-go configs
 vim.g.go_template_autocreate = 0
 vim.g.go_def_mapping_enabled = 0
@@ -91,11 +86,6 @@ vim.g.ale_linters = {
 vim.g.ale_linters_ignore = {
     ['rust'] = {'rls', 'rustc'}
 }
-
-vim.g.snipMate = { ['snippet_version'] = 1 }
-
--- TODO: <<<<<<<<< CoC configs were here
---
 
 -- Always show the signcolumn, otherwise it would shift
 -- the text each time diagnostics appear/become resolved.
@@ -317,7 +307,7 @@ cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            require('luasnip').lsp_expand(args.body)
         end,
     },
     window = {
@@ -384,7 +374,7 @@ local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+--vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
