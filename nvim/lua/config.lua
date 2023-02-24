@@ -189,7 +189,7 @@ vim.o.undofile = true
 
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-vim.cmd.colorscheme("base16-gruvbox-dark-hard")
+vim.cmd.colorscheme "base16-gruvbox-dark-hard"
 
 -- Config for showing invisible chars
 vim.o.listchars = 'tab:▸\\ ,eol:¬,space:␣'
@@ -333,7 +333,7 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
-        { name = 'vsnip' },
+        { name = 'luasnip' },
     }, {
         { name = 'buffer' },
     })
@@ -402,19 +402,24 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-require('lspconfig')['pyright'].setup{
+local lsp = require('lspconfig')
+
+lsp.pyright.setup{
     on_attach = on_attach,
     capabilities = capabilities,
 }
-require('lspconfig')['tsserver'].setup{
+
+lsp.tsserver.setup{
     on_attach = on_attach,
     capabilities = capabilities,
 }
-require('lspconfig')['gopls'].setup{
+
+lsp.gopls.setup{
     on_attach = on_attach,
     capabilities = capabilities,
 }
-require('lspconfig')['lua_ls'].setup{
+
+lsp.lua_ls.setup{
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -438,7 +443,7 @@ require('lspconfig')['lua_ls'].setup{
         },
     },
 }
-require('lspconfig')['rust_analyzer'].setup{
+lsp.rust_analyzer.setup{
     on_attach = on_attach,
     capabilities = capabilities,
     -- Server-specific settings...
@@ -447,7 +452,7 @@ require('lspconfig')['rust_analyzer'].setup{
     }
 }
 
-require('lspconfig').jdtls.setup{
+lsp.jdtls.setup{
     on_attach = on_attach,
     capabilities = capabilities,
 }
