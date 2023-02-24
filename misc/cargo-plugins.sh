@@ -25,6 +25,7 @@ cargo install \
     cross \
     flamegraph \
     grcov \
+    rtx-cli \
     sccache \
     tree-sitter-cli
 
