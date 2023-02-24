@@ -1,5 +1,3 @@
-source "$HOME/.bash_prompt"
-
 is_mac=0; [[ "$OSTYPE" == "darwin"* ]] && is_mac=1
 
 export CLICOLOR=1
@@ -142,6 +140,12 @@ if [[ -x "$(command -v exa)" ]]
 then
     alias ls=exa
     alias ll="exa -l --group-directories-first --bytes"
+fi
+#
+# Use `startship` if available
+if [[ -x "$(command -v exa)" ]]
+then
+    eval "$(starship init bash)"
 fi
 
 # Load the local bashrc. 
