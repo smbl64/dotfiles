@@ -1,0 +1,18 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+[directory]
+# Show full path
+truncation_length = 0
+
+[golang]
+format = ""
+
+[rust]
+format = ""
+
+[python]
+format = ""
+

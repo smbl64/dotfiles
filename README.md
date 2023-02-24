@@ -7,6 +7,7 @@ My dotfiles for different apps
 - `alacritty` folder must be linked to `~/.config/alacritty` folder.
 - `tmux/tmux.conf` must be linked to `~/.tmux.conf` file.
 - `bat` folder must be linked to `~/.config/bat` folder.
+- `starship/starship.toml`  must be linked to `~/.config/starship.toml` file.
 - `ctags` folder contains the configurations for [universal ctags][ctags] and must be linked to `~/.ctags.d` folder.
 - `postgres/psqlrc` contains the configurations for `psql` command and must be linked to `~/.psqlrc` file.
 - `sqlite/sqliterc` contains the configurations for `sqlite` command and must be linked to `~/.sqliterc` file.
