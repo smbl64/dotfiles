@@ -164,10 +164,6 @@ vim.cmd([[
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
 
--- Shorter update time (for git-gutter)
-vim.o.updatetime = 300 
-
-
 vim.opt.completeopt = "menu,menuone,noinsert"
 
 -- Use OS clipboard
@@ -490,3 +486,5 @@ vim.cmd([[
 -- Fidget shows LSP status updates in bottom right corner
 require'fidget'.setup{}
 
+-- Smart and powerful comment plugin for neovim
+require('Comment').setup()

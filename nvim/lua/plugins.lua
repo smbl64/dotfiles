@@ -31,12 +31,11 @@ return require('packer').startup(function(use)
     --use 'NoahTheDuke/vim-just'
 
     -- Fuzzy finder
-    use {'junegunn/fzf' }
+    use 'junegunn/fzf'
     use 'junegunn/fzf.vim'
 
     use 'mileszs/ack.vim'
     --Plug 'scrooloose/nerdtree'
-    use 'scrooloose/nerdcommenter'
     use 'terryma/vim-expand-region'
     use 'inkarkat/vim-ingo-library'
     use 'inkarkat/vim-mark'
@@ -50,7 +49,6 @@ return require('packer').startup(function(use)
 
     use 'tpope/vim-unimpaired'
     use 'tpope/vim-fugitive'
-    use 'airblade/vim-gitgutter'
     use 'kana/vim-textobj-user'
 
     -- TODO use 'neoclide/coc.nvim', {'branch': 'release'}
@@ -97,6 +95,12 @@ return require('packer').startup(function(use)
         end,
     }
 
+    use {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    }
+
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use 'neovim/nvim-lspconfig'
@@ -118,14 +122,53 @@ return require('packer').startup(function(use)
 
     use 'j-hui/fidget.nvim'
 
-    -- A library of Lua functions
-    use "nvim-lua/plenary.nvim"
     use {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         requires = {
             {'nvim-lua/plenary.nvim'}
         }
+    }
+
+    -- Useful plugin to show you pending keybinds.
+    use { 
+        'folke/which-key.nvim',
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup { }
+        end
+    }
+
+    -- Adds git releated signs to the gutter, as well as utilities for managing changes
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup {
+                signs = {
+                    add = { text = '+' },
+                    change = { text = '~' },
+                    delete = { text = '_' },
+                    topdelete = { text = '‾' },
+                    changedelete = { text = '~' },
+                },
+                signcolumn = true,          -- Toggle with `:Gitsigns toggle_signs`
+                current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
+                current_line_blame_opts = {
+                    virt_text = true,
+                    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+                    delay = 100,
+                    ignore_whitespace = false,
+                },
+            }
+        end
+    }
+
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
     }
 
     -- This must be the last thing
