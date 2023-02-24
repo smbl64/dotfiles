@@ -25,6 +25,7 @@ cargo install \
     cross \
     flamegraph \
     grcov \
+    sccache \
     tree-sitter-cli
 
 rustup component add \
