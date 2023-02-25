@@ -120,6 +120,7 @@ fi
 
 # direnv hook
 eval "$(direnv hook bash)"
+eval "$(rtx activate bash)"
 
 # Make fzf use gitignore
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
