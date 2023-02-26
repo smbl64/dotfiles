@@ -131,14 +131,7 @@ return require('packer').startup(function(use)
     }
 
     -- Useful plugin to show you pending keybinds.
-    use { 
-        'folke/which-key.nvim',
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            require("which-key").setup { }
-        end
-    }
+    use 'folke/which-key.nvim'
 
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     use {

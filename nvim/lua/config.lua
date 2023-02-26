@@ -46,10 +46,12 @@ vim.o.splitright = true
 -- Automatically re-read the file if it's changed
 vim.o.autoread = true
 
+vim.o.timeout = true
+vim.o.timeoutlen = 300
 -- Better timeouts
-vim.o.ttimeout = true
-vim.o.ttimeoutlen = 100
-vim.o.timeoutlen = 1000
+-- vim.o.ttimeout = true
+-- vim.o.ttimeoutlen = 100
+-- vim.o.timeoutlen = 1000
 
 -- netrw configs
 vim.g.netrw_banner = 0  -- No help banner
@@ -488,3 +490,5 @@ require'fidget'.setup{}
 
 -- Smart and powerful comment plugin for neovim
 require('Comment').setup()
+
+require('which-key').setup()
