@@ -10,10 +10,19 @@ truncation_length = 0
 [cmd_duration]
 disabled = true
 
+[git_status]
+disabled = true
+
 [golang]
 disabled = true
 
+[nodejs]
+disabled = true
+
 [rust]
+disabled = true
+
+[perl]
 disabled = true
 
 [python]
