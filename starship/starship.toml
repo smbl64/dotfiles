@@ -3,11 +3,14 @@
 
 add_newline = true
 
+[cmd_duration]
+disabled = true
+
 [directory]
 # Show full path
 truncation_length = 0
 
-[cmd_duration]
+[docker_context]
 disabled = true
 
 [git_status]
