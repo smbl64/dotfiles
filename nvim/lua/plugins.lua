@@ -130,6 +130,8 @@ return require('packer').startup(function(use)
         }
     }
 
+    use 'simrat39/rust-tools.nvim'
+
     -- Useful plugin to show you pending keybinds.
     use 'folke/which-key.nvim'
 
