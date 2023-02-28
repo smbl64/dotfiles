@@ -62,7 +62,7 @@ return require('packer').startup(function(use)
     use 'vim-scripts/indentpython.vim'
     use 'smbl64/vim-black-macchiato'
 
-    use 'rust-lang/rust.vim'
+    -- use 'rust-lang/rust.vim'
     use 'mrk21/yaml-vim'
     use 'hashivim/vim-terraform'
 
@@ -123,7 +123,7 @@ return require('packer').startup(function(use)
     use 'j-hui/fidget.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim',
+        'https://drive.google.com/drive/u/0/folders/0AJ5KvdmiVi8vUk9PVAnvim-telescope/telescope.nvim',
         branch = '0.1.x',
         requires = {
             {'nvim-lua/plenary.nvim'}
