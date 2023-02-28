@@ -123,7 +123,7 @@ return require('packer').startup(function(use)
     use 'j-hui/fidget.nvim'
 
     use {
-        'https://drive.google.com/drive/u/0/folders/0AJ5KvdmiVi8vUk9PVAnvim-telescope/telescope.nvim',
+    	'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         requires = {
             {'nvim-lua/plenary.nvim'}
