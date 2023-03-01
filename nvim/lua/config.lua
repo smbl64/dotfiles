@@ -160,7 +160,7 @@ vim.o.belloff = 'all'
 
 -- Permanent undo
 vim.o.undodir = vim.fn.expand('~') .. '/.config/nvim/undo-dir'
-vim.o.undofile = true 
+vim.o.undofile = true
 
 vim.o.termguicolors = true
 vim.o.background = 'dark'
@@ -180,10 +180,6 @@ vim.cmd([[
                     \ <leader>pb oimport pdb; pdb.set_trace()<esc>
 
     augroup END
-
-    " Show list of all files or buffers using fzf
-    nnoremap <leader>b <cmd>FzfLua buffers<CR>
-    nnoremap <C-p> <cmd>FzfLua files<CR>
 
     " Expand %% to current directory (in Ex command mode)
     cabbr <expr> %% expand('%:p:h')

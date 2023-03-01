@@ -13,18 +13,22 @@ vim.keymap.set({'n', 'o', 'v'}, '<c-h>', '<c-w>h')
 -- Use standard regex for searching (via '\V' option)
 vim.keymap.set({'n', 'v'}, '/', '/\\V')
 
+local wk = require('which-key')
+wk.register({
+    ["<Space>"] = { "<cmd>noh<cr>", "Clear search result" },
+    b = { "<cmd>FzfLua buffers<cr>", "Show buffers" },
+    f = {
+        name = "file",
+        f = { "<cmd>FzfLua files<cr>", "Find file" },
+        r = { "<cmd>FzfLua oldfiles<cr>", "Open recent file", noremap=false },
+    },
+    l = { "<cmd>set list!<cr>", "Show hidden chars" },
+    m = { "<Plug>MarkSet", "Mark current word", mode = { "n", "x" } },
+    q = { "<cmd>q<cr>" , "Quit buffer" },
+    s = { "<cmd>FzfLua grep_cword<cr>" , "Search for current word" },
+}, { prefix = "<leader>"})
 
-vim.keymap.set({'n', 'x'}, '<Leader>m', '<Plug>MarkSet')
 
--- Easily quit buffers
-vim.keymap.set('n', '<Leader>q', ':q<cr>')
-
--- Show invisible chars
-vim.keymap.set('n', '<Leader>l', ':set list!<cr>')
-
--- Grep the word under cursor
-vim.keymap.set('n', '<Leader>s', '<cmd>FzfLua grep_cword<cr>')
-
--- Clean the search result by hitting space
-vim.keymap.set('n', '<Leader><Space>', '<cmd>noh<cr>')
-
+wk.register({
+    ["<C-p>"] = { "<cmd>FzfLua files<cr>", "Find file" },
+})
