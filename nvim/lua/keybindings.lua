@@ -19,18 +19,12 @@ vim.keymap.set({'n', 'x'}, '<Leader>m', '<Plug>MarkSet')
 -- Easily quit buffers
 vim.keymap.set('n', '<Leader>q', ':q<cr>')
 
--- SHow invisible chars
+-- Show invisible chars
 vim.keymap.set('n', '<Leader>l', ':set list!<cr>')
 
---function _G.reload_nvim_conf()
---  for name,_ in pairs(package.loaded) do
---    if name:match('^core') or name:match('^lsp') or name:match('^plugins') then
---      package.loaded[name] = nil
---    end
---  end
+-- Grep the word under cursor
+vim.keymap.set('n', '<Leader>s', '<cmd>FzfLua grep_cword<cr>')
 
---  dofile(vim.env.MYVIMRC)
---  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
---end
+-- Clean the search result by hitting space
+vim.keymap.set('n', '<Leader><Space>', '<cmd>noh<cr>')
 
---vim.keymap.set('n', '<Leader>ev', reload_nvim_conf)

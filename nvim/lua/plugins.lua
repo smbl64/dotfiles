@@ -31,8 +31,12 @@ return require('packer').startup(function(use)
     --use 'NoahTheDuke/vim-just'
 
     -- Fuzzy finder
-    use 'junegunn/fzf'
-    use 'junegunn/fzf.vim'
+    -- use 'junegunn/fzf'
+    -- use 'junegunn/fzf.vim'
+    use { 'ibhagwan/fzf-lua',
+        -- optional for icon support
+        requires = { 'nvim-tree/nvim-web-devicons' }
+    }
 
     use 'mileszs/ack.vim'
     --Plug 'scrooloose/nerdtree'

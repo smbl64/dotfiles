@@ -139,29 +139,6 @@ vim.cmd([[
     command! TrimTrailingSpaces call TrimTrailingSpaces()
 ]])
 
-
-
-vim.cmd([[
-" Ack the current word
-noremap <Leader>s :execute('Ack! ' . expand('<cword>'))<cr>
-]])
-
-vim.cmd([[
-    " Read help for the word under the cursor (vim files)
-    augroup VimFiles
-        autocmd!
-        autocmd FileType vim nnoremap <buffer> <Leader>h :execute "help " . expand("<cword>")<cr>
-    augroup END
-
-    " clean the search result by hitting space
-    nnoremap <silent> <leader><space> :noh<cr>
-
-    " open vimrc fast!
-    nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-    nnoremap <leader>sv :source $MYVIMRC<cr>
-]])
-
-
 -- Use space for code folding
 vim.o.foldmethod = 'indent'
 vim.o.foldlevel = 99
@@ -205,12 +182,8 @@ vim.cmd([[
     augroup END
 
     " Show list of all files or buffers using fzf
-    nnoremap <leader>b :Buffers<CR>
-    nnoremap <C-p> :Files<CR>
-
-    " Show list of all files or buffers using fzf
-    nnoremap <leader>b :Buffers<CR>
-    nnoremap <C-p> :Files<CR>
+    nnoremap <leader>b <cmd>FzfLua buffers<CR>
+    nnoremap <C-p> <cmd>FzfLua files<CR>
 
     " Expand %% to current directory (in Ex command mode)
     cabbr <expr> %% expand('%:p:h')
@@ -501,3 +474,5 @@ rt.setup({
     end,
   },
 })
+
+require('fzf-lua').setup()
