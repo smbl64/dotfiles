@@ -18,7 +18,7 @@ wk.register({
     ["<Space>"] = { "<cmd>noh<cr>", "Clear search result" },
     b = { "<cmd>FzfLua buffers<cr>", "Show buffers" },
     f = {
-        name = "File",
+        name = "file",
         f = { "<cmd>FzfLua files<cr>", "Find file" },
         r = { "<cmd>FzfLua oldfiles<cr>", "Open recent file", noremap=false },
     },
@@ -26,7 +26,7 @@ wk.register({
     m = { "<Plug>MarkSet", "Mark current word", mode = { "n", "x" } },
     q = { "<cmd>q<cr>" , "Quit buffer" },
     s = { "<cmd>FzfLua grep_cword<cr>" , "Search for current word" },
-    w = { name = "Workspace" }
+    w = { name = "workspace" }
 }, { prefix = "<leader>"})
 
 
