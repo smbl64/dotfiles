@@ -16,17 +16,20 @@ vim.keymap.set({'n', 'v'}, '/', '/\\V')
 local wk = require('which-key')
 wk.register({
     ["<Space>"] = { "<cmd>noh<cr>", "Clear search result" },
-    b = { "<cmd>FzfLua buffers<cr>", "Show buffers" },
-    f = {
-        name = "file",
+    l = {
+        name = "list",
         f = { "<cmd>FzfLua files<cr>", "Find file" },
         r = { "<cmd>FzfLua oldfiles<cr>", "Open recent file", noremap=false },
+        b = { "<cmd>FzfLua buffers<cr>", "Show buffers" },
     },
-    l = { "<cmd>set list!<cr>", "Show hidden chars" },
-    m = { "<Plug>MarkSet", "Mark current word", mode = { "n", "x" } },
     q = { "<cmd>q<cr>" , "Quit buffer" },
     s = { "<cmd>FzfLua grep_cword<cr>" , "Search for current word" },
-    w = { name = "workspace" }
+    w = { name = "workspace" },
+    x = {
+        name = "misc",
+        h = { "<cmd>set list!<cr>", "Show hidden chars" },
+        m = { "<Plug>MarkSet", "Toggle mark on current word", mode = { "n", "x" } },
+    },
 }, { prefix = "<leader>"})
 
 
