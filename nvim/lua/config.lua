@@ -343,8 +343,19 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    if client.server_capabilities.completionProvider then
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+        vim.bo[bufnr].completefunc = "v:lua.vim.lsp.omnifunc"
+    end
+
+    if client.server_capabilities.definitionProvider then
+        vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
+    end
+
+    if client.server_capabilities.documentFormattingProvider then
+        vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr()"
+    end
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
