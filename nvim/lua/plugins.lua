@@ -109,6 +109,8 @@ return require('packer').startup(function(use)
     use "williamboman/mason-lspconfig.nvim"
     use 'neovim/nvim-lspconfig'
 
+    use "lukas-reineke/lsp-format.nvim"
+
     use({
         "L3MON4D3/LuaSnip",
         -- follow latest release.

@@ -333,6 +333,8 @@ cmp.setup.cmdline(':', {
     })
 })
 
+require("lsp-format").setup {}
+
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -343,6 +345,8 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+    require("lsp-format").on_attach(client)
+
     if client.server_capabilities.completionProvider then
         -- Enable completion triggered by <c-x><c-o>
         vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -478,8 +482,7 @@ local rt = require("rust-tools")
 
 rt.setup({
   server = {
-    on_attach = function(_, bufnr)
-    end,
+    on_attach = on_attach
   },
 })
 
