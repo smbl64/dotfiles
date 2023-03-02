@@ -484,3 +484,4 @@ rt.setup({
 })
 
 require('fzf-lua').setup()
+require('neogit').setup()

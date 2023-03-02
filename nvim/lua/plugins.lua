@@ -52,8 +52,8 @@ return require('packer').startup(function(use)
     --Plug 'jiangmiao/auto-pairs'
 
     use 'tpope/vim-unimpaired'
-    use 'tpope/vim-fugitive'
     use 'kana/vim-textobj-user'
+ 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
     -- TODO use 'neoclide/coc.nvim', {'branch': 'release'}
     -- Plug 'easymotion/vim-easymotion'
