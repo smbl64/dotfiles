@@ -54,8 +54,8 @@ vim.o.timeoutlen = 300
 -- vim.o.timeoutlen = 1000
 
 -- netrw configs
-vim.g.netrw_banner = 0  -- No help banner
-vim.g.netrw_liststyle = 3  -- tree
+vim.g.netrw_banner = 0 -- No help banner
+vim.g.netrw_liststyle = 3 -- tree
 
 -- vim-go configs
 vim.g.go_template_autocreate = 0
@@ -63,7 +63,7 @@ vim.g.go_def_mapping_enabled = 0
 vim.g.go_fmt_command = "gopls"
 vim.g.go_imports_mode = "gopls"
 vim.g.go_gopls_gofumpt = 1
-vim.g.go_doc_keywordprg_enabled = 0  -- Disable K keybinding (GoDoc)
+vim.g.go_doc_keywordprg_enabled = 0 -- Disable K keybinding (GoDoc)
 
 -- vim-mark config
 vim.g.mw_no_mappings = 1
@@ -81,12 +81,12 @@ vim.g.ale_echo_msg_format = 'ale: [%linter%] [%severity%] %s'
 -- This is what was there before:
 -- \ 'rust': ['analyzer', 'cargo', 'rls', 'rustc']
 vim.g.ale_linters = {
-    ['python'] = {'flake8'},
+    ['python'] = { 'flake8' },
     ['rust'] = {},
     ['go'] = {},
 }
 vim.g.ale_linters_ignore = {
-    ['rust'] = {'rls', 'rustc'}
+    ['rust'] = { 'rls', 'rustc' }
 }
 
 -- Always show the signcolumn, otherwise it would shift
@@ -120,9 +120,9 @@ vim.g.formatters_python = { 'black', 'yapf', 'autopep8' }
 -- Use 'ripgrep' or 'ag' for ack plugin
 -- Both are configured to check for literal strings (so, no regex)
 if vim.fn.executable('rg') then
-  vim.g.ackprg = [[rg --fixed-strings --vimgrep --hidden --glob "!.git/"]]
+    vim.g.ackprg = [[rg --fixed-strings --vimgrep --hidden --glob "!.git/"]]
 else
-  vim.g.ackprg = [[ag --literal --vimgrep]]
+    vim.g.ackprg = [[ag --literal --vimgrep]]
 end
 
 
@@ -227,14 +227,14 @@ vim.api.nvim_create_autocmd('FileType', {
 local bgHighlightGroup = vim.api.nvim_create_augroup('BgHighlight', { clear = true })
 vim.api.nvim_create_autocmd('WinEnter', {
     group = bgHighlightGroup,
-    pattern = {'*'},
+    pattern = { '*' },
     command = 'set cursorline',
 })
 
 -- Make active window more visible
 vim.api.nvim_create_autocmd('WinLeave', {
     group = bgHighlightGroup,
-    pattern = {'*'},
+    pattern = { '*' },
     command = 'set nocursorline',
 })
 
@@ -268,7 +268,7 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 
 -- Set up nvim-cmp.
-local cmp = require'cmp'
+local cmp = require 'cmp'
 
 cmp.setup({
     snippet = {
@@ -282,7 +282,7 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-b>'] = cmp.mapping.scroll_docs( -4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
@@ -296,10 +296,10 @@ cmp.setup({
         ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     }),
     sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lsp_signature_help" },
-		{ name = "nvim_lua" },
-		{ name = "path" },
+        { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help" },
+        { name = "nvim_lua" },
+        { name = "path" },
         { name = 'luasnip' },
     }, {
         { name = 'buffer' },
@@ -334,6 +334,7 @@ cmp.setup.cmdline(':', {
 })
 
 require("lsp-format").setup {}
+require('which-key').setup()
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -361,11 +362,25 @@ local on_attach = function(client, bufnr)
         vim.bo[bufnr].formatexpr = "v:lua.vim.lsp.formatexpr()"
     end
 
+    local wk = require('which-key')
+    local wk_opts = { prefix = "<leader>", buffer = bufnr, silent = true };
+
+    wk.register({ c = { name = "code actions (lsp)" } }, wk_opts)
+    wk.register({ w = { name = "workspace" } }, wk_opts)
+    wk.register({
+        l = {
+            s = {
+                name = "symbols",
+                d = { "<cmd>FzfLua lsp_document_symbols<cr>", "Show document symbols (LSP)" },
+                w = { "<cmd>FzfLua lsp_workspace_symbols<cr>", "Show workspace symbols (LSP)" },
+            }
+        }
+    }, wk_opts)
+
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-
-    local function make_opts (desc)
-        return { noremap=true, silent=true, buffer=bufnr, desc=desc }
+    local function make_opts(desc)
+        return { noremap = true, silent = true, buffer = bufnr, desc = desc }
     end
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, make_opts("Go to declaration"))
@@ -373,69 +388,68 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, make_opts("Hover"))
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, make_opts("Go to implementation"))
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, make_opts("Show signature help"))
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, make_opts("Add workspace folder"))
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, make_opts("Remove workspace folder"))
-    vim.keymap.set('n', '<space>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+    vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, make_opts("Add workspace folder"))
+    vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, make_opts("Remove workspace folder"))
+    vim.keymap.set('n', '<Leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
         make_opts("List workspace folders")
     )
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, make_opts("Go to type definition"))
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, make_opts("Rename identifier"))
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, make_opts("Code action"))
+    vim.keymap.set('n', '<Leader>cr', vim.lsp.buf.rename, make_opts("Rename identifier"))
+    vim.keymap.set('n', '<Leader>cc', vim.lsp.buf.code_action, make_opts("Show code actions"))
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, make_opts("Go to references"))
     vim.keymap.set('n', '<Leader>f', function() vim.lsp.buf.format { async = true } end, make_opts("Format buffer"))
 end
 
 local lsp = require('lspconfig')
 
-lsp.pyright.setup{
+lsp.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-lsp.tsserver.setup{
+lsp.tsserver.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-lsp.gopls.setup{
+lsp.gopls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-lsp.lua_ls.setup{
+lsp.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
         Lua = {
-        runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-        },
-        diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = {'vim'},
-        },
-        workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-            enable = false,
-        },
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
         },
     },
 }
-lsp.rust_analyzer.setup{
+lsp.rust_analyzer.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     -- Server-specific settings...
     settings = {
-      ["rust-analyzer"] = {}
+        ["rust-analyzer"] = {}
     }
 }
 
-lsp.jdtls.setup{
+lsp.jdtls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
@@ -462,7 +476,7 @@ vim.cmd([[
     set statusline+=%#CursorLine#            " colour
     set statusline+=\ %y\                    " file type
     set statusline+=%#CursorIM#              " colour
-    "set statusline+=%{coc#status()} 
+    "set statusline+=%{coc#status()}
     set statusline+=%#CursorIM#              " colour
     set statusline+=\ %3l:%-2c\              " line + column
     set statusline+=%#CursorIM#              " colour
@@ -471,19 +485,17 @@ vim.cmd([[
 
 
 -- Fidget shows LSP status updates in bottom right corner
-require'fidget'.setup{}
+require 'fidget'.setup {}
 
 -- Smart and powerful comment plugin for neovim
 require('Comment').setup()
 
-require('which-key').setup()
-
 local rt = require("rust-tools")
 
 rt.setup({
-  server = {
-    on_attach = on_attach
-  },
+    server = {
+        on_attach = on_attach
+    },
 })
 
 require('fzf-lua').setup()
