@@ -54,7 +54,7 @@ vim.o.timeoutlen = 300
 -- vim.o.timeoutlen = 1000
 
 -- netrw configs
-vim.g.netrw_banner = 0 -- No help banner
+vim.g.netrw_banner = 0    -- No help banner
 vim.g.netrw_liststyle = 3 -- tree
 
 -- vim-go configs
@@ -81,12 +81,12 @@ vim.g.ale_echo_msg_format = 'ale: [%linter%] [%severity%] %s'
 -- This is what was there before:
 -- \ 'rust': ['analyzer', 'cargo', 'rls', 'rustc']
 vim.g.ale_linters = {
-    ['python'] = { 'flake8' },
-    ['rust'] = {},
-    ['go'] = {},
+        ['python'] = { 'flake8' },
+        ['rust'] = {},
+        ['go'] = {},
 }
 vim.g.ale_linters_ignore = {
-    ['rust'] = { 'rls', 'rustc' }
+        ['rust'] = { 'rls', 'rustc' }
 }
 
 -- Always show the signcolumn, otherwise it would shift
@@ -282,18 +282,18 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs( -4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({
+            ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true
         }),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-        ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
+            ['<C-p>'] = cmp.mapping.select_prev_item(),
+            ['<C-n>'] = cmp.mapping.select_next_item(),
+            ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
+            ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
     }),
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
@@ -416,6 +416,11 @@ lsp.gopls.setup {
     capabilities = capabilities,
 }
 
+lsp.clangd.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 lsp.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -445,7 +450,7 @@ lsp.rust_analyzer.setup {
     capabilities = capabilities,
     -- Server-specific settings...
     settings = {
-        ["rust-analyzer"] = {}
+            ["rust-analyzer"] = {}
     }
 }
 
