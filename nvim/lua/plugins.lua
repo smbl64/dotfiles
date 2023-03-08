@@ -1,12 +1,12 @@
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
 
     use 'tpope/vim-unimpaired'
     use 'kana/vim-textobj-user'
- 	use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
     -- TODO use 'neoclide/coc.nvim', {'branch': 'release'}
     -- Plug 'easymotion/vim-easymotion'
@@ -120,7 +120,7 @@ return require('packer').startup(function(use)
     })
 
     use 'hrsh7th/cmp-nvim-lsp'
-	use "hrsh7th/cmp-nvim-lsp-signature-help"
+    use "hrsh7th/cmp-nvim-lsp-signature-help"
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
@@ -129,11 +129,14 @@ return require('packer').startup(function(use)
 
     use 'j-hui/fidget.nvim'
 
+    -- Neovim setup for init.lua and plugin development with full signature help etc
+    use "folke/neodev.nvim"
+
     use {
-    	'nvim-telescope/telescope.nvim',
+        'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
         requires = {
-            {'nvim-lua/plenary.nvim'}
+            { 'nvim-lua/plenary.nvim' }
         }
     }
 

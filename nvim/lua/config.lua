@@ -399,6 +399,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<Leader>f', function() vim.lsp.buf.format { async = true } end, make_opts("Format buffer"))
 end
 
+-- MUST be before lspconfig
+require("neodev").setup({})
+
 local lsp = require('lspconfig')
 
 lsp.pyright.setup {
