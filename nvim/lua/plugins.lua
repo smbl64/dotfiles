@@ -75,7 +75,8 @@ return require('packer').startup(function(use)
     use 'maxmellon/vim-jsx-pretty'
     use 'hail2u/vim-css3-syntax'
     -- Golang
-    use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
+    -- use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
+    use 'ray-x/go.nvim'
 
     use 'rodjek/vim-puppet'
 
