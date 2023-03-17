@@ -117,16 +117,10 @@ vim.cmd([[
 
 vim.g.formatters_python = { 'black', 'yapf', 'autopep8' }
 
--- Use 'ripgrep' or 'ag' for ack plugin
--- Both are configured to check for literal strings (so, no regex)
 if vim.fn.executable('rg') then
     vim.g.ackprg = [[rg --fixed-strings --vimgrep --hidden --glob "!.git/"]]
-else
-    vim.g.ackprg = [[ag --literal --vimgrep]]
 end
 
-
--- TODO
 vim.cmd([[
     " Trim the whitespace
     " https://vi.stackexchange.com/a/456/25216
@@ -169,18 +163,17 @@ vim.cmd.colorscheme "base16-gruvbox-dark-hard"
 -- Config for showing invisible chars
 vim.o.listchars = 'tab:▸\\ ,eol:¬,space:␣'
 
+local myGroup = vim.api.nvim_create_augroup("MyGroup", { clear = true })
+
+vim.api.nvim_create_autocmd("FocusLost", {
+    group = myGroup,
+    pattern = "*",
+    command = "silent! wa"
+})
+
+
 
 vim.cmd([[
-    augroup MyGroup
-        autocmd!
-        autocmd FocusLost * silent! wa
-
-        " Python specific
-        autocmd FileType python map <silent> <buffer>
-                    \ <leader>pb oimport pdb; pdb.set_trace()<esc>
-
-    augroup END
-
     " Expand %% to current directory (in Ex command mode)
     cabbr <expr> %% expand('%:p:h')
 
@@ -208,8 +201,15 @@ vim.api.nvim_create_autocmd(
 )
 
 vim.api.nvim_create_autocmd('FileType', {
+    group = customftGroup,
     pattern = 'yaml',
     command = 'setlocal ts=2 sts=2 sw=2 expandtab',
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    group = customftGroup,
+    pattern = "python",
+    command = "map <silent> <buffer> <leader>pb oimport pdb; pdb.set_trace()<esc>"
 })
 
 -- A hack to navigate yaml files with [[ and ]]
