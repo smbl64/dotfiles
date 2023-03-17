@@ -1,3 +1,3 @@
-require('plugins')
-require('config')
-require('keybindings')
+require('me.plugins')
+require('me.config')
+require('me.keybindings')
