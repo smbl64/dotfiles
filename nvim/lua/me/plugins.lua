@@ -105,6 +105,10 @@ return require('packer').startup(function(use)
         after = "nvim-treesitter",
         requires = "nvim-treesitter/nvim-treesitter",
     }
+    use {
+        "nvim-treesitter/playground",
+        requires = "nvim-treesitter/nvim-treesitter",
+    }
 
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
