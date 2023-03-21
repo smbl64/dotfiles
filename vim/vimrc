@@ -2,6 +2,10 @@
 autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
 
+set nocompatible
+
+syntax on
+
 " Disable swap files
 set noswapfile
 
@@ -131,9 +135,6 @@ augroup Mkdir
   autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
 augroup END
 
-" Open a scratch new tab
-command! Scratch tabnew | setlocal buftype=nofile | file Scratch
-
 set statusline=
 set statusline+=%#CursorIM#%{(mode()=='n')?'\ \ NORMAL\ ':''}
 set statusline+=%#Search#%{(mode()=='i')?'\ \ INSERT\ ':''}
@@ -154,11 +155,3 @@ set statusline+=%#CursorIM#              " colour
 set statusline+=\ %3l:%-2c\              " line + column
 set statusline+=%#CursorIM#              " colour
 set statusline+=\ %3p%%\                 " percentage
-
-
-" Check for local vimrc
-let local_vimrc = expand('~/.vimrc_local')
-
-if filereadable(local_vimrc)
-    exec 'source' local_vimrc
-endif
