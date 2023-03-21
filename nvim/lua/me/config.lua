@@ -506,6 +506,8 @@ rt.setup({
     },
 })
 
-require('fzf-lua').setup()
+require('fzf-lua').setup({
+    global_git_icons = false, -- makes it slow on large projects
+})
 require('neogit').setup()
 require('go').setup()
