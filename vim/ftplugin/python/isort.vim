@@ -1,1 +1,0 @@
-command! Isort :!isort %
