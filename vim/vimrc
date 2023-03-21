@@ -102,9 +102,9 @@ set belloff=all
 set undodir=~/.vim/undo-dir
 set undofile
 
-" set termguicolors
-" set background=dark
-" colorscheme base16-gruvbox-dark-hard
+set termguicolors
+set background=dark
+colorscheme PaperColor
 
 " Configs for showing invisible chars (tab etc)
 nmap <leader>l :set list!<CR>
