@@ -1,95 +1,3 @@
-call plug#begin('~/.vim/plugged')
-
-" Themes
-Plug 'chriskempson/base16-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'altercation/vim-colors-solarized'
-Plug 'yasukotelin/shirotelin'
-
-" Markdown
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
-
-" GUI enhancements
-Plug 'machakann/vim-highlightedyank'
-
-" Justfile
-Plug 'NoahTheDuke/vim-just'
-
-" Fuzzy finder
-"Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-Plug 'mileszs/ack.vim'
-"Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
-Plug 'terryma/vim-expand-region'
-Plug 'inkarkat/vim-ingo-library'
-Plug 'inkarkat/vim-mark'
-Plug 'dense-analysis/ale'
-Plug 'Chiel92/vim-autoformat'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-"Plug 'jiangmiao/auto-pairs'
-
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'kana/vim-textobj-user'
-
-" Plug 'easymotion/vim-easymotion'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Run tests in any language
-Plug 'vim-test/vim-test'
-
-" Python specific
-Plug 'bps/vim-textobj-python'
-Plug 'tmhedberg/SimpylFold'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'smbl64/vim-black-macchiato'
-
-Plug 'rust-lang/rust.vim'
-Plug 'mrk21/yaml-vim'
-Plug 'hashivim/vim-terraform'
-
-" Snippet engine
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-
-" Web development
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'hail2u/vim-css3-syntax'
-
-" Golang
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
-Plug 'rodjek/vim-puppet'
-
-" Lox
-Plug 'timmyjose-projects/lox.vim'
-
-" Dart
-Plug 'dart-lang/dart-vim-plugin'
-
-" Zig
-Plug 'ziglang/zig.vim'
-
-" Allow local vimrc files
-Plug 'jenterkin/vim-autosource'
-
-call plug#end()
-
-" More matching with %
-runtime macros/matchit.vim
-
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 autocmd! bufwritepost vimrc source %
@@ -102,29 +10,11 @@ set bs=2
 
 let mapleader = " "
 
-" Disable arrow keys
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-vnoremap <Up> <Nop>
-vnoremap <Down> <Nop>
-vnoremap <Left> <Nop>
-vnoremap <Right> <Nop>
-
 " Easier movement within windows
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-
-" Disable Ctrl-P in Insert mode, because I often hit it
-" while I wanna reach for Ctrl-[
-"imap <c-p> <Nop>
 
 " Tab configs
 set tabstop=4
@@ -178,169 +68,8 @@ set timeoutlen=1000
 let g:netrw_banner=0  " No help banner
 let g:netrw_liststyle=3  " tree
 
-" UltiSnip configs
-let g:UltiSnipsExpandTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" vim-go configs
-let g:go_template_autocreate = 0
-let g:go_def_mapping_enabled = 0
-let g:go_fmt_command = "gopls"
-let g:go_imports_mode = 'gopls'
-let g:go_gopls_gofumpt = 1
-let g:go_doc_keywordprg_enabled = 0  " Disable K keybinding (GoDoc)
-
-" vim-mark config
-let g:mw_no_mappings = 1
-nmap <unique> <Leader>m <Plug>MarkSet
-xmap <unique> <Leader>m <Plug>MarkSet
-
-" Rust configs
-let g:rustfmt_autosave = 1
-
-" Ale configs
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = 'ale: [%linter%] [%severity%] %s'
-
-" ALE linters. Rust linters are disabled, because they interfere with CoC's analysis.
-" This is what was there before:
-" \ 'rust': ['analyzer', 'cargo', 'rls', 'rustc']
-let g:ale_linters = {
-            \ 'python': ['flake8'],
-            \ 'rust': [],
-            \ 'go': [],
-            \ }
-let g:ale_linters_ignore = {'rust': ['rls', 'rustc']}
-
-let g:snipMate = { 'snippet_version' : 1 }
-
-
-" COC extensions
-let g:coc_global_extensions = [
-    \ 'coc-flutter',
-    \ 'coc-json',
-    \ 'coc-pyright',
-    \ 'coc-rust-analyzer',
-    \ 'coc-snippets',
-    \ 'coc-tsserver',
-    \ 'coc-vimlsp',
-    \ 'coc-yaml',
-    \ 'coc-zig'
-    \ ]
-
-" ------------------------
-"  COC Configs
-"  Copied from its README
-" ------------------------
-" Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1):
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-
-" Use <CR> to confirm completion
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
-function! ShowDocumentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Keyboard shortcuts
-" Example: <leader>aap for current paragraph, <leader>aw for the current word
-xmap <Leader>a <Plug>(coc-codeaction-selected)
-nmap <Leader>a <Plug>(coc-codeaction-selected)
-nmap <Leader>d <Plug>(coc-definition)
-nmap <Leader>r <Plug>(coc-rename)
-nmap <leader>. <Plug>(coc-fix-current)
-
-" To support changes in statusline
-autocmd User CocStatusChange redrawstatus
-" ------------------------
-"  End of COC Configs
-" ------------------------
-
-" Run tests
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-
-" Auto-pairs config
-let g:AutoPairsMultilineClose = 0
-
-let g:dart_format_on_save = 1
-
-augroup CustomKeyboardShortcuts
-    autocmd!
-    autocmd FileType python xmap <buffer> <Leader>f <plug>(BlackMacchiatoSelection)
-    autocmd FileType python nmap <buffer> <Leader>f <plug>(BlackMacchiatoCurrentLine)
-
-    autocmd FileType perl xmap <buffer> <Leader>f <plug>(PerlTidySelection)
-    autocmd FileType perl nmap <buffer> <Leader>f <plug>(PerlTidyCurrentLine)
-
-
-    autocmd FileType xml nnoremap <buffer> <Leader>f :%!xmllint --format %<cr>
-    autocmd FileType sql nnoremap <buffer> <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
-augroup END
-
-let g:formatters_python = ['black', 'yapf', 'autopep8']
-"
-" Use 'ripgrep' or 'ag' for ack plugin
-" Both are configured to check for literal strings (so, no regex)
-if executable('rg')
-  let g:ackprg = 'rg --fixed-strings --vimgrep --hidden --glob "!.git/"'
-elseif executable('ag')
-  let g:ackprg = 'ag --literal --vimgrep'
-endif
-
-" Trim the whitespace
-" https://vi.stackexchange.com/a/456/25216
-fun! TrimTrailingSpaces()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-
-command! TrimTrailingSpaces call TrimTrailingSpaces()
-
 " Easily quit buffers
 nnoremap <Leader>q :q<cr>
-
-" Ack the current word
-noremap <Leader>s :execute('Ack! ' . expand('<cword>'))<cr>
-
-" Read help for the word under the cursor (vim files)
-augroup VimFiles
-    autocmd!
-    autocmd FileType vim nnoremap <buffer> <Leader>h :execute "help " . expand("<cword>")<cr>
-augroup END
 
 " clean the search result by hitting space
 nnoremap <silent> <leader><space> :noh<cr>
@@ -355,9 +84,6 @@ set foldlevel=99
 
 " Shorter update time (for git gutter)
 set updatetime=300
-
-" No docstring window for python and go
-autocmd FileType python,go setlocal completeopt-=preview
 
 " Use OS clipboard
 if has('macunix')
@@ -376,27 +102,9 @@ set belloff=all
 set undodir=~/.vim/undo-dir
 set undofile
 
-" NERDTree configs
-"let NERDTreeIgnore = ['__pycache__']
-"let NERDTreeRespectWildIgnore=1
-"map <f8> :NERDTreeToggle<CR>
-
-if has('gui_running')
-    set background=dark
-    colorscheme base16-gruvbox-dark-hard
-    set guifont=Menlo\ Regular:h12
-    set linespace=2
-
-    " Remove the scrollbars. Also use console dialogs.
-    set guioptions=c
-else
-    set termguicolors
-    set background=dark
-    colorscheme base16-gruvbox-dark-hard
-    " Keep background transparent, to have a
-    " better integration with tmux.
-    "highlight Normal guibg=NONE ctermbg=NONE
-end
+" set termguicolors
+" set background=dark
+" colorscheme base16-gruvbox-dark-hard
 
 " Configs for showing invisible chars (tab etc)
 nmap <leader>l :set list!<CR>
@@ -405,60 +113,10 @@ set listchars=tab:▸\ ,eol:¬,space:␣
 augroup MyGroup
     autocmd!
     autocmd FocusLost * silent! wa
-
-    " Python specific
-    autocmd FileType python map <silent> <buffer>
-                \ <leader>pb oimport pdb; pdb.set_trace()<esc>
-
 augroup END
-
-" Show list of all files or buffers using fzf
-nnoremap <leader>b :Buffers<CR>
-nnoremap <C-p> :Files<CR>
-
-" Disable the preview window in Files command
-"let g:fzf_preview_window = ''
 
 " Expand %% to current directory (in Ex command mode)
 cabbr <expr> %% expand('%:p:h')
-
-" Abbreviation for vertical split find
-cabbrev vsf vert sfind
-
-
-" Color scheme switching
-function! SwitchColorScheme()
-    if (g:colors_name ==# "base16-gruvbox-light-hard")
-        colorscheme base16-gruvbox-dark-hard
-    else
-        colorscheme base16-gruvbox-light-hard
-    endif
-endfunction
-
-function! SwitchBackground()
-    if (&background ==# "light")
-        set background=dark
-    else
-        set background=light
-    endif
-endfunction
-
-if has('gui_running')
-    nnoremap <F9> :call SwitchBackground()<CR>
-endif
-
-augroup CustomFileTypes
-    autocmd!
-    autocmd BufNewFile,BufRead *.xml.j2 set filetype=xml
-
-    " add yaml stuffs
-    au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
-    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
-    " A hack to navigate yaml files with [[ and ]]
-    autocmd FileType yaml nnoremap <buffer> ]] /^\S<cr>:nohl<cr>
-    autocmd FileType yaml nnoremap <buffer> [[ ?^\S<cr>:nohl<cr>
-augroup END
 
 " Make active window more visible
 augroup BgHighlight
@@ -475,11 +133,6 @@ augroup END
 
 " Open a scratch new tab
 command! Scratch tabnew | setlocal buftype=nofile | file Scratch
-
-augroup sourceparents
-    autocmd!
-    autocmd VimEnter * nested call AutoSource(expand('<afile>:p:h'))
-augroup END
 
 set statusline=
 set statusline+=%#CursorIM#%{(mode()=='n')?'\ \ NORMAL\ ':''}
@@ -498,13 +151,9 @@ set statusline+=%=                       " right align
 set statusline+=%#CursorLine#            " colour
 set statusline+=\ %y\                    " file type
 set statusline+=%#CursorIM#              " colour
-set statusline+=%{coc#status()} 
-set statusline+=%#CursorIM#              " colour
 set statusline+=\ %3l:%-2c\              " line + column
 set statusline+=%#CursorIM#              " colour
 set statusline+=\ %3p%%\                 " percentage
-
-
 
 
 " Check for local vimrc
