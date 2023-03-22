@@ -158,7 +158,7 @@ vim.o.undofile = true
 
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-vim.cmd.colorscheme "base16-gruvbox-dark-hard"
+vim.cmd.colorscheme "base16-decaf"
 
 -- Config for showing invisible chars
 vim.o.listchars = 'tab:▸\\ ,eol:¬,space:␣'
