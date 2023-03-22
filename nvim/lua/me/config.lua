@@ -462,6 +462,11 @@ lsp.jdtls.setup {
     capabilities = capabilities,
 }
 
+lsp.zls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 --require('lspconfig').perlpls.setup{
 --    capabilities = capabilities,
 --}
