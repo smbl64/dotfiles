@@ -149,10 +149,17 @@ then
     eval "$(starship init bash)"
 fi
 
+# Haskell
+[ -f "/Users/mohammad/.ghcup/env" ] && source "/Users/mohammad/.ghcup/env" # ghcup-env
+
+# MacTex
+if [ $is_mac = 1 ]; then
+    export PATH="/Library/TeX/texbin:$PATH"
+fi
+
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
 [[ -s "$HOME/.bashrc_local" ]] && source "$HOME/.bashrc_local"
-
 
 # For debugging purposes
 function __show_elapsed_time {
@@ -173,3 +180,4 @@ function __show_elapsed_time {
 
     echo "Bash loaded in ${color}$diff_t ms${RESET}"
 } && __show_elapsed_time && unset -f __show_elapsed_time
+
