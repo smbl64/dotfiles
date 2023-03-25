@@ -465,6 +465,12 @@ lsp.rust_analyzer.setup {
     }
 }
 
+-- Haskell
+lsp.hls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 lsp.jdtls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
