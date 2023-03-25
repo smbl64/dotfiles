@@ -4,6 +4,7 @@ autocmd! bufwritepost vimrc source %
 
 set nocompatible
 
+filetype plugin indent on
 syntax on
 
 " Disable swap files
