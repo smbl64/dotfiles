@@ -264,7 +264,15 @@ vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 --  1. mason.nvim
 --  2. mason-lspconfig.nvim
 --  3. Setup servers via lspconfig
-require("mason").setup()
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
 require("mason-lspconfig").setup()
 
 -- Set up nvim-cmp.
