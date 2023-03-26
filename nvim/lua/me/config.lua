@@ -471,6 +471,12 @@ lsp.hls.setup {
     capabilities = capabilities,
 }
 
+-- OCaml
+lsp.ocamllsp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 lsp.jdtls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
