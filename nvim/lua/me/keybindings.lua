@@ -35,3 +35,44 @@ wk.register({
 wk.register({
     ["<C-p>"] = { "<cmd>FzfLua files<cr>", "Find file" },
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+    group = customftGroup,
+    pattern = 'perl',
+    callback = function()
+        local wk = require 'which-key'
+        wk.register({
+            f = {
+                "<plug>(PerlTidyCurrentLine)",
+                "Run perltidy on the current line",
+                mode = "n",
+            }
+        }, { prefix = "<leader>" })
+    end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    group = customftGroup,
+    pattern = 'perl',
+    callback = function()
+        wk.register({
+            f = {
+                "<plug>(PerlTidySelection)",
+                "Run perltidy on the selected lines",
+                mode = "x",
+            }
+        }, { prefix = "<leader>", mode = 'x' })
+    end,
+})
+
+-- TODO
+vim.cmd([[
+    augroup CustomKeyboardShortcuts
+        autocmd!
+        autocmd FileType python xmap <buffer> <Leader>f <plug>(BlackMacchiatoSelection)
+        autocmd FileType python nmap <buffer> <Leader>f <plug>(BlackMacchiatoCurrentLine)
+
+        autocmd FileType xml nnoremap <buffer> <Leader>f :%!xmllint --format %<cr>
+        autocmd FileType sql nnoremap <buffer> <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
+    augroup END
+]])

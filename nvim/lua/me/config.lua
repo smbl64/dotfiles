@@ -98,23 +98,6 @@ vim.g.AutoPairsMultilineClose = 0
 
 vim.g.dart_format_on_save = 1
 
-
--- TODO
-vim.cmd([[
-    augroup CustomKeyboardShortcuts
-        autocmd!
-        autocmd FileType python xmap <buffer> <Leader>f <plug>(BlackMacchiatoSelection)
-        autocmd FileType python nmap <buffer> <Leader>f <plug>(BlackMacchiatoCurrentLine)
-
-        autocmd FileType perl xmap <buffer> <Leader>f <plug>(PerlTidySelection)
-        autocmd FileType perl nmap <buffer> <Leader>f <plug>(PerlTidyCurrentLine)
-
-
-        autocmd FileType xml nnoremap <buffer> <Leader>f :%!xmllint --format %<cr>
-        autocmd FileType sql nnoremap <buffer> <Leader>f :%!sqlformat --reindent --keywords upper --identifiers lower -<cr>
-    augroup END
-]])
-
 vim.g.formatters_python = { 'black', 'yapf', 'autopep8' }
 
 if vim.fn.executable('rg') then
@@ -205,6 +188,7 @@ vim.api.nvim_create_autocmd('FileType', {
     pattern = 'yaml',
     command = 'setlocal ts=2 sts=2 sw=2 expandtab',
 })
+
 
 vim.api.nvim_create_autocmd("FileType", {
     group = customftGroup,
