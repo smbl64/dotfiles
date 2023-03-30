@@ -150,7 +150,7 @@ then
 fi
 
 # Haskell
-[ -f "/Users/mohammad/.ghcup/env" ] && source "/Users/mohammad/.ghcup/env" # ghcup-env
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 # MacTex
 if [ $is_mac = 1 ]; then
