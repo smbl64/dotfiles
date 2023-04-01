@@ -68,6 +68,12 @@ vim.g.go_doc_keywordprg_enabled = 0 -- Disable K keybinding (GoDoc)
 -- vim-mark config
 vim.g.mw_no_mappings = 1
 
+-- vimtex configs
+vim.g.tex_flavor = 'latex'          -- Default tex file format
+vim.g.vimtex_view_method = 'skim'   -- Choose which program to use to view PDF file
+vim.g.vimtex_view_skim_sync = 1     -- forward search after every successful compilation
+vim.g.vimtex_view_skim_activate = 1 -- allows change focus to skim after command `:VimtexView`
+
 -- Rust configs
 vim.g.rustfmt_autosave = 1
 

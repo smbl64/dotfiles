@@ -70,6 +70,8 @@ return require('packer').startup(function(use)
     use 'mrk21/yaml-vim'
     use 'hashivim/vim-terraform'
 
+    use 'lervag/vimtex'
+
     -- Web development
     use 'pangloss/vim-javascript'
     use 'maxmellon/vim-jsx-pretty'
