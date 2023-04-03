@@ -91,6 +91,10 @@ return require('packer').startup(function(use)
     -- Zig
     use 'ziglang/zig.vim'
 
+    -- Clojure, Lisp, Scheme etc
+    use 'Olical/conjure'
+    use 'PaterJason/cmp-conjure'
+
     -- Allow local vimrc files
     use 'jenterkin/vim-autosource'
 
