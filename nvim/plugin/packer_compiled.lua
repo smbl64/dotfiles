@@ -115,11 +115,6 @@ _G.packer_plugins = {
     path = "/Users/mohammad/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
     url = "https://github.com/hrsh7th/cmp-cmdline"
   },
-  ["cmp-conjure"] = {
-    loaded = true,
-    path = "/Users/mohammad/.local/share/nvim/site/pack/packer/start/cmp-conjure",
-    url = "https://github.com/PaterJason/cmp-conjure"
-  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/Users/mohammad/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -144,11 +139,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/mohammad/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  conjure = {
-    loaded = true,
-    path = "/Users/mohammad/.local/share/nvim/site/pack/packer/start/conjure",
-    url = "https://github.com/Olical/conjure"
   },
   ["dart-vim-plugin"] = {
     loaded = true,

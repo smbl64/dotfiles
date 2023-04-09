@@ -303,7 +303,6 @@ cmp.setup({
         { name = "nvim_lua" },
         { name = "path" },
         { name = 'luasnip' },
-        { name = 'conjure' },
     }, {
         { name = 'buffer' },
     })
@@ -400,11 +399,6 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<Leader>cc', vim.lsp.buf.code_action, make_opts("Show code actions"))
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, make_opts("Go to references"))
     vim.keymap.set('n', '<Leader>f', function() vim.lsp.buf.format { async = true } end, make_opts("Format buffer"))
-    vim.diagnostic.config({
-        virtual_text = {
-            prefix = '<<', -- Could be '●', '▎', 'x'
-        }
-    })
     vim.api.nvim_create_autocmd("CursorHold", {
         buffer = bufnr,
         callback = function()
