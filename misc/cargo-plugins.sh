@@ -8,8 +8,10 @@ cargo install \
     bacon \
     bunyan \
     cargo-audit \
+    cargo-bloat \
     cargo-cache \
     cargo-criterion \
+    cargo-deps \
     cargo-dist \
     cargo-edit \
     cargo-expand \
