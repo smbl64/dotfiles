@@ -18,6 +18,7 @@ wk.register({
     ["<Space>"] = { "<cmd>noh<cr>", "Clear search result" },
     l = {
         name = "list",
+        g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
         f = { "<cmd>FzfLua files<cr>", "Find file" },
         r = { "<cmd>FzfLua oldfiles<cr>", "Open recent file", noremap = false },
         b = { "<cmd>FzfLua buffers<cr>", "Show buffers" },

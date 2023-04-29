@@ -375,7 +375,7 @@ local on_attach = function(client, bufnr)
                 name = "symbols",
                 d = { "<cmd>FzfLua lsp_document_symbols<cr>", "Show document symbols (LSP)" },
                 r = { "<cmd>FzfLua lsp_references<cr>", "Show references (LSP)" },
-                w = { "<cmd>FzfLua lsp_workspace_symbols<cr>", "Show workspace symbols (LSP)" },
+                w = { "<cmd>FzfLua lsp_live_workspace_symbols<cr>", "Show workspace symbols (LSP)" },
             }
         }
     }, wk_opts)
