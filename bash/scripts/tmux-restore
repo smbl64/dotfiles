@@ -1,0 +1,7 @@
+#!/bin/bash
+if [[ -n ${TMUX} ]]; then
+    tmux set -u prefix
+    tmux set -u status-style
+fi
+
+#vim: ft=bash
