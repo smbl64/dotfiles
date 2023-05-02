@@ -1,0 +1,20 @@
+#!/bin/bash
+if [[ -z ${TMUX} ]]; then
+    exit;
+fi
+
+# Alternative prefix for tmux
+alt_prefix="C-q"
+
+if [[ "$(tmux show-options prefix)" == "prefix $alt_prefix" ]]; then
+    tmux set -u prefix
+    tmux set -u status-style
+    tmux display-message -d 1500 "Prefix reverted back"
+else 
+    tmux set prefix $alt_prefix
+    tmux set status-style "fg=white,bg=colour18"
+
+    # Hitting <bind-key> C-q will run this script.
+    # Second C-q has nothing to do with our $alt_prefix. I just thought hitting C-q C-q to exit "alt mode" is nice! :)
+    tmux display-message -d 1500 "Prefix set to $alt_prefix. Use $alt_prefix C-q to revert."
+fi
