@@ -60,14 +60,6 @@ vim.o.timeoutlen = 300
 vim.g.netrw_banner = 0    -- No help banner
 vim.g.netrw_liststyle = 3 -- tree
 
--- vim-go configs
-vim.g.go_template_autocreate = 0
-vim.g.go_def_mapping_enabled = 0
-vim.g.go_fmt_command = "gopls"
-vim.g.go_imports_mode = "gopls"
-vim.g.go_gopls_gofumpt = 1
-vim.g.go_doc_keywordprg_enabled = 0 -- Disable K keybinding (GoDoc)
-
 -- vim-mark config
 vim.g.mw_no_mappings = 1
 
