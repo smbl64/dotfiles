@@ -426,6 +426,19 @@ lsp.tsserver.setup {
 lsp.gopls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = {
+        gopls = {
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            },
+        },
+    },
 }
 
 lsp.clangd.setup {
