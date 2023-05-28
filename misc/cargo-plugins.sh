@@ -15,6 +15,7 @@ cargo install \
     cargo-dist \
     cargo-edit \
     cargo-expand \
+    cargo-insta \
     cargo-nextest \
     cargo-outdated \
     cargo-release \
