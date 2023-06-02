@@ -25,6 +25,8 @@ cargo install \
     cargo-udeps \
     cargo-update \
     cargo-watch \
+    cargo-xwin \
+    cargo-zigbuild \
     cross \
     flamegraph \
     grcov \
