@@ -1,37 +1,7 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
-require('lazy').setup({
-    -- Themes
-    'chriskempson/base16-vim',
-    'NLKNguyen/papercolor-theme',
-    'altercation/vim-colors-solarized',
-    'yasukotelin/shirotelin',
+return {
     -- Markdown
     'godlygeek/tabular',
     'preservim/vim-markdown',
-
-    -- GUI enhancements
-    'machakann/vim-highlightedyank',
-
-    {
-        'ibhagwan/fzf-lua',
-        -- optional for icon support
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
-    },
 
     'mileszs/ack.vim',
     'terryma/vim-expand-region',
@@ -74,7 +44,13 @@ require('lazy').setup({
     'hail2u/vim-css3-syntax',
 
     -- Golang
-    'ray-x/go.nvim',
+    {
+        'ray-x/go.nvim',
+        -- Noted: Fixed on this commit until the problem with
+        -- goimports get fixed
+        commit = '44bd0589ad22e2bb91f2ed75624c4a3bab0e5f59',
+        config = true,
+    },
 
     'rodjek/vim-puppet',
 
@@ -118,17 +94,6 @@ require('lazy').setup({
         build = "make install_jsregexp"
     },
 
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lua',
-    'hrsh7th/cmp-nvim-lsp-signature-help',
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'hrsh7th/cmp-cmdline',
-    'hrsh7th/nvim-cmp',
-    'saadparwaiz1/cmp_luasnip',
-
-    'j-hui/fidget.nvim',
-
     -- Neovim setup for init.lua and plugin development with full signature help etc
     'folke/neodev.nvim',
 
@@ -142,36 +107,5 @@ require('lazy').setup({
 
     'simrat39/rust-tools.nvim',
 
-    -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
-
-    -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup {
-                signs = {
-                    add = { text = '+' },
-                    change = { text = '~' },
-                    delete = { text = '_' },
-                    topdelete = { text = '‾' },
-                    changedelete = { text = '~' },
-                },
-                signcolumn = true,          -- Toggle with `:Gitsigns toggle_signs`
-                current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
-                current_line_blame_opts = {
-                    virt_text = true,
-                    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-                    delay = 100,
-                    ignore_whitespace = false,
-                },
-            }
-        end
-    },
-    {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    },
-})
+}

@@ -4,8 +4,6 @@ vim.o.swapfile = false
 -- make backspace behave like normal again
 vim.o.backspace = "indent,eol,start"
 
-vim.g.mapleader = " "
-
 -- Tab configs
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
@@ -261,72 +259,6 @@ require("mason").setup({
 })
 require("mason-lspconfig").setup()
 
--- Set up nvim-cmp.
-local cmp = require 'cmp'
-
-cmp.setup({
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end,
-    },
-    window = {
-        -- completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true
-        }),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 'c' }),
-        ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 'c' }),
-    }),
-    sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "nvim_lsp_signature_help" },
-        { name = "nvim_lua" },
-        { name = "path" },
-        { name = 'luasnip' },
-    }, {
-        { name = 'buffer' },
-    })
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-    sources = cmp.config.sources({
-        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-    }, {
-        { name = 'buffer' },
-    })
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline' }
-    })
-})
-
 require("lsp-format").setup {}
 require('which-key').setup()
 
@@ -408,22 +340,19 @@ local on_attach = function(client, bufnr)
     })
 end
 
--- MUST be before lspconfig
-require("neodev").setup({})
+local lspconfig = require('lspconfig')
 
-local lsp = require('lspconfig')
-
-lsp.pyright.setup {
+lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-lsp.tsserver.setup {
+lspconfig.tsserver.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-lsp.gopls.setup {
+lspconfig.gopls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -441,12 +370,12 @@ lsp.gopls.setup {
     },
 }
 
-lsp.clangd.setup {
+lspconfig.clangd.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-lsp.lua_ls.setup {
+lspconfig.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -470,7 +399,7 @@ lsp.lua_ls.setup {
         },
     },
 }
-lsp.rust_analyzer.setup {
+lspconfig.rust_analyzer.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     -- Server-specific settings...
@@ -480,23 +409,23 @@ lsp.rust_analyzer.setup {
 }
 
 -- Haskell
-lsp.hls.setup {
+lspconfig.hls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
 -- OCaml
-lsp.ocamllsp.setup {
+lspconfig.ocamllsp.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-lsp.jdtls.setup {
+lspconfig.jdtls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
 
-lsp.zls.setup {
+lspconfig.zls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
@@ -531,24 +460,11 @@ vim.cmd([[
 ]])
 
 
--- Fidget shows LSP status updates in bottom right corner
-require 'fidget'.setup {}
-
--- Smart and powerful comment plugin for neovim
-require('Comment').setup()
-
-local rt = require("rust-tools")
-
-rt.setup({
+require("rust-tools").setup({
     server = {
         on_attach = on_attach
     },
 })
-
-require('fzf-lua').setup({
-    global_git_icons = false, -- makes it slow on large projects
-})
-require('go').setup()
 
 
 -- Run gofmt + goimport on save
