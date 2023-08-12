@@ -1,160 +1,152 @@
-local ensure_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-        vim.cmd [[packadd packer.nvim]]
-        return true
-    end
-    return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-
+require('lazy').setup({
     -- Themes
-    use 'chriskempson/base16-vim'
-    use 'NLKNguyen/papercolor-theme'
-    use 'altercation/vim-colors-solarized'
-    use 'yasukotelin/shirotelin'
+    'chriskempson/base16-vim',
+    'NLKNguyen/papercolor-theme',
+    'altercation/vim-colors-solarized',
+    'yasukotelin/shirotelin',
     -- Markdown
-    use 'godlygeek/tabular'
-    use 'preservim/vim-markdown'
+    'godlygeek/tabular',
+    'preservim/vim-markdown',
 
     -- GUI enhancements
-    use 'machakann/vim-highlightedyank'
+    'machakann/vim-highlightedyank',
 
-    ---- Justfile
-    --use 'NoahTheDuke/vim-just'
-
-    -- Fuzzy finder
-    -- use 'junegunn/fzf'
-    -- use 'junegunn/fzf.vim'
-    use { 'ibhagwan/fzf-lua',
+    {
+        'ibhagwan/fzf-lua',
         -- optional for icon support
-        requires = { 'nvim-tree/nvim-web-devicons' }
-    }
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
 
-    use 'mileszs/ack.vim'
-    --Plug 'scrooloose/nerdtree'
-    use 'terryma/vim-expand-region'
-    use 'inkarkat/vim-ingo-library'
-    use 'inkarkat/vim-mark'
-    use 'dense-analysis/ale'
-    use 'Chiel92/vim-autoformat'
-    use 'michaeljsmith/vim-indent-object'
-    use 'ludovicchabant/vim-gutentags'
-    use 'tpope/vim-surround'
-    use 'tpope/vim-repeat'
+    'mileszs/ack.vim',
+    'terryma/vim-expand-region',
+    'inkarkat/vim-ingo-library',
+    'inkarkat/vim-mark',
+    'dense-analysis/ale',
+    'Chiel92/vim-autoformat',
+    'michaeljsmith/vim-indent-object',
+    'ludovicchabant/vim-gutentags',
+    'tpope/vim-surround',
+    'tpope/vim-repeat',
     --Plug 'jiangmiao/auto-pairs'
 
-    use 'tpope/vim-unimpaired'
-    use 'kana/vim-textobj-user'
-    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+    'tpope/vim-unimpaired',
+    'kana/vim-textobj-user',
+    {
+        'NeogitOrg/neogit',
+        dependencies = 'nvim-lua/plenary.nvim',
+        config = true
+    },
 
-    -- TODO use 'neoclide/coc.nvim', {'branch': 'release'}
-    -- Plug 'easymotion/vim-easymotion'
     -- Run tests in any language
-    use 'vim-test/vim-test'
+    'vim-test/vim-test',
 
     -- Python specific
-    use 'bps/vim-textobj-python'
-    use 'tmhedberg/SimpylFold'
-    use 'vim-scripts/indentpython.vim'
-    use 'smbl64/vim-black-macchiato'
+    'bps/vim-textobj-python',
+    'tmhedberg/SimpylFold',
+    'vim-scripts/indentpython.vim',
+    'smbl64/vim-black-macchiato',
 
-    -- use 'rust-lang/rust.vim'
-    use 'mrk21/yaml-vim'
-    use 'hashivim/vim-terraform'
+    -- 'rust-lang/rust.vim',
+    'mrk21/yaml-vim',
+    'hashivim/vim-terraform',
 
-    use 'lervag/vimtex'
+    'lervag/vimtex',
 
     -- Web development
-    use 'pangloss/vim-javascript'
-    use 'maxmellon/vim-jsx-pretty'
-    use 'hail2u/vim-css3-syntax'
-    -- Golang
-    -- use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
-    use 'ray-x/go.nvim'
+    'pangloss/vim-javascript',
+    'maxmellon/vim-jsx-pretty',
+    'hail2u/vim-css3-syntax',
 
-    use 'rodjek/vim-puppet'
+    -- Golang
+    'ray-x/go.nvim',
+
+    'rodjek/vim-puppet',
 
     -- Lox
-    use 'timmyjose-projects/lox.vim'
+    'timmyjose-projects/lox.vim',
 
     -- Dart
-    use 'dart-lang/dart-vim-plugin'
+    'dart-lang/dart-vim-plugin',
 
     -- Zig
-    use 'ziglang/zig.vim'
+    'ziglang/zig.vim',
 
     -- Allow local vimrc files
-    use 'jenterkin/vim-autosource'
+    'jenterkin/vim-autosource',
 
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            ts_update()
-        end,
-    }
+        build = ':TSUpdate'
+    },
 
-    use {
+    {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        after = "nvim-treesitter",
-        requires = "nvim-treesitter/nvim-treesitter",
-    }
-    use {
+        dependencies = "nvim-treesitter/nvim-treesitter",
+    },
+    {
         "nvim-treesitter/playground",
-        requires = "nvim-treesitter/nvim-treesitter",
-    }
+        dependencies = "nvim-treesitter/nvim-treesitter",
+    },
 
-    use "williamboman/mason.nvim"
-    use "williamboman/mason-lspconfig.nvim"
-    use 'neovim/nvim-lspconfig'
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
 
-    use "lukas-reineke/lsp-format.nvim"
+    'lukas-reineke/lsp-format.nvim',
 
-    use({
+    {
         "L3MON4D3/LuaSnip",
         -- follow latest release.
-        tag = "v<CurrentMajor>.*",
+        version = "2.*",
         -- install jsregexp (optional!:).
-        run = "make install_jsregexp"
-    })
+        build = "make install_jsregexp"
+    },
 
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-nvim-lua'
-    use "hrsh7th/cmp-nvim-lsp-signature-help"
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    use 'saadparwaiz1/cmp_luasnip'
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
+    'hrsh7th/nvim-cmp',
+    'saadparwaiz1/cmp_luasnip',
 
-    use 'j-hui/fidget.nvim'
+    'j-hui/fidget.nvim',
 
     -- Neovim setup for init.lua and plugin development with full signature help etc
-    use "folke/neodev.nvim"
+    'folke/neodev.nvim',
 
-    use {
+    {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
-        requires = {
+        dependencies = {
             { 'nvim-lua/plenary.nvim' }
         }
-    }
+    },
 
-    use 'simrat39/rust-tools.nvim'
+    'simrat39/rust-tools.nvim',
 
     -- Useful plugin to show you pending keybinds.
-    use 'folke/which-key.nvim'
+    'folke/which-key.nvim',
 
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    use {
+    {
         'lewis6991/gitsigns.nvim',
         config = function()
             require('gitsigns').setup {
@@ -175,17 +167,11 @@ return require('packer').startup(function(use)
                 },
             }
         end
-    }
-
-    use {
+    },
+    {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
-    }
-
-    -- This must be the last thing
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-end)
+    },
+})

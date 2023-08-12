@@ -225,7 +225,7 @@ vim.api.nvim_create_autocmd('WinLeave', {
 
 require('nvim-treesitter.configs').setup {
     --ensure_isntalled = "all",
-    ensure_installed = { "yaml", "json", "rust", "vim", "lua", "help" },
+    ensure_installed = { "yaml", "json", "rust", "vim", "lua", "vimdoc" },
 
     -- Automatically install missing parsers when entering buffer
     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
@@ -548,7 +548,6 @@ rt.setup({
 require('fzf-lua').setup({
     global_git_icons = false, -- makes it slow on large projects
 })
-require('neogit').setup()
 require('go').setup()
 
 
