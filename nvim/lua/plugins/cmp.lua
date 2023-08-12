@@ -16,6 +16,7 @@ return {
         -- luasnip completion source
         'saadparwaiz1/cmp_luasnip',
     },
+    event = { 'BufRead', 'BufNewFile', 'InsertEnter' },
     config = function()
         local cmp = require 'cmp'
 

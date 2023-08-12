@@ -17,9 +17,11 @@ return {
 
     'tpope/vim-unimpaired',
     'kana/vim-textobj-user',
+
     {
         'NeogitOrg/neogit',
         dependencies = 'nvim-lua/plenary.nvim',
+        cmd = 'Neogit',
         config = true
     },
 
@@ -78,6 +80,7 @@ return {
     {
         "nvim-treesitter/playground",
         dependencies = "nvim-treesitter/nvim-treesitter",
+        cmd = 'TSPlaygroundToggle'
     },
 
     'williamboman/mason.nvim',
@@ -88,10 +91,12 @@ return {
 
     {
         "L3MON4D3/LuaSnip",
-        -- follow latest release.
         version = "2.*",
-        -- install jsregexp (optional!:).
-        build = "make install_jsregexp"
+        build = "make install_jsregexp",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end
     },
 
     -- Neovim setup for init.lua and plugin development with full signature help etc
