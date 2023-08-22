@@ -410,6 +410,11 @@ lspconfig.hls.setup {
     capabilities = capabilities,
 }
 
+lspconfig.tailwindcss.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 -- OCaml
 lspconfig.ocamllsp.setup {
     on_attach = on_attach,
