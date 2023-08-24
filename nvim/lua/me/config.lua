@@ -336,10 +336,17 @@ end
 local lspconfig = require('lspconfig')
 
 local servers = {
-    'pyright', 'tsserver', 'clangd', 'rust_analyzer', 'hls', 'tailwindcss',
-    'ocamllsp', 'jdtls', 'zls',
-    'gopls', 'lua_ls',
-
+    'clangd',
+    'gopls',
+    'hls',
+    'jdtls',
+    'lua_ls',
+    'ocamllsp',
+    'pyright',
+    'rust_analyzer',
+    'tailwindcss',
+    'tsserver',
+    'zls',
 }
 
 -- Custom "Settings" for any of the servers above
