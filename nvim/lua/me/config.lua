@@ -99,9 +99,9 @@ vim.g.dart_format_on_save = 1
 
 vim.g.formatters_python = { 'black', 'yapf', 'autopep8' }
 
-if vim.fn.executable('rg') then
-    vim.g.ackprg = [[rg --fixed-strings --vimgrep --hidden --glob "!.git/"]]
-end
+-- if vim.fn.executable('rg') then
+--     vim.g.ackprg = [[rg --fixed-strings --vimgrep --hidden --glob "!.git/"]]
+-- end
 
 vim.cmd([[
     " Trim the whitespace
@@ -258,8 +258,7 @@ require("mason").setup({
     }
 })
 require("mason-lspconfig").setup()
-
-require("lsp-format").setup {}
+require("lsp-format").setup()
 require('which-key').setup()
 
 -- Set up lspconfig.
@@ -338,20 +337,18 @@ end
 
 local lspconfig = require('lspconfig')
 
-lspconfig.pyright.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+local servers = {
+    'pyright', 'tsserver', 'clangd', 'rust_analyzer', 'hls', 'tailwindcss',
+    'ocamllsp', 'jdtls', 'zls',
+    'gopls', 'lua_ls',
+
 }
 
-lspconfig.tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-lspconfig.gopls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
+-- Custom "Settings" for any of the servers above
+-- Keys must match the LSP name (e.g. "rust_analyzer"), and the value is
+-- what you would like to assign to "settings".
+local server_settings = {
+    gopls = {
         gopls = {
             hints = {
                 assignVariableTypes = true,
@@ -364,17 +361,7 @@ lspconfig.gopls.setup {
             },
         },
     },
-}
-
-lspconfig.clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-lspconfig.lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
+    lus_ls = {
         Lua = {
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -393,47 +380,17 @@ lspconfig.lua_ls.setup {
                 enable = false,
             },
         },
-    },
-}
-lspconfig.rust_analyzer.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    -- Server-specific settings...
-    settings = {
-        ["rust-analyzer"] = {}
     }
 }
 
--- Haskell
-lspconfig.hls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-lspconfig.tailwindcss.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- OCaml
-lspconfig.ocamllsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-lspconfig.jdtls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
-lspconfig.zls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
---require('lspconfig').perlpls.setup{
---    capabilities = capabilities,
---}
+for _, lsp in ipairs(servers) do
+    local settings = server_settings[lsp] or {}
+    lspconfig[lsp].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = settings,
+    }
+end
 
 vim.cmd([[
     set statusline=
@@ -453,7 +410,6 @@ vim.cmd([[
     set statusline+=%#CursorLine#            " colour
     set statusline+=\ %y\                    " file type
     set statusline+=%#CursorIM#              " colour
-    "set statusline+=%{coc#status()}
     set statusline+=%#CursorIM#              " colour
     set statusline+=\ %3l:%-2c\              " line + column
     set statusline+=%#CursorIM#              " colour
