@@ -37,8 +37,6 @@ vim.o.wildmode = 'longest:full,full'
 
 -- Have a better :find experience
 vim.opt.path:append('**')
-vim.opt.wildignore:append('*.pyc')
-vim.opt.wildignore:append('*./__pycache__/*')
 
 -- Open new splits on right or below
 vim.o.splitbelow = true
