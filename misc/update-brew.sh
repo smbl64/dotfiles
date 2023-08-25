@@ -22,7 +22,6 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         helm \
         kubernetes-cli \
         neovim \
-        pyenv \
         ripgrep \
         rust-analyzer \
         tmux \
