@@ -50,7 +50,7 @@
     "statusBar.foreground": "#aaaaaa",
     "statusBarItem.remoteBackground": "#582006"
   },
-  "workbench.colorTheme": "Base16 Dark Monokai",
+  "workbench.colorTheme": "Default Light Modern",
   "window.commandCenter": false,
   "editor.guides.indentation": false
 }
