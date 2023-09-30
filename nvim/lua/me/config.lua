@@ -242,7 +242,12 @@ vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 
 require('which-key').setup()
-require("lsp-format").setup()
+require("lsp-format").setup({
+    -- I use go.nvim for formatting. See format_sync_grp in this file.
+    go = {
+        exclude = { "gopls" }
+    }
+})
 require("me.statusline")
 
 
@@ -272,7 +277,7 @@ local function setup_lsp()
     -- Use an on_attach function to only map the following keys
     -- after the language server attaches to the current buffer
     local on_attach = function(client, bufnr)
-        -- require("lsp-format").on_attach(client)
+        require("lsp-format").on_attach(client)
 
         if client.server_capabilities.completionProvider then
             -- Enable completion triggered by <c-x><c-o>
