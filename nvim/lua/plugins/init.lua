@@ -50,7 +50,7 @@ return {
         'ray-x/go.nvim',
         -- Noted: Fixed on this commit until the problem with
         -- goimports get fixed
-        commit = '44bd0589ad22e2bb91f2ed75624c4a3bab0e5f59',
+        -- commit = '44bd0589ad22e2bb91f2ed75624c4a3bab0e5f59',
         config = true,
     },
 
