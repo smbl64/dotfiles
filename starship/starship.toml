@@ -12,6 +12,7 @@ disabled = true
 [directory]
 # Show full path
 truncation_length = 0
+style = 'bold green'
 
 [docker_context]
 disabled = true
