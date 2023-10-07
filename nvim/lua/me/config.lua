@@ -265,7 +265,10 @@ local function setup_lsp()
             }
         }
     })
-    require("mason-lspconfig").setup()
+    require("mason-lspconfig").setup({
+        -- Make sure servers that are configured with lspconfig are installed.
+        automatic_installation = true,
+    })
     local lspconfig = require('lspconfig')
 
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -351,6 +354,7 @@ local function setup_lsp()
         'rust_analyzer',
         'tailwindcss',
         'tsserver',
+        'yamlls',
         'zls',
     }
 
