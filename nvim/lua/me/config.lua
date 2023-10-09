@@ -221,7 +221,21 @@ vim.api.nvim_create_autocmd('WinLeave', {
 
 require('nvim-treesitter.configs').setup {
     --ensure_isntalled = "all",
-    ensure_installed = { "yaml", "json", "rust", "vim", "lua", "vimdoc" },
+    ensure_installed = {
+        "go",
+        "gomod",
+        "gosum",
+        "java",
+        "json",
+        "lua",
+        "perl",
+        "python",
+        "rust",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+    },
 
     -- Automatically install missing parsers when entering buffer
     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
