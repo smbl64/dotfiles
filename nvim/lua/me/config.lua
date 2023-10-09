@@ -353,6 +353,7 @@ local function setup_lsp()
         'pyright',
         'rust_analyzer',
         'tailwindcss',
+        'terraformls',
         'tsserver',
         'yamlls',
         'zls',
