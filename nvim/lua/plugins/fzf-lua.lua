@@ -2,7 +2,7 @@ local fzf_cmd = os.getenv("FZF_DEFAULT_COMMAND")
 if fzf_cmd == nil or fzf_cmd == "" then
     -- Taken from Fzf-Lua docs here
     -- https://github.com/ibhagwan/fzf-lua/tree/main#default-options
-    fzf_cmd = "--color=never --files --hidden --follow -g '!.git'"
+    fzf_cmd = "rg --color=never --files --hidden --follow -g '!.git'"
 end
 
 return {
