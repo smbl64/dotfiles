@@ -23,6 +23,19 @@ return {
         local cmp = require 'cmp'
 
         cmp.setup({
+            formatting = {
+                format = function(entry, vim_item)
+                    -- Source
+                    vim_item.menu = ({
+                        nvim_lsp = "[LSP]",
+                        luasnip = "[LuaSnip]",
+                        buffer = "[Buffer]",
+                        nvim_lua = "[Lua]",
+                        path = "[Path]",
+                    })[entry.source.name]
+                    return vim_item
+                end
+            },
             snippet = {
                 -- REQUIRED - you must specify a snippet engine
                 expand = function(args)
