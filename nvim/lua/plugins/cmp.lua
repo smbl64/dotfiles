@@ -17,6 +17,8 @@ return {
         'hrsh7th/cmp-cmdline',
         -- luasnip completion source
         'saadparwaiz1/cmp_luasnip',
+        -- spellchecker
+        'f3fora/cmp-spell'
     },
     event = { 'BufRead', 'BufNewFile', 'InsertEnter' },
     config = function()
@@ -32,6 +34,7 @@ return {
                         buffer = "[Buffer]",
                         nvim_lua = "[Lua]",
                         path = "[Path]",
+                        spell = "[Spell]",
                     })[entry.source.name]
                     return vim_item
                 end
@@ -83,6 +86,15 @@ return {
                     { name = "nvim_lsp_signature_help" },
                     { name = "nvim_lua" },
                     { name = "path" },
+                    {
+                        name = "spell",
+                        option = {
+                            keep_all_entries = false,
+                            enable_in_context = function()
+                                return true
+                            end,
+                        },
+                    },
                 },
                 {
                     { name = 'buffer' },
