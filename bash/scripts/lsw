@@ -1,1 +1,1 @@
-ls -l $(which $1)
+ls -l $(readlink -f `which $1`)
