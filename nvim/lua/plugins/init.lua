@@ -17,13 +17,7 @@ return {
 
     'tpope/vim-unimpaired',
     'kana/vim-textobj-user',
-
-    {
-        'NeogitOrg/neogit',
-        dependencies = 'nvim-lua/plenary.nvim',
-        cmd = 'Neogit',
-        config = true
-    },
+    'tpope/vim-fugitive',
 
     -- Run tests in any language
     'vim-test/vim-test',
