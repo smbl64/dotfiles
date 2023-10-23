@@ -369,6 +369,7 @@ local function setup_lsp()
         'tailwindcss',
         'terraformls',
         'tsserver',
+        'volar',
         'yamlls',
         'zls',
     }
