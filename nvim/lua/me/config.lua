@@ -359,14 +359,15 @@ local function setup_lsp()
     end
     local servers = {
         'clangd',
+        'cssls',
         'gopls',
         'hls',
+        'html',
         'jdtls',
         'lua_ls',
         'ocamllsp',
         'pyright',
         'rust_analyzer',
-        'tailwindcss',
         'terraformls',
         'tsserver',
         'volar',
