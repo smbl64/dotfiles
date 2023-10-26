@@ -107,4 +107,10 @@ return {
     'simrat39/rust-tools.nvim',
 
     'folke/which-key.nvim',
+
+    {
+        "NoahTheDuke/vim-just",
+        event = { "BufReadPre", "BufNewFile" },
+        ft = { "\\cjustfile", "*.just", ".justfile" },
+    }
 }
