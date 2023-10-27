@@ -89,7 +89,14 @@ return {
         build = "make install_jsregexp",
         dependencies = { "rafamadriz/friendly-snippets" },
         config = function()
-            require("luasnip.loaders.from_vscode").lazy_load()
+            local vscode_loader = require("luasnip.loaders.from_vscode")
+
+            -- friendly-snippets
+            vscode_loader.lazy_load()
+
+            -- my custom snippets
+            local path = vim.fn.stdpath "config" .. "/snippets"
+            vscode_loader.lazy_load({ paths = path })
         end
     },
 
