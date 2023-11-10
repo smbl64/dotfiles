@@ -3,6 +3,9 @@ return {
     'godlygeek/tabular',
     'preservim/vim-markdown',
 
+    -- Working with ollama
+    'David-Kunz/gen.nvim',
+
     'mileszs/ack.vim',
     'terryma/vim-expand-region',
     'inkarkat/vim-ingo-library',

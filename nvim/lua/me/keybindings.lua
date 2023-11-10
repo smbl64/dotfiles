@@ -41,7 +41,6 @@ vim.api.nvim_create_autocmd('FileType', {
     group = customftGroup,
     pattern = 'perl',
     callback = function()
-        local wk = require 'which-key'
         wk.register({
             f = {
                 "<plug>(PerlTidyCurrentLine)",
