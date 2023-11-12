@@ -71,19 +71,11 @@ vim.g.rustfmt_autosave = 1
 -- Ale configs
 vim.g.ale_echo_msg_error_str = 'E'
 vim.g.ale_echo_msg_warning_str = 'W'
-vim.g.ale_echo_msg_format = 'ale: [%linter%] [%severity%] %s'
-
-
--- ALE linters. Rust linters are disabled, because they interfere with CoC's analysis.
--- This is what was there before:
--- \ 'rust': ['analyzer', 'cargo', 'rls', 'rustc']
+vim.g.ale_echo_msg_format = '(ale) [%severity%] %linter%: %s'
+vim.g.ale_linters_explicit = 1
 vim.g.ale_linters = {
-    ['python'] = { 'flake8' },
-    ['rust'] = {},
-    ['go'] = {},
-}
-vim.g.ale_linters_ignore = {
-    ['rust'] = { 'rls', 'rustc' }
+    perl = { 'perlcritic' },
+    sh = { 'shellcheck' },
 }
 
 -- Always show the signcolumn, otherwise it would shift
