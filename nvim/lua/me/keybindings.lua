@@ -15,54 +15,54 @@ vim.keymap.set({ 'n', 'v' }, '/', '/\\V')
 
 local wk = require('which-key')
 wk.register({
-    ["<Space>"] = { "<cmd>noh<cr>", "Clear search result" },
-    l = {
-        name = "list",
-        g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
-        f = { "<cmd>FzfLua files<cr>", "Find file" },
-        r = { "<cmd>FzfLua oldfiles<cr>", "Open recent file", noremap = false },
-        b = { "<cmd>FzfLua buffers<cr>", "Show buffers" },
-    },
-    q = { "<cmd>q<cr>", "Quit buffer" },
-    s = { "<cmd>FzfLua grep_cword<cr>", "Search for current word" },
-    x = {
-        name = "misc",
-        h = { "<cmd>set list!<cr>", "Show hidden chars" },
-        m = { "<Plug>MarkSet", "Toggle mark on current word", mode = { "n", "x" } },
-    },
+  ["<Space>"] = { "<cmd>noh<cr>", "Clear search result" },
+  l = {
+    name = "list",
+    g = { "<cmd>FzfLua live_grep<cr>", "Live grep" },
+    f = { "<cmd>FzfLua files<cr>", "Find file" },
+    r = { "<cmd>FzfLua oldfiles<cr>", "Open recent file", noremap = false },
+    b = { "<cmd>FzfLua buffers<cr>", "Show buffers" },
+  },
+  q = { "<cmd>q<cr>", "Quit buffer" },
+  s = { "<cmd>FzfLua grep_cword<cr>", "Search for current word" },
+  x = {
+    name = "misc",
+    h = { "<cmd>set list!<cr>", "Show hidden chars" },
+    m = { "<Plug>MarkSet", "Toggle mark on current word", mode = { "n", "x" } },
+  },
 }, { prefix = "<leader>" })
 
 
 wk.register({
-    ["<C-p>"] = { "<cmd>FzfLua files<cr>", "Find file" },
+  ["<C-p>"] = { "<cmd>FzfLua files<cr>", "Find file" },
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-    group = customftGroup,
-    pattern = 'perl',
-    callback = function()
-        wk.register({
-            f = {
-                "<plug>(PerlTidyCurrentLine)",
-                "Run perltidy on the current line",
-                mode = "n",
-            }
-        }, { prefix = "<leader>" })
-    end,
+  group = customftGroup,
+  pattern = 'perl',
+  callback = function()
+    wk.register({
+      f = {
+        "<plug>(PerlTidyCurrentLine)",
+        "Run perltidy on the current line",
+        mode = "n",
+      }
+    }, { prefix = "<leader>" })
+  end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-    group = customftGroup,
-    pattern = 'perl',
-    callback = function()
-        wk.register({
-            f = {
-                "<plug>(PerlTidySelection)",
-                "Run perltidy on the selected lines",
-                mode = "x",
-            }
-        }, { prefix = "<leader>", mode = 'x' })
-    end,
+  group = customftGroup,
+  pattern = 'perl',
+  callback = function()
+    wk.register({
+      f = {
+        "<plug>(PerlTidySelection)",
+        "Run perltidy on the selected lines",
+        mode = "x",
+      }
+    }, { prefix = "<leader>", mode = 'x' })
+  end,
 })
 
 -- TODO

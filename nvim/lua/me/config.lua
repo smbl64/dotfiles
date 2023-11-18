@@ -434,3 +434,18 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   group = format_sync_grp,
 })
+
+
+-- Source: https://discourse.gohugo.io/t/vim-syntax-highlighting-for-hugo-html-templates/19398/8
+-- Detect Hugo template files
+vim.cmd([[
+  function DetectGoHtmlTmpl()
+      if expand('%:e') == "html" && search("{{") != 0
+          set filetype=gohtmltmpl
+      endif
+  endfunction
+
+  augroup filetypedetect
+      au! BufRead,BufNewFile * call DetectGoHtmlTmpl()
+  augroup END
+]])
