@@ -89,6 +89,7 @@ __check_bash_completion_symlink() {
 
     # Directories for lazy-loading
     export BASH_COMPLETION_USER_DIR="$HOMEBREW_PREFIX/etc/bash-completion:$HOME/.local/share/bash-completion"
+    export BASH_COMPLETION_USER_DIR="$BASH_COMPLETION_USER_DIR:$HOMEBREW_PREFIX/share/bash-completion/completions"
 
     # Disable the eagerly-loaded completion scripts
     export BASH_COMPLETION_COMPAT_DIR="/blackhole!"
