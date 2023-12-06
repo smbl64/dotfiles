@@ -37,6 +37,10 @@ wk.register({
   ["<C-p>"] = { "<cmd>FzfLua files<cr>", "Find file" },
 })
 
+wk.register({
+  ["<F9>"] = { "<cmd>NvimTreeToggle<cr>", "Toggle Nvim Tree" },
+})
+
 vim.api.nvim_create_autocmd('FileType', {
   group = customftGroup,
   pattern = 'perl',
