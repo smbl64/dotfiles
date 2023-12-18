@@ -44,6 +44,7 @@
   "vim-autoformat": { "branch": "master", "commit": "99dc8d5030945c01a7e04b1e44d107a9bd15af67" },
   "vim-autosource": { "branch": "main", "commit": "569440e157d6eb37fb098dfe95252533553a56f5" },
   "vim-black-macchiato": { "branch": "master", "commit": "80c9a842e3b6ee1cbb69d6c5d93434d80880f8d3" },
+  "vim-caddyfile": { "branch": "master", "commit": "24fe0720551883e407cb70ae1d7c03f162d1d5a0" },
   "vim-colors-solarized": { "branch": "master", "commit": "528a59f26d12278698bb946f8fb82a63711eec21" },
   "vim-css3-syntax": { "branch": "main", "commit": "3cd856659d117cd4ad097535cec8270a224643ed" },
   "vim-expand-region": { "branch": "master", "commit": "966513543de0ddc2d673b5528a056269e7917276" },
