@@ -9,7 +9,7 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
-  "editor.wordBasedSuggestions": false,
+  "editor.wordBasedSuggestions": "off",
   "explorer.confirmDelete": false,
   "files.insertFinalNewline": true,
   "go.formatTool": "gofmt",
@@ -22,7 +22,7 @@
   "window.zoomLevel": 0,
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.editor.showTabs": true,
+  "workbench.editor.showTabs": "multiple",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.indent": 24,
   "[dart]": {
@@ -32,7 +32,7 @@
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.suggestSelection": "first",
     "editor.tabCompletion": "onlySnippets",
-    "editor.wordBasedSuggestions": false
+    "editor.wordBasedSuggestions": "off"
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -43,14 +43,13 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#3d2b23",
-    "statusBar.noFolderBackground": "#3d2b23",
-    "statusBar.debuggingBackground": "#6e4939",
-    "statusBar.foreground": "#aaaaaa",
-    "statusBarItem.remoteBackground": "#582006"
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "workbench.colorTheme": "Default Light Modern",
   "window.commandCenter": false,
-  "editor.guides.indentation": false
+  "editor.guides.indentation": false,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
