@@ -15,15 +15,22 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
 
     # Always try to automatically upgrade these
     brew upgrade \
+        autorestic \
         bat \
+        curl \
         fd \
+        fzf \
         git \
         go \
         helm \
         kubernetes-cli \
         neovim \
+        rclone \
+        restic \
         ripgrep \
         rust-analyzer \
+        sqlite \
         tmux \
+        universal-ctags \
         vim
 } > $LOG_FILE 2>&1
