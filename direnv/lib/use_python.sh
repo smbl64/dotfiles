@@ -1,4 +1,4 @@
-# A helper function so direnv can use the proper Python from rtx
+# A helper function so direnv can use the proper Python from mise
 # In you .envrc file, use:
 #
 # use python x.y.z
@@ -7,5 +7,5 @@
 use_python() {
     local version=${1:-}
     echo "using python ${version}"
-    PATH_add $(rtx where python@${version})/bin
+    PATH_add $(mise where python@${version})/bin
 }
