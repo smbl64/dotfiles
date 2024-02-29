@@ -38,10 +38,11 @@ __make_brew_envs_file() {
 __make_brew_envs_file && source $_brew_env_file
 
 export GOPATH=$HOME/go
+export GOBIN="$HOME/go/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/dotfiles/bash/scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$GOBIN:$PATH"
 
 if [ $is_mac = 1 ]; then
     export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
@@ -121,6 +122,9 @@ fi
 
 # direnv hook
 eval "$(direnv hook bash)"
+
+# Activate mise
+export MISE_GO_SET_GOBIN=0
 eval "$(mise activate bash)"
 
 # Make fzf use gitignore
