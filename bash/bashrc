@@ -163,6 +163,10 @@ if [ $is_mac = 1 ]; then
     export PATH="/Library/TeX/texbin:$PATH"
 fi
 
+kitty-reload() {
+    kill -SIGUSR1 $(pgrep -a kitty)
+}
+
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
 [[ -s "$HOME/.bashrc_local" ]] && source "$HOME/.bashrc_local"
