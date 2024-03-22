@@ -263,6 +263,7 @@ local function setup_lsp()
   --  2. mason-lspconfig.nvim
   --  3. Setup servers via lspconfig
   require("mason").setup({
+    PATH = "append", -- prioritize system-wide LSPs
     ui = {
       icons = {
         package_installed = "✓",
