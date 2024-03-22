@@ -32,5 +32,8 @@ disabled = true
 [perl]
 disabled = true
 
+[ocaml]
+disabled = true
+
 [python]
 disabled = false
