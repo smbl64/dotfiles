@@ -10,6 +10,11 @@ alias llh="ls -lh --group-directories-first"
 alias t4="ping 4.2.2.4 -i 0.3"
 alias grep='grep --color -i'
 
+# History
+shopt -s histappend
+export HISTSIZE=100000
+export HISTFILESIZE=-1
+
 # Homebrew (Intel and M1)
 #
 # This will define HOMEBREW_PREFIX, HOMEBREW_CELLAR and other env variables. It
