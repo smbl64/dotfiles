@@ -107,6 +107,9 @@ set belloff=all
 set undodir=~/.vim/undo-dir
 set undofile
 
+" Disable scrollbars in MacVim
+set guioptions=
+
 set termguicolors
 set background=dark
 colorscheme PaperColor
