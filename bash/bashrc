@@ -172,6 +172,22 @@ kitty-reload() {
     kill -SIGUSR1 $(pgrep -a kitty)
 }
 
+# I often mistype 'cd SomeDirectory' as 'c dSomeDirectory'.
+# This function helps with that by removing the leading 'd' and running cd. :D 
+function c {
+    directory="$*"
+    firstchar=${directory:0:1}
+    if [ "$firstchar" != "d" ]; then 
+      echo "First character isn't 'd'. Won't do anything."
+      return
+    fi
+
+    directory="${directory:1}"
+    echo "Seems you were trying to cd into '$directory'. Let me help..."
+    cd "$directory" || return
+}
+
+
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
 [[ -s "$HOME/.bashrc_local" ]] && source "$HOME/.bashrc_local"
