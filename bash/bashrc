@@ -160,6 +160,10 @@ then
     eval "$(starship init bash)"
 fi
 
+# Immediately append commands to history
+# See https://askubuntu.com/a/115625/184857
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 # Haskell
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
