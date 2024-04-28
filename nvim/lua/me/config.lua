@@ -351,6 +351,7 @@ local function setup_lsp()
     end, make_opts("Show diagnostics under cursor"))
   end
   local servers = {
+    'arduino_language_server',
     'clangd',
     'cssls',
     'gopls',
