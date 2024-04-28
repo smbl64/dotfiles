@@ -16,6 +16,7 @@ brew install \
     colima \
     coreutils \
     curl \
+    deno \
     direnv \
     docker \
     docker-buildx \
@@ -81,3 +82,7 @@ cargo install --locked \
   flamegraph \
   humble-cli \
   trippy # A network diagnostics tool
+
+
+# Others
+curl -fsSL https://bun.sh/install | bash
