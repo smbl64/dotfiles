@@ -70,40 +70,7 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-# --------------------------------------------------------
-# Bash completion (for Bash 4+ and bash-completion@2
-# --------------------------------------------------------
-__check_bash_completion_symlink() {
-    # By default, bash-completion@2 package loads completions in this folder
-    # eagerly: $(brew --prefix)/etc/bash_completion.d
-    #
-    # This will slow down startup time of Bash. To hack our way around it, we
-    # will create a symlink to that folder and ask bash-completion@2 to loads
-    # scripts in this symlink lazily.
-    #
-    # We will create a symlink "$(brew --prefix)/etc/bash-completion/completions" that
-    # points to "$(brew --prefix)/etc/bash_completion.d".
-    #
-    # Note:
-    # Remember to install the HEAD version of bash-completion@2, otherwise it
-    # will not process multiple directories in "BASH_COMPLETION_USER_DIR".
-    # (Use brew install --HEAD ...)
-
-    # Create the symlink
-    mkdir -p "$HOMEBREW_PREFIX/etc/bash-completion"
-    ln -sf "$HOMEBREW_PREFIX/etc/bash_completion.d" "$HOMEBREW_PREFIX/etc/bash-completion/completions"
-
-    # Directories for lazy-loading
-    export BASH_COMPLETION_USER_DIR="$HOMEBREW_PREFIX/etc/bash-completion:$HOME/.local/share/bash-completion"
-    export BASH_COMPLETION_USER_DIR="$BASH_COMPLETION_USER_DIR:$HOMEBREW_PREFIX/share/bash-completion/completions"
-
-    # Disable the eagerly-loaded completion scripts
-    export BASH_COMPLETION_COMPAT_DIR="/blackhole!"
-}
-
 if [ $is_mac = 1 ]; then
-    __check_bash_completion_symlink
-
     [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 elif [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -148,10 +115,10 @@ export PATH=$BUN_INSTALL/bin:$PATH
 export IGNOREEOF=0
 
 # Use `exa` if available
-if [[ -x "$(command -v exa)" ]]
+if [[ -x "$(command -v eza)" ]]
 then
-    alias ls=exa
-    alias ll="exa -l --group-directories-first --bytes"
+    alias ls=eza
+    alias ll="eza -l --group-directories-first --bytes"
 fi
 #
 # Use `startship` if available
