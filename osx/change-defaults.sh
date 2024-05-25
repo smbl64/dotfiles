@@ -25,3 +25,6 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool yes
 
 # Disable press and hold feature
 defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Disable the Input Source popup in Sonoma
+defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled 0
