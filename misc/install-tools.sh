@@ -51,6 +51,7 @@ brew install \
     neovim \
     ollama \
     pandoc \
+    poppler \ # PDF tools
     pv \
     rclone \
     restic \
