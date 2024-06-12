@@ -124,6 +124,6 @@ return {
   {
     "NoahTheDuke/vim-just",
     event = { "BufReadPre", "BufNewFile" },
-    ft = { "\\cjustfile", "*.just", ".justfile" },
+    ft = { "justfile", "*.just", ".justfile" },
   }
 }
