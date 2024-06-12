@@ -23,7 +23,9 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         git \
         go \
         helm \
+        just \
         kubernetes-cli \
+        mise \
         neovim \
         rclone \
         restic \
