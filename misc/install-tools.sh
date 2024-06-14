@@ -72,7 +72,8 @@ brew install \
     watchexec \
     wget \
     wrk \
-    yarn
+    yarn \
+    yq
 
 # Tools that need to be installed via "go install"
 go install github.com/nao1215/gup@latest
