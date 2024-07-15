@@ -4,3 +4,4 @@
 --glob=!.direnv/*
 --glob=!**/__pycache__/*
 --glob=!tags
+--glob=!.terraform/*
