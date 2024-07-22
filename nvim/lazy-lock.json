@@ -16,7 +16,7 @@
   "dart-vim-plugin": { "branch": "master", "commit": "928302ec931caf0dcf21835cca284ccd2b192f7b" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "friendly-snippets": { "branch": "main", "commit": "682157939e57bd6a2c86277dfd4d6fbfce63dbac" },
-  "fzf-lua": { "branch": "main", "commit": "41ea49cfc1b3f0586753bbeb7850474f28dc22cf" },
+  "fzf-lua": { "branch": "main", "commit": "a8a3466f83bf7391bdceb5131d7edc4308ff5430" },
   "gen.nvim": { "branch": "main", "commit": "b1230ce2993b2be38a1e22606750d05a94307380" },
   "gitsigns.nvim": { "branch": "main", "commit": "6b1a14eabcebbcca1b9e9163a26b2f8371364cb7" },
   "go.nvim": { "branch": "master", "commit": "cde0c7a110c0f65b9e4e6baf342654268efff371" },
