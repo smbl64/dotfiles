@@ -304,20 +304,31 @@ local function setup_lsp()
     end
 
     local wk = require('which-key')
-    local wk_opts = { prefix = "<leader>", buffer = bufnr, silent = true };
+    local wk_opts = { buffer = bufnr, silent = true };
 
-    wk.register({ c = { name = "code actions (lsp)" } }, wk_opts)
-    wk.register({ w = { name = "workspace" } }, wk_opts)
-    wk.register({
-      l = {
-        s = {
-          name = "symbols",
-          d = { "<cmd>FzfLua lsp_document_symbols<cr>", "Show document symbols (LSP)" },
-          r = { "<cmd>FzfLua lsp_references<cr>", "Show references (LSP)" },
-          w = { "<cmd>FzfLua lsp_live_workspace_symbols<cr>", "Show workspace symbols (LSP)" },
-        }
-      }
-    }, wk_opts)
+    -- Note: keep wk.register calls for now to make sure all works properly. I will remove them later.
+    -- wk.register({ c = { name = "code actions (lsp)" } }, wk_opts)
+    wk.add({ { "<leader>c", buffer = 1, group = "code actions (lsp)" }, })
+    -- wk.register({ w = { name = "workspace" } }, wk_opts)
+    wk.add({ { "<leader>w", buffer = 1, group = "workspace" }, })
+
+    -- wk.register({
+    --   l = {
+    --     s = {
+    --       name = "symbols",
+    --       d = { "<cmd>FzfLua lsp_document_symbols<cr>", "Show document symbols (LSP)" },
+    --       r = { "<cmd>FzfLua lsp_references<cr>", "Show references (LSP)" },
+    --       w = { "<cmd>FzfLua lsp_live_workspace_symbols<cr>", "Show workspace symbols (LSP)" },
+    --     }
+    --   }
+    -- }, wk_opts)
+
+    wk.add({
+      { "<leader>ls",  buffer = 1,                                   group = "symbols" },
+      { "<leader>lsd", "<cmd>FzfLua lsp_document_symbols<cr>",       buffer = 1,       desc = "Show document symbols (LSP)" },
+      { "<leader>lsr", "<cmd>FzfLua lsp_references<cr>",             buffer = 1,       desc = "Show references (LSP)" },
+      { "<leader>lsw", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", buffer = 1,       desc = "Show workspace symbols (LSP)" },
+    })
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
