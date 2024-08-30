@@ -361,6 +361,8 @@ local function setup_lsp()
       vim.diagnostic.open_float(nil, opts)
     end, make_opts("Show diagnostics under cursor"))
   end
+
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
   local servers = {
     'arduino_language_server',
     'clangd',
@@ -373,6 +375,7 @@ local function setup_lsp()
     'ocamllsp',
     'pyright',
     'rust_analyzer',
+    'starpls',
     'terraformls',
     'tsserver',
     'volar',
