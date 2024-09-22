@@ -125,7 +125,7 @@ vim.opt.shortmess:append('I')
 vim.o.belloff = 'all'
 
 -- Permanent undo
-vim.o.undodir = vim.fn.expand('~') .. '/.config/nvim/undo-dir'
+vim.o.undodir = vim.fn.stdpath('data') .. '/undo-dir'
 vim.o.undofile = true
 
 vim.o.termguicolors = true
