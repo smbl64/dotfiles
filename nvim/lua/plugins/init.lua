@@ -89,23 +89,6 @@ return {
 
   'lukas-reineke/lsp-format.nvim',
 
-  {
-    "L3MON4D3/LuaSnip",
-    version = "2.*",
-    build = "make install_jsregexp",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    config = function()
-      local vscode_loader = require("luasnip.loaders.from_vscode")
-
-      -- friendly-snippets
-      vscode_loader.lazy_load()
-
-      -- my custom snippets
-      local path = vim.fn.stdpath "config" .. "/snippets"
-      vscode_loader.lazy_load({ paths = path })
-    end
-  },
-
   -- Neovim setup for init.lua and plugin development with full signature help etc
   'folke/neodev.nvim',
 

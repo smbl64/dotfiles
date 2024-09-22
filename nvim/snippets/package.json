@@ -5,6 +5,10 @@
             {
                 "language": [ "go" ],
                 "path": "./go.json"
+            },
+            {
+                "language": [ "javascript" ],
+                "path": "./javascript.json"
             }
         ]
     }
