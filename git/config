@@ -9,3 +9,5 @@
 [core]
 	untrackedcache = true
 	fsmonitor = true
+[rerere]
+	enabled = true
