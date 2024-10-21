@@ -1,0 +1,11 @@
+[user]
+	name = Mohammad Banisaeid
+	email = smbl64@gmail.com
+
+[alias]
+	s = status
+	d = diff
+
+[core]
+	untrackedcache = true
+	fsmonitor = true
