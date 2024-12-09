@@ -6,8 +6,5 @@
 	s = status
 	d = diff
 
-[core]
-	untrackedcache = true
-	fsmonitor = true
 [rerere]
 	enabled = true
