@@ -149,6 +149,7 @@ function M.setup()
     'ocamllsp',
     'pyright',
     'rust_analyzer',
+    'solargraph',
     'starpls',
     'templ',
     'terraformls',
