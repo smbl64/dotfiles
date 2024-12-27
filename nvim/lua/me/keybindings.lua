@@ -24,9 +24,9 @@ wk.add({
   { "<leader>lr",      "<cmd>FzfLua oldfiles<cr>",   desc = "Open recent file",            remap = true },
   { "<leader>q",       "<cmd>q<cr>",                 desc = "Quit buffer" },
   { "<leader>s",       "<cmd>FzfLua grep_cword<cr>", desc = "Search for current word" },
-  { "<leader>x",       group = "misc" },
-  { "<leader>xh",      "<cmd>set list!<cr>",         desc = "Show hidden chars" },
-  { "<leader>xm",      "<Plug>MarkSet",              desc = "Toggle mark on current word", mode = { "n", "x" } },
+  { "<leader>m",       group = "misc" },
+  { "<leader>mh",      "<cmd>set list!<cr>",         desc = "Show hidden chars" },
+  { "<leader>mm",      "<Plug>MarkSet",              desc = "Toggle mark on current word", mode = { "n", "x" } },
 })
 
 
