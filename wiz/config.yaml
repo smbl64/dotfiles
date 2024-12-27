@@ -1,2 +1,2 @@
-model: qwen2.5:latest
+model: llama3.2:3b
 ollamaApiBase: http://localhost:11434
