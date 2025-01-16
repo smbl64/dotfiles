@@ -15,24 +15,52 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
 
     # Always try to automatically upgrade these
     brew upgrade \
+        age \
         autorestic \
+        awscli \
         bat \
+        carapace \
         curl \
+        dart \
+        eza \
+        eza \
         fd \
         fzf \
         git \
         go \
+        gup \
+        helix \
         helm \
+        hexyl \
+        hurl \
         just \
         kubernetes-cli \
         mise \
         neovim \
+        nmap \
+        node \
+        ollama \
+        pandoc \
+        pv \
         rclone \
         restic \
         ripgrep \
+        rsync \
+        ruff \
         rust-analyzer \
+        sass \
         sqlite \
+        starship \
+        terraform \
         tmux \
+        tree-sitter \
+        trippy \
         universal-ctags \
-        vim
+        uv \
+        vale \
+        vault \
+        vim \
+        watchexec \
+        watchexec \
+        xh 
 } > $LOG_FILE 2>&1
