@@ -28,7 +28,7 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         fzf \
         git \
         go \
-        gup \
+        gum \
         helix \
         helm \
         hexyl \
