@@ -1,209 +1,112 @@
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
+(setq inhibit-startup-message t)
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
+(scroll-bar-mode  -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(menu-bar-mode -1)
+(set-fringe-mode 10)
 
-;; --------------------------------------
-;; Init MELPA
-;; --------------------------------------
 (require 'package)
-
-(setq package-archives
-      '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
-        ("MELPA Stable" . "https://stable.melpa.org/packages/")
-        ("MELPA"        . "https://melpa.org/packages/"))
-      package-archive-priorities
-      '(("GNU ELPA"     . 10)
-        ("MELPA Stable" . 5)
-        ("MELPA"        . 0)))
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
-	(package-refresh-contents)
-	(package-install 'use-package))
+(setq use-package-always-ensure t)
 
-;; ---------------------------------------
-;; Install packages
-;; ---------------------------------------
-(use-package try
-  :ensure t)
-
-(use-package format-all
-  :ensure t)
-
-(use-package leuven-theme
-  :ensure t)
-
-(use-package delight
-  :ensure t)
-
-;;(use-package evil
-;;  :ensure t
-;;  :config
-;;  (evil-mode 1)
-;;  )
+(unless package-archive-contents
+ (package-refresh-contents))
 
 (use-package which-key
   :ensure t
-  :delight
   :config
   (which-key-mode))
 
-
-(use-package elpy
-  :ensure t
+; Vim Bindings
+(use-package evil
+  :demand t
+  :bind (("<escape>" . keyboard-escape-quit))
   :init
-  (elpy-enable))
-
-(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
-
-
-(use-package ace-window
-  :ensure t
-  :init
-  (progn
-    (global-set-key [remap other-window] 'ace-window)
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
-    ))
-
-
-;; it looks like counsel is a requirement for swiper
-(use-package counsel
-  :ensure t)
-
-(use-package ivy
-  :ensure t
-  :diminish (ivy-mode)
-  :delight
-  :bind (("C-x b" . ivy-switch-buffer))
+  ;; allows for using cgn
+  ;; (setq evil-search-module 'evil-search)
+  (setq evil-want-keybinding nil)
+  ;; no vim insert bindings
+  (setq evil-undo-system 'undo-fu)
   :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-display-style 'fancy))
+  (evil-mode 1))
 
-
-(use-package swiper
-  :ensure try
-  :bind (("C-s" . swiper)
-	 ("C-r" . swiper)
-	 ("C-c C-r" . ivy-resume)
-	 ("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file))
+; Vim Bindings Everywhere else
+(use-package evil-collection
+  :after evil
   :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-    ))
+  (setq evil-want-integration t)
+  (evil-collection-init))
 
-(use-package avy
-  :ensure t
-  :bind ("M-s" . avy-goto-char))
+(use-package lsp-mode
+  :hook (
+	 ((java-mode js-mode go-mode rust-mode) . lsp-deferred)
+	 (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
 
-(use-package projectile
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company
+  :custom (company-idle-delay 0)
+  :config (global-company-mode) ;; completion everywhere
+)
+
+(use-package lsp-pyright
   :ensure t
-  :delight
+  :custom (lsp-pyright-langserver-command "pyright")
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp-deferred))))
+
+(use-package flycheck
+  :ensure t
   :config
-  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (projectile-mode +1))
+  (add-hook 'after-init-hook #'global-flycheck-mode))
 
-(setq projectile-completion-system 'ivy)
+(use-package emacs
+  :config
+  (load-theme 'base16-decaf t))
 
-(use-package expand-region
-  :ensure t
-  :bind ("s-w" . er/expand-region))
+(use-package go-mode)
+(use-package rust-mode)
 
-(use-package ag
-  :ensure t
-  :custom
-  (ag-project-root-function 'projectile-project-root)
-  (ag-reuse-buffers t))
-
-(use-package dumb-jump
-  :ensure t
-  :bind (("s-b" . dumb-jump-go)))
-
-(use-package json-mode :ensure t)
-
-;;(use-package intellij-theme :ensure t)
-
-;; (use-package solarized-theme
-;;   :ensure t
-;;   :config
-;;   (load-theme `solarized-dark t)
-;;   )
-
-(load-theme 'leuven t)
-
-(use-package neotree
-  :ensure t
-  :bind ("<f8>" . neotree-toggle)
-  )
-;; ------------------------------------------
-;; Customizations
-;; -----------------------------------------
-(setq inhibit-startup-message t)
-(tool-bar-mode -1)
-
-;; Disable annoying beep sound
-(setq ring-bell-function 'ignore)
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)  ; Use ibuffer instead of list-buffers
-
-;; Line numbers custimization
-(global-display-line-numbers-mode 1)
-(setq-default display-line-numbers 'visual
-              display-line-numbers-current-absolute t
-              display-line-numbers-width 4 
-              display-line-numbers-widen t)
-
-;; no backup file
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave# files
-(setq create-lockfiles nil)
-
-; maximized
-(set-frame-parameter nil 'fullscreen 'maximized)
-
-; no start message
-(setq initial-scratch-message "")
-
-(defalias 'list-buffers 'ibuffer)
-(global-visual-line-mode 1)
-
-(defun duplicate-line ()
-  (interactive)
-  (save-mark-and-excursion
-    (beginning-of-line)
-    (insert (thing-at-point 'line t))))
-
-(global-set-key (kbd "C-S-d") 'duplicate-line)
-(put 'upcase-region 'disabled nil)
+(set-face-attribute 'default nil :font "FiraCode Nerd Font Mono")
 
 
-;; due to ag bug on Mac
-;; https://github.com/Wilfred/ag.el/issues/93#issuecomment-348003505
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+;; Make ESC quit prompts
+(global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; ---------------------------
+;; UI enhancements
+;; ---------------------------
+;; Mode line information
+(setopt line-number-mode t)
+(setopt column-number-mode t)
+(blink-cursor-mode -1)       ; no blinking
+(setopt visible-cursor nil)  ; no blinking in cli mode
 
-;; Use ctrl-tab to switch window
-(global-set-key (kbd "C-<tab>") 'ace-window)
+;; Display line numbers in programming mode
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(setopt display-line-numbers-width 3)           ; Set a minimum width
 
-;; toggles between beginning of line and the beginning of text
-(defun beginning-of-line++ ()
-  (interactive)
-  (if (bolp)
-      (back-to-indentation)
-    (beginning-of-line)))
-(global-set-key (kbd "C-a") 'beginning-of-line++)
-
-;; Highlight parenthesis
-(show-paren-mode 1)
-(setq show-paren-style 'parenthesis)
-
-
-;; Make cursor into a line
-(setq-default cursor-type 'bar) 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(leuven-dark))
+ '(custom-safe-themes
+   '("1d1f4f5b0f792f0bb1b8f944b8ed93b3b20bbebc4ba072c2b7daff82da23ae86" default))
+ '(package-selected-packages
+   '(rust-mode lsp-pyright flycheck company lsp-ui go-mode lsp-mode base16-theme undo-fu evil-collection)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
