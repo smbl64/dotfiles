@@ -1,4 +1,21 @@
-(setq inhibit-startup-message t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(leuven-dark))
+ '(custom-safe-themes
+   '("dea106ab256a8017a325f51f01b1131915989fa25db48eb831ffb18dac8ecd39" "1d1f4f5b0f792f0bb1b8f944b8ed93b3b20bbebc4ba072c2b7daff82da23ae86" default))
+ '(package-selected-packages
+   '(rust-mode lsp-pyright flycheck company lsp-ui go-mode lsp-mode base16-theme undo-fu evil-collection)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(setq inhibit-startup-screen t)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 (scroll-bar-mode  -1)
@@ -68,6 +85,9 @@
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
+(use-package base16-theme
+  :ensure t)
+
 (use-package emacs
   :config
   (load-theme 'base16-decaf t))
@@ -94,19 +114,3 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setopt display-line-numbers-width 3)           ; Set a minimum width
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(leuven-dark))
- '(custom-safe-themes
-   '("1d1f4f5b0f792f0bb1b8f944b8ed93b3b20bbebc4ba072c2b7daff82da23ae86" default))
- '(package-selected-packages
-   '(rust-mode lsp-pyright flycheck company lsp-ui go-mode lsp-mode base16-theme undo-fu evil-collection)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
