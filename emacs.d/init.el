@@ -114,3 +114,6 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 (setopt display-line-numbers-width 3)           ; Set a minimum width
 
+
+; Use iBuffer to list buffers
+(global-set-key [remap list-buffers] 'ibuffer)
