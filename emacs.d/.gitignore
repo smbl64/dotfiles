@@ -51,3 +51,5 @@ site-lisp/package/
 /forge-database.sqlite
 /transient
 *.pyc
+.lsp-session-*
+projects

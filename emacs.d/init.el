@@ -24,6 +24,10 @@
 (menu-bar-mode -1)
 (set-fringe-mode 10)
 
+;; Put backup files in a dedicated folder
+(setq backup-directory-alist
+   `(("." . ,(concat user-emacs-directory "backups"))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -67,6 +71,8 @@
   :init
   (setq evil-undo-system 'undo-fu)
   (setq evil-search-module 'evil-search)
+  (setq evil-want-integration t)
+  (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1))
 
@@ -82,7 +88,6 @@
 (use-package evil-collection
   :after evil
   :config
-  (setq evil-want-integration t)
   (evil-collection-init))
 
 (use-package lsp-mode
@@ -100,7 +105,6 @@
   (company-selection-wrap-around t)
   (company-tng-configure-default)
   :config
-  (global-company-mode)
   (setq company-tooltip-limit 40)
 
   (setq company-dabbrev-downcase nil)
@@ -148,6 +152,7 @@
 (fset 'undo-auto-amalgamate 'ignore)
 
 (setq undo-limit 67108864)
+
 ;; Make undo work like Vim
 (setq evil-want-fine-undo t)
 (use-package git-gutter
@@ -226,7 +231,7 @@
          ("M-g i" . consult-imenu)
          ("M-g I" . consult-imenu-multi)
          ;; M-s bindings in `search-map'
-         ("M-s d" . consult-find)                  ;; Alternative: consult-fd
+         ("M-s d" . consult-fd)                  ;; Alternative: consult-fd
          ("M-s c" . consult-locate)
          ("M-s g" . consult-grep)
          ("M-s G" . consult-git-grep)
