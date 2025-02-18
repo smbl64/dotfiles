@@ -47,6 +47,9 @@
 (use-package package-utils
   :commands (package-utils-upgrade-all-and-recompile))
 
+(use-package try)
+(use-package terraform-mode)
+
 ;; Highlight terms in code-comments such as TODO, FIXME, URL's & email
 (use-package hl-prog-extra
   :commands (hl-prog-extra-mode)
@@ -85,7 +88,7 @@
 
 (use-package lsp-mode
   :hook (
-	 ((java-mode js-mode go-mode rust-mode) . lsp-deferred)
+	 ((java-mode js-mode go-mode rust-mode terraform-mode) . lsp-deferred)
 	 (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
