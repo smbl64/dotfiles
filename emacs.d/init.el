@@ -31,6 +31,12 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; Disable warnings from package installations
+(add-to-list 'display-buffer-alist
+             '("\\`\\*\\(Warnings\\|Compile-Log\\)\\*\\'"
+               (display-buffer-no-window)
+               (allow-no-window . t)))
+
 ;; Download automatically
 (setq use-package-always-ensure t)
 
