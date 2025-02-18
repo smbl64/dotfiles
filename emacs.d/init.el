@@ -320,7 +320,7 @@
 (setopt display-line-numbers-width 3)           ; Set a minimum width
 
 ;; Show matching parentheses
-(show-paren-mode 1)
+;;(show-paren-mode  1)
 
 ;; Start the initial frame full size
 (add-to-list 'initial-frame-alist '(fullscreen . fullboth))
@@ -328,3 +328,8 @@
 
 ; Use iBuffer to list buffers
 (global-set-key [remap list-buffers] 'ibuffer)
+
+(evil-set-leader 'normal (kbd "SPC"))
+(evil-define-key nil evil-normal-state-map
+  (kbd "<leader> q") 'evil-quit
+  (kbd "<leader> b") 'consult-buffer)
