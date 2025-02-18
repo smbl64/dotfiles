@@ -5,9 +5,9 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(leuven-dark))
  '(custom-safe-themes
-   '("dea106ab256a8017a325f51f01b1131915989fa25db48eb831ffb18dac8ecd39" "1d1f4f5b0f792f0bb1b8f944b8ed93b3b20bbebc4ba072c2b7daff82da23ae86" default))
+   '("c5692610c00c749e3cbcea09d61f3ed5dac7a01e0a340f0ec07f35061a716436" "dea106ab256a8017a325f51f01b1131915989fa25db48eb831ffb18dac8ecd39" "1d1f4f5b0f792f0bb1b8f944b8ed93b3b20bbebc4ba072c2b7daff82da23ae86" default))
  '(package-selected-packages
-   '(rust-mode lsp-pyright flycheck company lsp-ui go-mode lsp-mode base16-theme undo-fu evil-collection)))
+   '(marginalia vertico git-gutter evil rust-mode lsp-pyright flycheck company lsp-ui go-mode lsp-mode base16-theme undo-fu evil-collection)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -94,7 +94,11 @@
 (use-package lsp-ui :commands lsp-ui-mode)
 (use-package company
   :commands (company-complete-common company-dabbrev)
-  :custom (company-idle-delay 0)
+  :custom 
+  (company-idle-delay 0)
+  (company-minimum-prefix-length 1)
+  (company-selection-wrap-around t)
+  (company-tng-configure-default)
   :config
   (global-company-mode)
   (setq company-tooltip-limit 40)
@@ -107,9 +111,9 @@
   (define-key company-active-map (kbd "C-l") 'company-complete-selection)
   (define-key company-active-map (kbd "C-h") 'company-abort)
   (define-key company-active-map (kbd "<C-return>") 'company-complete-selection)
-
   (define-key company-search-map (kbd "C-j") 'company-select-next)
   (define-key company-search-map (kbd "C-k") 'company-select-previous)
+  (global-company-mode) ;; completion everywhere
 )
 
 (use-package lsp-pyright
@@ -146,6 +150,45 @@
 (setq undo-limit 67108864)
 ;; Make undo work like Vim
 (setq evil-want-fine-undo t)
+(use-package git-gutter
+  :config
+  (global-git-gutter-mode +1))
+
+(use-package vertico
+  :custom
+  ;; (vertico-scroll-margin 0) ;; Different scroll margin
+  (vertico-count 20) ;; Show more candidates
+  ;; (vertico-resize t) ;; Grow and shrink the Vertico minibuffer
+  ;; (vertico-cycle t) ;; Enable cycling for `vertico-next/previous'
+  :init
+  (vertico-mode))
+
+;; Enable rich annotations using the Marginalia package
+(use-package marginalia
+  ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
+  ;; available in the *Completions* buffer, add it to the
+  ;; `completion-list-mode-map'.
+  :bind (:map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+
+  ;; The :init section is always executed.
+  :init
+
+  ;; Marginalia must be activated in the :init section of use-package such that
+  ;; the mode gets enabled right away. Note that this forces loading the
+  ;; package.
+  (marginalia-mode))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(flex orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
 ;; ---------------------------
 ;; UI enhancements
 ;; ---------------------------
