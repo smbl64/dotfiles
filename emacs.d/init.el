@@ -24,20 +24,39 @@
 (menu-bar-mode -1)
 (set-fringe-mode 10)
 
-(require 'package)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Packages
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 
+(eval-when-compile (require 'use-package))
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; Download automatically
 (setq use-package-always-ensure t)
 
-(unless package-archive-contents
- (package-refresh-contents))
+;; Defer loading packages by default
+(setq use-package-always-defer t)
+
+;; Add the ability to upgrade all packages
+(use-package package-utils
+  :commands (package-utils-upgrade-all-and-recompile))
+
+;; Highlight terms in code-comments such as TODO, FIXME, URL's & email
+(use-package hl-prog-extra
+  :commands (hl-prog-extra-mode)
+  :init (add-hook 'prog-mode-hook #'hl-prog-extra-mode))
 
 (use-package which-key
-  :ensure t
+  :demand t
   :config
   (which-key-mode))
 
@@ -46,13 +65,18 @@
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
   :init
-  ;; allows for using cgn
-  ;; (setq evil-search-module 'evil-search)
-  (setq evil-want-keybinding nil)
-  ;; no vim insert bindings
   (setq evil-undo-system 'undo-fu)
+  (setq evil-search-module 'evil-search)
   :config
   (evil-mode 1))
+
+(use-package undo-fu)
+
+(use-package evil-surround
+  :demand t
+  :config
+  ;; Initialize.
+  (global-evil-surround-mode 1))
 
 ; Vim Bindings Everywhere else
 (use-package evil-collection
@@ -69,8 +93,23 @@
 
 (use-package lsp-ui :commands lsp-ui-mode)
 (use-package company
+  :commands (company-complete-common company-dabbrev)
   :custom (company-idle-delay 0)
-  :config (global-company-mode) ;; completion everywhere
+  :config
+  (global-company-mode)
+  (setq company-tooltip-limit 40)
+
+  (setq company-dabbrev-downcase nil)
+  (setq company-dabbrev-ignore-case nil)
+
+  (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
+  (define-key company-active-map (kbd "C-l") 'company-complete-selection)
+  (define-key company-active-map (kbd "C-h") 'company-abort)
+  (define-key company-active-map (kbd "<C-return>") 'company-complete-selection)
+
+  (define-key company-search-map (kbd "C-j") 'company-select-next)
+  (define-key company-search-map (kbd "C-k") 'company-select-previous)
 )
 
 (use-package lsp-pyright
@@ -101,6 +140,12 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; Don't group undo steps
+(fset 'undo-auto-amalgamate 'ignore)
+
+(setq undo-limit 67108864)
+;; Make undo work like Vim
+(setq evil-want-fine-undo t)
 ;; ---------------------------
 ;; UI enhancements
 ;; ---------------------------
@@ -110,9 +155,14 @@
 (blink-cursor-mode -1)       ; no blinking
 (setopt visible-cursor nil)  ; no blinking in cli mode
 
-;; Display line numbers in programming mode
-(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(global-display-line-numbers-mode 1)
 (setopt display-line-numbers-width 3)           ; Set a minimum width
+
+;; Show matching parentheses
+(show-paren-mode 1)
+
+;; Start the initial frame full size
+(add-to-list 'initial-frame-alist '(fullscreen . fullboth))
 
 
 ; Use iBuffer to list buffers
