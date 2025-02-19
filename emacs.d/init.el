@@ -331,5 +331,6 @@
 
 (evil-set-leader 'normal (kbd "SPC"))
 (evil-define-key nil evil-normal-state-map
+  (kbd "<leader> SPC") 'evil-ex-nohighlight
   (kbd "<leader> q") 'evil-quit
   (kbd "<leader> b") 'consult-buffer)
