@@ -5,6 +5,23 @@
 (setq inhibit-startup-screen t)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+
+;; stop creating those #auto-save# files
+(setq auto-save-default nil)
+(setq create-lockfiles nil)
+
+;; Autosave file when Emacs loses focus
+(defun my-save-all-unsaved ()
+  "Save all unsaved files. no ask.
+Version 2019-11-05"
+  (interactive)
+  (save-some-buffers t ))
+
+(if (version< emacs-version "27.1")
+    (add-hook 'focus-out-hook 'my-save-all-unsaved)
+  (setq after-focus-change-function 'my-save-all-unsaved))
+
 (scroll-bar-mode  -1)
 (tool-bar-mode -1)
 (tooltip-mode -1)
