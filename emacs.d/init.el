@@ -6,6 +6,10 @@
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
 
+;; Better performance for LSP
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024))
+
 ;; Create and use a backup directory
 (defvar --backup-directory (concat user-emacs-directory "backups"))
 (if (not (file-exists-p --backup-directory))
@@ -78,6 +82,7 @@ Version 2019-11-05"
 (use-package package-utils
   :commands (package-utils-upgrade-all-and-recompile))
 
+(use-package xterm-color)
 (use-package try)
 (use-package terraform-mode)
 
@@ -118,14 +123,17 @@ Version 2019-11-05"
   (evil-collection-init))
 
 (use-package lsp-mode
-  :hook (
-	 ((java-mode js-mode go-mode rust-mode terraform-mode) . lsp-deferred)
+  :demand
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-headerline-breadcrumb-enable nil)
+  :hook
+  (((java-mode js-mode go-mode rust-mode terraform-mode) . lsp-deferred)
 	 (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
 (use-package lsp-ui
-  :commands
-  lsp-ui-mode
+  :commands lsp-ui-mode
   :config
   (setq lsp-ui-doc-position 'at-point)
   )
@@ -374,3 +382,12 @@ Version 2019-11-05"
   (kbd "<leader> SPC") 'evil-ex-nohighlight
   (kbd "<leader> q") 'evil-quit
   (kbd "<leader> b") 'consult-buffer)
+
+
+;; Use xterm-color to handle ANSI color codes in compilation buffer
+;; Taken from https://github.com/atomontage/xterm-color#usage
+(setq compilation-environment '("TERM=xterm-256color"))
+(defun my/advice-compilation-filter (f proc string)
+  (funcall f proc (xterm-color-filter string)))
+
+(advice-add 'compilation-filter :around #'my/advice-compilation-filter)
