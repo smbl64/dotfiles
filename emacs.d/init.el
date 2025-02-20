@@ -5,9 +5,22 @@
 (setq inhibit-startup-screen t)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
 
-;; stop creating those #auto-save# files
+;; Create and use a backup directory
+(defvar --backup-directory (concat user-emacs-directory "backups"))
+(if (not (file-exists-p --backup-directory))
+        (make-directory --backup-directory t))
+(setq backup-directory-alist `(("." . ,--backup-directory)))
+(setq make-backup-files t               ; backup of a file the first time it is saved.
+      backup-by-copying t               ; don't clobber symlinks
+      version-control t                 ; version numbers for backup files
+      delete-old-versions t             ; delete excess backup files silently
+      delete-by-moving-to-trash t
+      kept-old-versions 6               ; oldest versions to keep when a new numbered backup is made (default: 2)
+      kept-new-versions 9               ; newest versions to keep when a new numbered backup is made (default: 2)
+      )
+
+;; stop creating those so-called #auto-save# files
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
 
@@ -28,9 +41,6 @@ Version 2019-11-05"
 (menu-bar-mode -1)
 (set-fringe-mode 10)
 
-;; Put backup files in a dedicated folder
-(setq backup-directory-alist
-   `(("." . ,(concat user-emacs-directory "backups"))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Packages
