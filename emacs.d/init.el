@@ -169,6 +169,7 @@ Version 2019-11-05"
 ;; Make undo work like Vim
 (setq evil-want-fine-undo t)
 (use-package git-gutter
+  :demand t
   :config
   (global-git-gutter-mode +1))
 
