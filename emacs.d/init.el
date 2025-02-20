@@ -41,6 +41,7 @@ Version 2019-11-05"
 (menu-bar-mode -1)
 (set-fringe-mode 10)
 
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Packages
@@ -119,7 +120,13 @@ Version 2019-11-05"
 	 (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
-(use-package lsp-ui :commands lsp-ui-mode)
+(use-package lsp-ui
+  :commands
+  lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-position 'at-point)
+  )
+
 (use-package company
   :commands (company-complete-common company-dabbrev)
   :custom 
@@ -141,6 +148,7 @@ Version 2019-11-05"
   (define-key company-search-map (kbd "C-j") 'company-select-next)
   (define-key company-search-map (kbd "C-k") 'company-select-previous)
   (global-company-mode) ;; completion everywhere
+  (yas-global-mode 1)
 )
 
 (use-package lsp-pyright
@@ -359,6 +367,7 @@ Version 2019-11-05"
 
 (evil-set-leader 'normal (kbd "SPC"))
 (evil-define-key nil evil-normal-state-map
+  (kbd "K") 'lsp-ui-doc-glance
   (kbd "<leader> SPC") 'evil-ex-nohighlight
   (kbd "<leader> q") 'evil-quit
   (kbd "<leader> b") 'consult-buffer)
