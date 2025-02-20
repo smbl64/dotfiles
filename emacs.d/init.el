@@ -175,10 +175,9 @@ Version 2019-11-05"
   (add-hook 'after-init-hook #'global-flycheck-mode))
 
 (use-package base16-theme
-  :ensure t)
-
-(use-package emacs
+  :demand
   :config
+  (setq base16-theme-256-color-source "colors")
   (load-theme 'base16-decaf t))
 
 (use-package go-mode)
