@@ -105,6 +105,11 @@ Version 2019-11-05"
   (setq evil-search-module 'evil-search)
   (setq evil-want-integration t)
   (setq evil-want-C-u-scroll t)
+
+  ;; Move cursor to the split window
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+
   :config
   (evil-mode 1))
 
