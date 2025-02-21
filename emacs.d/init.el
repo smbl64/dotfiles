@@ -30,8 +30,7 @@
 
 ;; Autosave file when Emacs loses focus
 (defun my-save-all-unsaved ()
-  "Save all unsaved files. no ask.
-Version 2019-11-05"
+  "Save all unsaved files. no ask."
   (interactive)
   (save-some-buffers t ))
 
@@ -134,7 +133,7 @@ Version 2019-11-05"
   (setq lsp-headerline-breadcrumb-enable nil)
   :hook
   (((java-mode js-mode go-mode rust-mode terraform-mode) . lsp-deferred)
-	 (lsp-mode . lsp-enable-which-key-integration))
+    (lsp-mode . lsp-enable-which-key-integration))
   :commands lsp)
 
 (use-package lsp-ui
@@ -385,6 +384,7 @@ Version 2019-11-05"
   (kbd "K") 'lsp-ui-doc-glance
   (kbd "<leader> SPC") 'evil-ex-nohighlight
   (kbd "<leader> q") 'evil-quit
+  (kbd "g d") 'lsp-find-definition
   (kbd "<leader> b") 'consult-buffer)
 
 
