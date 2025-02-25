@@ -184,8 +184,16 @@
   (setq base16-theme-256-color-source "colors")
   (load-theme 'base16-decaf t))
 
-(use-package go-mode)
-(use-package rust-mode)
+(use-package go-mode
+  :init
+  (add-hook 'go-mode-hook (lambda () (setq-local tab-width 4))) 
+  (add-hook 'go-mode-hook
+	    (lambda() (add-hook 'before-save-hook 'gofmt-before-save nil 'local)))
+  )
+
+(use-package rust-mode
+  :init
+  (setq rust-format-on-save t))
 
 (set-face-attribute 'default nil :font "FiraCode Nerd Font Mono")
 
@@ -368,9 +376,6 @@
 
 (global-display-line-numbers-mode 1)
 (setopt display-line-numbers-width 3)           ; Set a minimum width
-
-;; Show matching parentheses
-;;(show-paren-mode  1)
 
 ;; Start the initial frame full size
 (add-to-list 'initial-frame-alist '(fullscreen . fullboth))
