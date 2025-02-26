@@ -122,6 +122,7 @@
 
 ; Vim Bindings Everywhere else
 (use-package evil-collection
+  :demand
   :after evil
   :config
   (evil-collection-init))
