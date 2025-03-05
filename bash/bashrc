@@ -44,6 +44,7 @@ __make_brew_envs_file && source $_brew_env_file
 
 export GOPATH=$HOME/go
 export GOBIN="$HOME/go/bin"
+
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/dotfiles/bash/scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -58,11 +59,9 @@ if [ $is_mac = 1 ]; then
     export PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
     export PATH="$HOMEBREW_PREFIX/opt/mysql-client/bin:$PATH"
     export PATH="$HOMEBREW_PREFIX/opt/sqlite/bin:$PATH"
-
-    export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
-start_t=$(echo $(date +%s.%N))
+start_t=$(date +%s.%N)
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
@@ -83,10 +82,6 @@ mkcd () {
 if [ $is_mac = 1 ]; then
     # Make sure pyenv creates the dynlib files when installs python
     export PYTHON_CONFIGURE_OPTS="--enable-framework"
-
-    # Fix pyenv macOS bug
-    # https://github.com/pyenv/pyenv/issues/1219#issuecomment-482821959
-    export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
 
     # Disable Homebrew auto update
     export HOMEBREW_NO_AUTO_UPDATE=1
@@ -165,12 +160,14 @@ function c {
 
 # For debugging purposes
 function __show_elapsed_time {
-    local end_t=$(echo $(date +%s.%N))
-    local diff_t=$(echo "($end_t - $start_t) * 1000 / 1" | bc)
+    local end_t diff_t
+    end_t=$(date +%s.%N)
+    diff_t=$(echo "($end_t - $start_t) * 1000 / 1" | bc)
 
-    local RED=`tput setaf 1`
-    local GREEN=`tput setaf 2`
-    local RESET=`tput sgr0`
+    local RED GREEN RESET
+    RED=$(tput setaf 1)
+    GREEN=$(tput setaf 2)
+    RESET=$(tput sgr0)
 
     local color;
 
