@@ -130,7 +130,7 @@ vim.o.undofile = true
 
 vim.o.termguicolors = true
 vim.o.background = 'dark'
-vim.cmd.colorscheme "base16-decaf"
+vim.cmd.colorscheme "nightfox"
 
 -- Config for showing invisible chars
 vim.o.listchars = 'tab:▸\\ ,eol:¬,space:␣'
