@@ -366,6 +366,9 @@
   (global-set-key (kbd "C-c p") 'projectile-command-map)
   (projectile-mode +1))
 
+(use-package 'tree-sitter)
+(use-package 'tree-sitter-langs)
+
 ;; ---------------------------
 ;; UI enhancements
 ;; ---------------------------
@@ -401,3 +404,5 @@
   (funcall f proc (xterm-color-filter string)))
 
 (advice-add 'compilation-filter :around #'my/advice-compilation-filter)
+
+(global-tree-sitter-mode)
