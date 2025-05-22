@@ -123,7 +123,6 @@ function M.setup()
         },
       },
     },
-    'hls',
     'html',
     'jdtls',
     lua_ls = {
@@ -146,7 +145,6 @@ function M.setup()
         },
       },
     },
-    'ocamllsp',
     'pyright',
     'rust_analyzer',
     'solargraph',
