@@ -23,7 +23,7 @@ brew install \
     docker-completion \
     docker-compose \
     doctl \
-    exa \
+    eza \
     fd \
     fx \
     fzf \
@@ -51,7 +51,7 @@ brew install \
     neovim \
     ollama \
     pandoc \
-    poppler \ # PDF tools
+    poppler \
     pv \
     rclone \
     restic \
