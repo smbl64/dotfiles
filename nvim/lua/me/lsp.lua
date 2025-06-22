@@ -19,7 +19,6 @@ function M.setup()
     -- Make sure servers that are configured with lspconfig are installed.
     automatic_installation = true,
   })
-  local lspconfig = require('lspconfig')
 
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -152,7 +151,7 @@ function M.setup()
     'templ',
     'terraformls',
     'ts_ls',
-    'volar',
+    'vue_ls',
     'yamlls',
     'zls',
   }
@@ -172,11 +171,14 @@ function M.setup()
       settings = body
     end
 
-    lspconfig[lsp_name].setup {
+    -- mason-lspconfig already enables all installed LSP servers. I just do it
+    -- again for completeness :)
+    vim.lsp.enable(lsp_name)
+    vim.lsp.config(lsp_name, {
       on_attach = on_attach,
       capabilities = capabilities,
       settings = settings,
-    }
+    })
   end
 
   require("rust-tools").setup({
