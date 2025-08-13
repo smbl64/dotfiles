@@ -153,6 +153,11 @@ function c {
     cd "$directory" || return
 }
 
+# Follow a symlink and go to the original file's location
+function follow() {
+  local dir="$(dirname "$(readlink -f "$1")")"
+  cd "$dir" || return
+}
 
 # Load the local bashrc. 
 # NOTE: keep line at the end of this file!
@@ -180,3 +185,6 @@ function __show_elapsed_time {
     echo "Bash loaded in ${color}$diff_t ms${RESET}"
 } && __show_elapsed_time && unset -f __show_elapsed_time
 
+
+# Node.js PATH configuration for Cody LiteLLM Proxy
+export PATH="$HOME/bin:$PATH"
