@@ -116,18 +116,18 @@ then
     alias ll="eza -l --group-directories-first --bytes"
 fi
 
-# # Use `startship` if available
-# if [[ -x "$(command -v starship)" ]]
-# then
-#     eval "$(starship init bash)"
-# fi
-
-# Use `oh-my-posh` if available
+# Use `startship` if available
 if [[ -x "$(command -v starship)" ]]
 then
-  omp_config="$HOME/.config/oh-my-posh/config.omp.json"
-  eval "$(oh-my-posh --config "$omp_config" init bash)"
+    eval "$(starship init bash)"
 fi
+
+# # Use `oh-my-posh` if available
+# if [[ -x "$(command -v starship)" ]]
+# then
+#   omp_config="$HOME/.config/oh-my-posh/config.omp.json"
+#   eval "$(oh-my-posh --config "$omp_config" init bash)"
+# fi
 
 # Immediately append commands to history
 # See https://askubuntu.com/a/115625/184857
