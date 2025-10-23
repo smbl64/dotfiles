@@ -17,7 +17,10 @@
           "foreground": "#ff94df",
           "properties": {
             "branch_icon": " <#ff94df><b>\ue0a0 </b></>",
-            "fetch_status": true
+            "fetch_status": true,
+            "ignore_status": [
+              "*./main.*"
+            ]
           },
           "template": "{{ .HEAD }} ",
           "trailing_diamond": "\ue0b4",
