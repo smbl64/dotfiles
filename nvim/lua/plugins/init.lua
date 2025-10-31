@@ -44,8 +44,11 @@ return {
   -- Allow local vimrc files
   'jenterkin/vim-autosource',
 
-
-  'simrat39/rust-tools.nvim',
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    lazy = false,   -- This plugin is already lazy
+  },
 
   'folke/which-key.nvim',
 

@@ -173,19 +173,12 @@ function M.setup()
 
     -- mason-lspconfig already enables all installed LSP servers. I just do it
     -- again for completeness :)
-    vim.lsp.enable(lsp_name)
-    vim.lsp.config(lsp_name, {
-      on_attach = on_attach,
-      capabilities = capabilities,
-      settings = settings,
-    })
+    -- vim.lsp.config(lsp_name, {
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    --   settings = settings,
+    -- })
   end
-
-  require("rust-tools").setup({
-    server = {
-      on_attach = on_attach
-    },
-  })
 end
 
 return M
