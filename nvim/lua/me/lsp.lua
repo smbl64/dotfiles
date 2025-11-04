@@ -46,30 +46,14 @@ function M.setup()
     end
 
     local wk = require('which-key')
-    local wk_opts = { buffer = bufnr, silent = true };
 
-    -- Note: keep wk.register calls for now to make sure all works properly. I will remove them later.
-    -- wk.register({ c = { name = "code actions (lsp)" } }, wk_opts)
-    wk.add({ { "<leader>c", buffer = 1, group = "code actions (lsp)" }, })
-    -- wk.register({ w = { name = "workspace" } }, wk_opts)
-    wk.add({ { "<leader>w", buffer = 1, group = "workspace" }, })
-
-    -- wk.register({
-    --   l = {
-    --     s = {
-    --       name = "symbols",
-    --       d = { "<cmd>FzfLua lsp_document_symbols<cr>", "Show document symbols (LSP)" },
-    --       r = { "<cmd>FzfLua lsp_references<cr>", "Show references (LSP)" },
-    --       w = { "<cmd>FzfLua lsp_live_workspace_symbols<cr>", "Show workspace symbols (LSP)" },
-    --     }
-    --   }
-    -- }, wk_opts)
-
+    wk.add({ { "<leader>c", group = "code actions (lsp)" }, })
+    wk.add({ { "<leader>w", group = "workspace" }, })
     wk.add({
-      { "<leader>ls",  buffer = 1,                                   group = "symbols" },
-      { "<leader>lsd", "<cmd>FzfLua lsp_document_symbols<cr>",       buffer = 1,       desc = "Show document symbols (LSP)" },
-      { "<leader>lsr", "<cmd>FzfLua lsp_references<cr>",             buffer = 1,       desc = "Show references (LSP)" },
-      { "<leader>lsw", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", buffer = 1,       desc = "Show workspace symbols (LSP)" },
+      { "<leader>ls",  group = "symbols" },
+      { "<leader>lsd", "<cmd>FzfLua lsp_document_symbols<cr>",       desc = "Show document symbols (LSP)" },
+      { "<leader>lsr", "<cmd>FzfLua lsp_references<cr>",             desc = "Show references (LSP)" },
+      { "<leader>lsw", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "Show workspace symbols (LSP)" },
     })
 
     -- Mappings.
@@ -173,11 +157,11 @@ function M.setup()
 
     -- mason-lspconfig already enables all installed LSP servers. I just do it
     -- again for completeness :)
-    -- vim.lsp.config(lsp_name, {
-    --   on_attach = on_attach,
-    --   capabilities = capabilities,
-    --   settings = settings,
-    -- })
+    vim.lsp.config(lsp_name, {
+      on_attach = on_attach,
+      capabilities = capabilities,
+      settings = settings,
+    })
   end
 end
 
