@@ -1,3 +1,5 @@
+local ollama_model = "qwen2.5:14b"
+
 return {
   "olimorris/codecompanion.nvim",
 
@@ -13,39 +15,20 @@ return {
       -- Configures the default model for running custom prompts.
       cmd = {
         adapter = "ollama",
-        model = "qwen2.5:14b",
+        model = ollama_model,
       },
 
       -- Configures the model for the interactive chat window (:CompanionChat).
       chat = {
         adapter = "ollama",
-        model = "qwen2.5:14b",
+        model = ollama_model,
       },
 
       -- Configures the model for any action that modifies code directly in your buffer
       -- using the 'inline' strategy.
       inline = {
         adapter = "ollama",
-        model = "qwen2.5:14b",
-      },
-    },
-
-    prompt_library = {
-      -- The name of the custom prompt. Run with :CodeCompanionActions
-      ["Boilerplate HTML"] = {
-        strategy = "chat",
-        description = "Generate some boilerplate HTML",
-        prompts = {
-          {
-            role = "system",
-            content = "You are an expert HTML programmer",
-          },
-          {
-            role = "user",
-            content =
-            "<user_prompt>Please generate some HTML boilerplate for me. Return the code only and no markdown codeblocks</user_prompt>",
-          },
-        },
+        model = ollama_model,
       },
     },
   },
