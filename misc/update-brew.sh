@@ -20,11 +20,12 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         awscli \
         bat \
         carapace \
+        crush \
         curl \
         dart \
         eza \
-        eza \
         fd \
+        fx \
         fzf \
         git \
         go \
@@ -62,5 +63,6 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         vim \
         watchexec \
         watchexec \
-        xh 
+        xh  \
+        zk
 } > $LOG_FILE 2>&1
