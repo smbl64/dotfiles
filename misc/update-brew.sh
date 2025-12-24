@@ -23,6 +23,9 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         crush \
         curl \
         dart \
+        docker \
+        docker-buildx \
+        docker-compose \
         eza \
         fd \
         fx \
@@ -63,6 +66,5 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         vim \
         watchexec \
         watchexec \
-        xh  \
-        zk
+        xh 
 } > $LOG_FILE 2>&1
