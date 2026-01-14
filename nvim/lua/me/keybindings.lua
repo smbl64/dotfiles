@@ -29,6 +29,11 @@ wk.add({
   { "<leader>mm",      "<Plug>MarkSet",              desc = "Toggle mark on current word", mode = { "n", "x" } },
 })
 
+wk.add({
+  { "<leader>t", "<cmd>vsplit | terminal<cr>", desc = "Open terminal in vertical split", mode = { "n" } },
+  { "<esc>",     "<C-\\><C-n>",                desc = "Exit the terminal mode",          mode = { "t" } },
+})
+
 
 wk.add({
   { "<C-p>", "<cmd>FzfLua files<cr>", desc = "Find file" },
