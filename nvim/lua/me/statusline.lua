@@ -1,23 +1,45 @@
-vim.cmd([[
-    set statusline=
-    set statusline+=%#CursorIM#%{(mode()=='n')?'\ \ NORMAL\ ':''}
-    set statusline+=%#Search#%{(mode()=='i')?'\ \ INSERT\ ':''}
-    set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
-    set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
-    set statusline+=%#Visual#                " colour
-    set statusline+=%{&paste?'\ PASTE\ ':''}
-    set statusline+=%{&spell?'\ SPELL\ ':''}
-    set statusline+=%#CursorIM#              " colour
-    set statusline+=%R                       " readonly flag
-    set statusline+=%M                       " modified [+] flag
-    set statusline+=%#CursorLine#            " colour
-    set statusline+=\ %f\                    " short file name
-    set statusline+=%=                       " right align
-    set statusline+=%#CursorLine#            " colour
-    set statusline+=\ %y\                    " file type
-    set statusline+=%#CursorIM#              " colour
-    set statusline+=%#CursorIM#              " colour
-    set statusline+=\ %3l:%-2c\              " line + column
-    set statusline+=%#CursorIM#              " colour
-    set statusline+=\ %3p%%\                 " percentage
-]])
+local function statusline()
+  local mode = vim.fn.mode()
+  local parts = {}
+
+  -- Mode indicator
+  if mode == 'n' then
+    table.insert(parts, '%#CursorIM#  NORMAL ')
+  elseif mode == 'i' then
+    table.insert(parts, '%#Search#  INSERT ')
+  elseif mode == 'r' then
+    table.insert(parts, '%#DiffDelete#  RPLACE ')
+  elseif mode == 'v' or mode == 'V' or mode == '\22' then
+    table.insert(parts, '%#Cursor#  VISUAL ')
+  else
+    table.insert(parts, '%#CursorIM#')
+  end
+
+  -- Paste / Spell
+  table.insert(parts, '%#Visual#')
+  if vim.o.paste then table.insert(parts, ' PASTE ') end
+  if vim.o.spell then table.insert(parts, ' SPELL ') end
+
+  -- Flags
+  table.insert(parts, '%#CursorIM#%R%M')
+
+  -- File name
+  table.insert(parts, '%#CursorLine# %f ')
+
+  -- Right side
+  table.insert(parts, '%=')
+
+  -- File type
+  table.insert(parts, '%#CursorLine# %y ')
+
+  -- Line/col
+  table.insert(parts, '%#CursorIM# %3l:%-2c ')
+
+  -- Percentage
+  table.insert(parts, '%#CursorIM# %3p%% ')
+
+  return table.concat(parts)
+end
+
+vim.o.statusline = '%!v:lua.Statusline()'
+_G.Statusline = statusline
