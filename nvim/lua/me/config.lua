@@ -211,28 +211,23 @@ vim.api.nvim_create_autocmd('WinLeave', {
   command = 'set nocursorline',
 })
 
-require('nvim-treesitter.configs').setup {
-  --ensure_isntalled = "all",
-  ensure_installed = {
-    "go",
-    "gomod",
-    "gosum",
-    "java",
-    "json",
-    "lua",
-    "perl",
-    "python",
-    "rust",
-    "vim",
-    "vimdoc",
-    "xml",
-    "yaml",
-  },
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-  auto_install = true,
-
+require('nvim-treesitter').install {
+  "go",
+  "gomod",
+  "gosum",
+  "java",
+  "json",
+  "lua",
+  "perl",
+  "python",
+  "rust",
+  "vim",
+  "vimdoc",
+  "xml",
+  "yaml",
+  "zig",
+}
+require('nvim-treesitter').setup {
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
