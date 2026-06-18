@@ -1,6 +1,6 @@
 [general]
 import = [
-  "~/.config/alacritty/themes/base16_default_dark.toml"
+  "~/.config/alacritty/themes/nightfox.toml"
 ]
 
 #[colors.normal]
