@@ -8,6 +8,7 @@ My dotfiles for different apps
 - `kitty` folder must be linked to `~/.config/kitty` folder.
 - `wezterm` folder must be linked to `~/.config/wezterm` folder.
 - `direnv` folder must be linked to `~/.config/direnv` folder.
+- `llama-swap` folder must be linked to `~/.config/llama-swap` folder.
 - `tmux/tmux.conf` must be linked to `~/.tmux.conf` file.
 - `bat` folder must be linked to `~/.config/bat` folder.
 - `starship/starship.toml`  must be linked to `~/.config/starship.toml` file.
