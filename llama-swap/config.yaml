@@ -1,3 +1,4 @@
+# Reusable snippets ("macros") for other parts of the configuration
 macros:
   default_ctx: 65536
   max_predict: 32768
@@ -43,6 +44,14 @@ models:
         -hf "unsloth/Qwen3.6-27B-GGUF:UD-Q4_K_XL"
         ${default_params}
         ${qwen_params}
+
+  unsloth-qwen3.8-27b:
+    cmd: |
+      llama-server
+        -hf "unsloth/Qwen3.8-27B-GGUF:UD-Q4_K_XL"
+        ${default_params}
+        ${qwen_params}
+        --chat-template-kwargs '{"preserve_thinking": true, "reasoning_effort": "high"}'
 
   unsloth-gemma-4-12b-it-qat:
     cmd: |
