@@ -20,6 +20,7 @@ export PATH="$PATH:/usr/local/bin:/opt/homebrew/bin"
         awscli \
         bat \
         carapace \
+        claude-code \
         crush \
         curl \
         dart \
