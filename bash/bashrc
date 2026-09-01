@@ -64,6 +64,7 @@ fi
 start_t=$(date +%s.%N)
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+export PI_CODING_AGENT_DIR="$HOME/.pi/agent"
 
 # pyenv (on Linux installs)
 export PYENV_ROOT="$HOME/.pyenv"
