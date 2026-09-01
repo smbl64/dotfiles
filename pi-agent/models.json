@@ -1,0 +1,37 @@
+{
+  "providers": {
+  "hercules-vllm": {
+      "api": "openai-completions",
+      "apiKey": "dummy",
+      "baseUrl": "http://hercules.lan:8010/v1",
+      "models": [
+        {
+          "contextWindow": 262144,
+          "id": "qwen3.8-27b",
+          "input": [
+            "text",
+            "image"
+          ],
+          "reasoning": true,
+          "thinkingLevelMap": {
+            "off": null,
+            "minimal": null,
+            "low": "low",
+            "medium": "medium",
+            "high": null,
+            "xhigh": "xhigh",
+            "max": null
+          },
+          "compat": {
+            "thinkingFormat": "chat-template",
+            "chatTemplateKwargs": {
+              "enable_thinking": { "$var": "thinking.enabled" },
+              "preserve_thinking": true,
+              "reasoning_effort": { "$var": "thinking.effort", "omitWhenOff": true }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

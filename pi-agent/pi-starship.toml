@@ -1,0 +1,11 @@
+# Native Pi modules with Starship-compatible format and style syntax.
+format = """
+$brand\
+$model\
+$thinking\
+$directory\
+$git_branch\
+$git_status\
+$activity\
+$context\
+$time"""

@@ -1,0 +1,20 @@
+{
+  "defaultModel": "qwen3.8-27b",
+  "defaultProvider": "hercules-vllm",
+  "lastChangelogVersion": "0.84.3",
+  "packages": [
+    "npm:pi-mcp-adapter",
+    "npm:@gotgenes/pi-permission-system",
+    "npm:pi-web-access",
+    "npm:@gotgenes/pi-subagents",
+    "npm:pi-lens",
+    "npm:@juicesharp/rpiv-todo",
+    "npm:@gotgenes/pi-nocd",
+    "npm:@narumitw/pi-starship"
+  ],
+  "defaultThinkingLevel": "medium",
+  "hideThinkingBlock": false,
+  "quietStartup": true,
+  "theme": "dark",
+  "collapseChangelog": true
+}
