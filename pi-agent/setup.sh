@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 # Run on a new laptop after cloning dotfiles.
-# Requires: TAVILY_API_KEY exported in your shell (read by web-search.json at runtime)
 set -euo pipefail
 DEST="$HOME/.pi/agent"
 SRC="$(cd "$(dirname "$0")" && pwd)"
+
+# required env vars (read at runtime by the config files)
+for var in TAVILY_API_KEY; do
+  if [ -n "${!var:-}" ]; then
+    echo "✓ $var is set"
+  else
+    echo "! $var is not set — define it in your shell for web search to work"
+  fi
+done
 
 # skills (public repos)
 mkdir -p "$DEST/skills"

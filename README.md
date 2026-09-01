@@ -15,7 +15,7 @@ My dotfiles for different apps
 - `ctags` folder contains the configurations for [universal ctags][ctags] and must be linked to `~/.ctags.d` folder.
 - `postgres/psqlrc` contains the configurations for `psql` command and must be linked to `~/.psqlrc` file.
 - `sqlite/sqliterc` contains the configurations for `sqlite` command and must be linked to `~/.sqliterc` file.
-- `pi-agent` contains the global config for the [pi coding agent][pi]. `settings.json`, `models.json`, `mcp.json`, `web-search.json`, `pi-starship.toml`, and `extensions/` must be symlinked into `~/.pi/agent/`. On a new laptop, run `pi-agent/setup.sh` (clones the skills and creates the symlinks). `web-search.json` references `${TAVILY_API_KEY}`, which must be exported in your shell. Everything else in `~/.pi/agent/` (sessions, caches, `npm/`) is local state and intentionally not synced.
+- `pi-agent` contains the global config for the [pi coding agent][pi]. `settings.json`, `models.json`, `mcp.json`, `web-search.json`, `pi-starship.toml`, and `extensions/` must be symlinked into `~/.pi/agent/`. On a new laptop, run `pi-agent/setup.sh` (clones the skills, creates the symlinks, and checks required env vars). Everything else in `~/.pi/agent/` (sessions, caches, `npm/`) is local state and intentionally not synced.
 - `inputrc` must be linked to `~/.inputrc` file.
 - `vscode` folder's contents must be symlinked to the proper location on each OS. on macOS:
     ```
