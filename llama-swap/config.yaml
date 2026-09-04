@@ -13,7 +13,7 @@ macros:
   macos_optimal_params: |
     --batch-size 2048
     --ubatch-size 2048
-    --mlock
+    --load-mode mlock
     --prio 2
 
   qwen_params: |
