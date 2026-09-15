@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+"""List Hugging Face cached models and their quantizations."""
+
+import os
+import re
+import sys
+from pathlib import Path
+
+HF_CACHE = Path(os.environ.get("HF_HOME", Path.home() / ".cache" / "huggingface")) / "hub"
+
+QUANT_PATTERNS = [
+    # GGUF quantizations (with optional UD- prefix)
+    r"\b((?:UD-)?Q[2-9]_[KS](?:_[SML XL]*)?)(?:\b|\.)",
+    r"\b((?:UD-)?(?:Q4_0|Q5_0|Q8_0|F16|F32|BF16))\b",
+    r"\b((?:UD-)?IQ[1-4]_(?:XXS|XS|S|M|NL))\b",
+    # Other formats
+    r"\b(GPTQ|AWQ|EXL2|EXLLAMAV2|MLX)\b",
+    r"\b(INT4|INT8|NF4|FP4|FP8)\b",
+    r"\b(W4A16|W8A8|W4A8)\b",
+]
+QUANT_RE = re.compile("|".join(QUANT_PATTERNS), re.IGNORECASE)
+
+MMPROJ_RE = re.compile(r"^mmproj[-_]", re.IGNORECASE)
+
+
+def model_name_from_dir(dirname: str) -> str:
+    """Convert 'models--org--name' to 'org/name'."""
+    parts = dirname.removeprefix("models--").split("--")
+    return "/".join(parts)
+
+
+def find_quantizations(snapshot_path: Path) -> list[str]:
+    """Extract quantization tags from filenames in a snapshot directory."""
+    quants = set()
+    for f in snapshot_path.iterdir():
+        name = f.name
+        if MMPROJ_RE.match(name):
+            continue
+        for m in QUANT_RE.finditer(name):
+            quants.add(m.group(0).upper())
+    return sorted(quants)
+
+
+def main():
+    if not HF_CACHE.exists():
+        print(f"HF cache not found: {HF_CACHE}")
+        return
+
+    model_dirs = sorted(
+        d for d in HF_CACHE.iterdir()
+        if d.is_dir() and d.name.startswith("models--")
+    )
+
+    if not model_dirs:
+        print("No cached models found.")
+        return
+
+    filter_term = sys.argv[1].lower() if len(sys.argv) > 1 else None
+
+    for model_dir in model_dirs:
+        name = model_name_from_dir(model_dir.name)
+        if filter_term and filter_term not in name.lower():
+            continue
+        snapshots_dir = model_dir / "snapshots"
+
+        if not snapshots_dir.exists():
+            continue
+
+        quants: set[str] = set()
+        for snapshot in snapshots_dir.iterdir():
+            if snapshot.is_dir():
+                quants.update(find_quantizations(snapshot))
+
+        if quants:
+            for q in sorted(quants):
+                print(f"{name}:{q}")
+        else:
+            print(name)
+
+
+if __name__ == "__main__":
+    main()
