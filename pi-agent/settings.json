@@ -10,7 +10,8 @@
     "npm:pi-lens",
     "npm:@juicesharp/rpiv-todo",
     "npm:@gotgenes/pi-nocd",
-    "npm:@narumitw/pi-starship"
+    "npm:@narumitw/pi-starship",
+    "https://github.com/ayghri/i-have-adhd"
   ],
   "defaultThinkingLevel": "medium",
   "hideThinkingBlock": false,

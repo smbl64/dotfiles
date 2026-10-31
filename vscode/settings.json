@@ -46,10 +46,12 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.colorTheme": "Default Light Modern",
+  "workbench.colorTheme": "Light Modern",
   "window.commandCenter": false,
   "editor.guides.indentation": false,
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "monkeyC.developerKeyPath": "/Users/mohammad/developer_key",
+  "chat.commandCenter.enabled": false,
 }

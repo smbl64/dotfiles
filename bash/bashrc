@@ -196,3 +196,6 @@ function __show_elapsed_time {
 
 # Node.js PATH configuration for Cody LiteLLM Proxy
 export PATH="$HOME/bin:$PATH"
+
+# Added by cua-driver-rs installer — see https://github.com/trycua/cua
+export PATH="/Users/mohammad/.local/bin:$PATH"
